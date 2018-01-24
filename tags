@@ -1,0 +1,40 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+App	src/App.js	/^const App = () => ($/;"	r
+FEED_RECEIVED	src/actions.js	/^const FEED_RECEIVED = 'FEED_RECEIVED'$/;"	r
+FEED_REQUESTED	src/actions.js	/^const FEED_REQUESTED = 'FEED_REQUESTED'$/;"	r
+FEED_REQUEST_FAILED	src/actions.js	/^const FEED_REQUEST_FAILED = 'FEED_REQUEST_FAILED'$/;"	r
+Feed	src/Feed.js	/^const Feed = ({ feed }) => ($/;"	r
+Story	src/Feed.js	/^const Story = ({ title = 'title', image, text = 'text' }) => ($/;"	r
+actionCreators	src/actions.js	/^export const actionCreators = { feedReceived, feedRequested, feedRequestFailed }$/;"	r
+actions	src/actions.js	/^export const actions = { FEED_REQUESTED, FEED_RECEIVED, FEED_REQUEST_FAILED }$/;"	r
+baseParams	src/api.js	/^const baseParams = {$/;"	r
+baseUrl	src/api.js	/^const baseUrl = 'https:\/\/harvester.sol.no\/get'$/;"	r
+buildUrl	src/api.js	/^export const buildUrl = R.ifElse(isEmpty, R.always(baseUrl), params =>$/;"	r
+cleanData	src/api.js	/^const cleanData = ({$/;"	r
+cleanValues	src/api.js	/^export const cleanValues = R.pipe($/;"	r
+div	src/App.test.js	/^  const div = document.createElement('div');$/;"	r
+feed	src/reducers.js	/^export const feed = (state = [], action) => {$/;"	r
+feedReceived	src/actions.js	/^const feedReceived = data => ({ type: FEED_RECEIVED, data })$/;"	r
+feedRequestFailed	src/actions.js	/^const feedRequestFailed = error => ({ type: FEED_REQUEST_FAILED, error })$/;"	r
+feedRequested	src/actions.js	/^const feedRequested = () => ({ type: FEED_REQUESTED })$/;"	r
+feedUrl	src/App.js	/^const feedUrl = process.env.REACT_APP_FEED_URL$/;"	r
+fetchFeed	src/api.js	/^export const fetchFeed = (params = baseParams) =>$/;"	r
+installingWorker	src/registerServiceWorker.js	/^        const installingWorker = registration.installing;$/;"	r
+isEmpty	src/api.js	/^export const isEmpty = R.contains(R.__, [{}, undefined, null, [], ''])$/;"	r
+isLocalhost	src/registerServiceWorker.js	/^const isLocalhost = Boolean($/;"	r
+mapDispatchToProps	src/Feed.js	/^const mapDispatchToProps = (dispatch, ownProps) => ({})$/;"	r
+mapObject	src/api.js	/^const mapObject = fn =>$/;"	r
+mapStateToProps	src/Feed.js	/^const mapStateToProps = ({ feed }) => ({$/;"	r
+paramPairs	src/api.js	/^export const paramPairs = (key, value) =>$/;"	r
+publicUrl	src/registerServiceWorker.js	/^    const publicUrl = new URL(process.env.PUBLIC_URL, window.location);$/;"	r
+queryString	src/api.js	/^export const queryString = R.pipe($/;"	r
+rootReducer	src/configureStore.js	/^  const rootReducer = combineReducers(reducers)$/;"	r
+rootStore	src/App.js	/^const rootStore = configureStore({ feed: ['hello world', 'foo', 'bar'] })$/;"	r
+sagaMiddleware	src/configureStore.js	/^  const sagaMiddleware = createSagaMiddleware()$/;"	r
+store	src/configureStore.js	/^  const store = createStore($/;"	r
+swUrl	src/registerServiceWorker.js	/^      const swUrl = `${process.env.PUBLIC_URL}\/service-worker.js`;$/;"	r

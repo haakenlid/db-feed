@@ -1,20 +1,21 @@
-import React, { Component } from 'react'
-import logo from './logo.svg'
+import React from 'react'
+import { Provider } from 'react-redux'
+import configureStore from './configureStore'
+import Feed from './Feed'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Hello World</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    )
-  }
-}
+const rootStore = configureStore({ feed: ['hello world', 'foo', 'bar'] })
 
-export default App
+const App = () => (
+  <div className="App">
+    <header className="App-header">
+      <h1 className="App-title">News feed</h1>
+    </header>
+    <Feed />
+  </div>
+)
+
+export default () => (
+  <Provider store={rootStore}>
+    <App />
+  </Provider>
+)
