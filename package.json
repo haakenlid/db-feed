@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
+    "gh-pages": "^1.1.0",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.2",
     "ramda": "^0.25.0",
@@ -22,6 +23,8 @@
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
