@@ -2,11 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeed } from './reducers'
 
-const Story = ({ title = 'title', image, text = 'text' }) => (
+const Story = ({ title, description, image, host, content }) => (
   <article className="Story">
-    <h1>{title}</h1>
+    <h1>
+      {host}: {title}
+    </h1>
+    <h3>{description}</h3>
     {image && <img alt={title} src={image} />}
-    <p>{text}</p>
+    <pre>{content}</pre>
   </article>
 )
 const Feed = ({ feed }) => (

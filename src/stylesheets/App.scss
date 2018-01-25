@@ -1,6 +1,21 @@
 .App {
   text-align: center;
 }
+.Icon {
+  height: 1em;
+  padding: 0.02em;
+  fill: currentcolor;
+}
+.hosts {
+  font-size: 3rem;
+  color: white;
+  svg {
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

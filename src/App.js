@@ -1,5 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
+import { Logos, Icons } from './logo'
 import configureStore from './configureStore'
 import Feed from './Feed'
 
@@ -9,6 +10,9 @@ const App = () => (
   <div className="App">
     <header className="App-header">
       <h1 className="App-title">News feed</h1>
+      <nav className="hosts">
+        <Icons />
+      </nav>
     </header>
     <Feed />
   </div>

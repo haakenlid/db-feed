@@ -4,12 +4,27 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AbcNyheter	src/logo/AbcNyheter.js	/^const AbcNyheter = props => ($/;"	r
+Adressa	src/logo/Adressa.js	/^const Adressa = props => ($/;"	r
+Adresseavisen	src/logo/Adresseavisen.js	/^const Adresseavisen = props => ($/;"	r
+Aftenposten	src/logo/Aftenposten.js	/^const Aftenposten = props => ($/;"	r
 App	src/App.js	/^const App = () => ($/;"	r
+BergensTidende	src/logo/BergensTidende.js	/^const BergensTidende = props => ($/;"	r
+Dagbladet	src/logo/Dagbladet.js	/^const Dagbladet = props => ($/;"	r
+Dn	src/logo/Dn.js	/^const Dn = props => ($/;"	r
 FEED_RECEIVED	src/actions.js	/^const FEED_RECEIVED = 'FEED_RECEIVED'$/;"	r
 FEED_REQUESTED	src/actions.js	/^const FEED_REQUESTED = 'FEED_REQUESTED'$/;"	r
 FEED_REQUEST_FAILED	src/actions.js	/^const FEED_REQUEST_FAILED = 'FEED_REQUEST_FAILED'$/;"	r
+Faedrelandsvennen	src/logo/Faedrelandsvennen.js	/^const Faedrelandsvennen = props => ($/;"	r
 Feed	src/Feed.js	/^const Feed = ({ feed }) => ($/;"	r
-Story	src/Feed.js	/^const Story = ({ title = 'title', image, text = 'text' }) => ($/;"	r
+Hegnar	src/logo/Hegnar.js	/^const Hegnar = props => ($/;"	r
+Logo	src/Logo.js	/^export const Logo = ({ name, ...props }) => logos[name](props)$/;"	r
+Logos	src/Logo.js	/^export const Logos = () => ($/;"	r
+Nrk	src/logo/Nrk.js	/^const Nrk = props => ($/;"	r
+StavangerAftenblad	src/logo/StavangerAftenblad.js	/^const StavangerAftenblad = props => ($/;"	r
+Story	src/Feed.js	/^const Story = ({ title, description, image, host, content }) => ($/;"	r
+Tv2	src/logo/Tv2.js	/^const Tv2 = props => ($/;"	r
+Vg	src/logo/Vg.js	/^const Vg = props => ($/;"	r
 actionCreators	src/actions.js	/^export const actionCreators = { feedReceived, feedRequested, feedRequestFailed }$/;"	r
 actions	src/actions.js	/^export const actions = { FEED_REQUESTED, FEED_RECEIVED, FEED_REQUEST_FAILED }$/;"	r
 baseParams	src/api.js	/^const baseParams = {$/;"	r
@@ -19,22 +34,30 @@ cleanData	src/api.js	/^const cleanData = ({$/;"	r
 cleanValues	src/api.js	/^export const cleanValues = R.pipe($/;"	r
 div	src/App.test.js	/^  const div = document.createElement('div');$/;"	r
 feed	src/reducers.js	/^export const feed = (state = [], action) => {$/;"	r
+feedParameters	src/reducers.js	/^export const feedParameters = (state = initialParams, action) => {$/;"	r
 feedReceived	src/actions.js	/^const feedReceived = data => ({ type: FEED_RECEIVED, data })$/;"	r
 feedRequestFailed	src/actions.js	/^const feedRequestFailed = error => ({ type: FEED_REQUEST_FAILED, error })$/;"	r
-feedRequested	src/actions.js	/^const feedRequested = () => ({ type: FEED_REQUESTED })$/;"	r
-feedUrl	src/App.js	/^const feedUrl = process.env.REACT_APP_FEED_URL$/;"	r
+feedRequested	src/actions.js	/^const feedRequested = params => ({ type: FEED_REQUESTED, params })$/;"	r
 fetchFeed	src/api.js	/^export const fetchFeed = (params = baseParams) =>$/;"	r
+hosts	src/reducers.js	/^const hosts = [$/;"	r
+initialParams	src/reducers.js	/^const initialParams = {$/;"	r
 installingWorker	src/registerServiceWorker.js	/^        const installingWorker = registration.installing;$/;"	r
-isEmpty	src/api.js	/^export const isEmpty = R.contains(R.__, [{}, undefined, null, [], ''])$/;"	r
+isEmpty	src/api.js	/^const isEmpty = R.contains(R.__, [{}, undefined, null, [], ''])$/;"	r
 isLocalhost	src/registerServiceWorker.js	/^const isLocalhost = Boolean($/;"	r
+logos	src/Logo.js	/^const logos = {$/;"	r
 mapDispatchToProps	src/Feed.js	/^const mapDispatchToProps = (dispatch, ownProps) => ({})$/;"	r
 mapObject	src/api.js	/^const mapObject = fn =>$/;"	r
-mapStateToProps	src/Feed.js	/^const mapStateToProps = ({ feed }) => ({$/;"	r
+mapStateToProps	src/Feed.js	/^const mapStateToProps = state => ({ feed: selectFeed(state) })$/;"	r
 paramPairs	src/api.js	/^export const paramPairs = (key, value) =>$/;"	r
+params	src/sagas.js	/^  const params = yield select(selectFeedParameters)$/;"	r
 publicUrl	src/registerServiceWorker.js	/^    const publicUrl = new URL(process.env.PUBLIC_URL, window.location);$/;"	r
-queryString	src/api.js	/^export const queryString = R.pipe($/;"	r
-rootReducer	src/configureStore.js	/^  const rootReducer = combineReducers(reducers)$/;"	r
+queryString	src/api.js	/^const queryString = R.pipe($/;"	r
+rootReducer	src/configureStore.js	/^  const rootReducer = combineReducers({ feed, feedParameters })$/;"	r
 rootStore	src/App.js	/^const rootStore = configureStore({ feed: ['hello world', 'foo', 'bar'] })$/;"	r
 sagaMiddleware	src/configureStore.js	/^  const sagaMiddleware = createSagaMiddleware()$/;"	r
+selectFeed	src/reducers.js	/^export const selectFeed = state => state.feed$/;"	r
+selectFeedParameters	src/reducers.js	/^export const selectFeedParameters = state => state.feedParameters$/;"	r
+selectFeedParameters	src/sagas.js	/^const selectFeedParameters = ({ feedParameters }) => feedParameters$/;"	r
 store	src/configureStore.js	/^  const store = createStore($/;"	r
 swUrl	src/registerServiceWorker.js	/^      const swUrl = `${process.env.PUBLIC_URL}\/service-worker.js`;$/;"	r
+tags	src/reducers.js	/^const tags = [$/;"	r
