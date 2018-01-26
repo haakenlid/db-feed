@@ -17,8 +17,8 @@
     "redux-saga": "^0.16.0"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/stylesheets -o src/stylesheets",
-    "watch-css": "npm run build-css && node-sass-chokidar src/stylesheets -o src/stylesheets --watch",
+    "build-css": "node-sass-chokidar src/ -o src/ --recursive",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",

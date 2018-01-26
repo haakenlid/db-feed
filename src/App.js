@@ -1,25 +1,12 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { Logos, Icons } from './logo'
 import configureStore from './configureStore'
-import Feed from './Feed'
+import Page from 'components/Page'
 
-const rootStore = configureStore({ feed: ['hello world', 'foo', 'bar'] })
-
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <h1 className="App-title">News feed</h1>
-      <nav className="hosts">
-        <Icons />
-      </nav>
-    </header>
-    <Feed />
-  </div>
-)
+const rootStore = configureStore()
 
 export default () => (
   <Provider store={rootStore}>
-    <App />
+    <Page />
   </Provider>
 )

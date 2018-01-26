@@ -1,0 +1,45 @@
+header {
+  display: flex;
+  color: white;
+  background-color: #555;
+  .tags {
+    font-size: 1em;
+    display: flex;
+    flex-direction: row;
+    .Tag {
+      padding: 0.2em 0.5em;
+      color: #888;
+      cursor: pointer;
+      &.active {
+        color: #eee;
+      }
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  .hosts {
+    font-size: 3em;
+    display: flex;
+    flex-direction: row;
+    .Host {
+      color: #888;
+      cursor: pointer;
+      &.active {
+        color: #eee;
+      }
+      &:hover {
+        // color: #fff;
+        svg {
+          stroke: white;
+          stroke-width: 2;
+        }
+      }
+    }
+  }
+}
+.Icon {
+  height: 1em;
+  padding: 0.02em;
+  fill: currentcolor;
+}
