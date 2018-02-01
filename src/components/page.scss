@@ -1,38 +1,51 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
 header {
+  position: sticky;
+  top: 0;
   display: flex;
   color: white;
-  background-color: #555;
-  .tags {
-    font-size: 1em;
-    display: flex;
-    flex-direction: row;
-    .Tag {
-      padding: 0.2em 0.5em;
-      color: #888;
-      cursor: pointer;
-      &.active {
-        color: #eee;
-      }
-      &:hover {
-        color: #fff;
+  user-select: none;
+  background-color: #666;
+  .Filters {
+    flex: 1;
+    .tags {
+      font-size: 1.2em;
+      font-weight: bold;
+      display: flex;
+      flex-direction: row;
+      .Tag {
+        padding: 0.2rem 0.4rem;
+        color: #999;
+        cursor: pointer;
+        &.active {
+          color: #eee;
+        }
+        &:hover {
+          // filter: drop-shadow(0 0 5px #000);
+          text-shadow: 0 0 4px black;
+        }
       }
     }
-  }
-  .hosts {
-    font-size: 3em;
-    display: flex;
-    flex-direction: row;
-    .Host {
-      color: #888;
-      cursor: pointer;
-      &.active {
-        color: #eee;
-      }
-      &:hover {
-        // color: #fff;
-        svg {
-          stroke: white;
-          stroke-width: 2;
+    .hosts {
+      font-size: 3em;
+      display: flex;
+      flex-direction: row;
+      .Host {
+        padding: 0.2rem 0.4rem;
+        color: #999;
+        cursor: pointer;
+        &.active {
+          color: #eee;
+        }
+        &:hover {
+          .Icon {
+            filter: drop-shadow(0 0 2px black);
+          }
         }
       }
     }

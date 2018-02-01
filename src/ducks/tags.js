@@ -21,6 +21,8 @@ export const toggleTag = tag => ({
 // selectors
 export const selectTags = R.prop(SLICE)
 export const selectActiveTags = R.pipe(selectTags, R.filter(R.identity), R.keys)
+export const selectInactiveTags = R.always([])
+// export const selectInactiveTags = R.pipe(selectTags, R.filter(R.not), R.keys)
 
 // reducer
 const getReducer = ({ type, payload }) => {

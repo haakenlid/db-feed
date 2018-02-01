@@ -13,16 +13,18 @@ export function* feedSaga() {
 
 const selectFeedParameters = state => ({
   excludePaywall: true,
-  limit: 10,
-  offset: 0,
   includeHosts: hosts.selectActiveHosts(state),
   includeAnyTags: tags.selectActiveTags(state),
+  excludeTags: tags.selectInactiveTags(state),
+  offset: feed.selectOffset(state),
+  limit: 15,
 })
 
 function* filterListener() {
   // refetch feed when filter inputs are changed
   const DEBOUNCE = 500
   yield call(delay, DEBOUNCE)
+  yield put(feed.feedResetOffset())
   yield put(feed.feedRequested())
 }
 
@@ -35,3 +37,7 @@ function* fetchFeed() {
     yield put(feed.feedRequestFailed(error))
   }
 }
+
+// function* scrollSpySaga() {
+//   yield call(delay, 100)
+// }

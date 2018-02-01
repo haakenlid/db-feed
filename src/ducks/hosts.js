@@ -22,6 +22,12 @@ export const toggleHost = host => ({
   payload: { host },
 })
 
+export const ONLY_HOST = 'hosts/ONLY_HOST'
+export const onlyHost = host => ({
+  type: ONLY_HOST,
+  payload: { host },
+})
+
 // selectors
 export const selectHosts = R.prop(SLICE)
 export const selectActiveHosts = R.pipe(
@@ -36,6 +42,8 @@ const getReducer = ({ type, payload }) => {
   switch (type) {
     case TOGGLE_HOST:
       return R.over(R.lensProp(payload.host), R.not)
+    case ONLY_HOST:
+      return R.mapObjIndexed((v, k, o) => R.equals(payload.host, k))
     default:
       return R.identity
   }

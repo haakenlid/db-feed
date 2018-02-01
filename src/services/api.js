@@ -2,11 +2,6 @@ import * as R from 'ramda'
 import { buildUrl } from './url'
 
 const BASE_URL = 'https://harvester.sol.no/get'
-const baseParams = {
-  excludePaywall: true,
-  limit: 15,
-  offset: 0,
-}
 
 const selectApiData = ({
   externalId,
@@ -14,16 +9,16 @@ const selectApiData = ({
   title,
   posted,
   url,
-  fields = {},
+  fields: { description, content, image },
 }) => ({
   externalId,
   title,
-  description: fields.description,
-  content: fields.content,
+  description,
+  content,
   posted,
   host,
   url,
-  image: fields.image,
+  image,
 })
 
 export const normalizeData = R.pipe(
@@ -33,7 +28,7 @@ export const normalizeData = R.pipe(
   R.fromPairs
 )
 
-export const fetchFeed = (params = baseParams) =>
+export const fetchFeed = params =>
   fetch(buildUrl(BASE_URL, params))
     .then(response => response.json().then(json => ({ json, response })))
     .then(({ json, response }) => {
