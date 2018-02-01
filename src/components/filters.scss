@@ -1,0 +1,50 @@
+$smallScreen: 700px;
+
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  color: white;
+  user-select: none;
+  background-color: #666;
+  .Filters {
+    flex: 1;
+    font-size: 1.2em;
+    .tags,
+    .hosts {
+      font-weight: bold;
+      display: flex;
+      flex-flow: row wrap;
+      .Tag,
+      .Host {
+        padding: 0.2rem 0.4rem;
+        color: #999;
+        cursor: pointer;
+        &.active {
+          color: #eee;
+        }
+        &:hover {
+          text-shadow: 0 0 4px black;
+          .Icon {
+            filter: drop-shadow(0 0 2px black);
+          }
+        }
+      }
+      .Host {
+        font-size: 2em;
+      }
+    }
+  }
+  @media screen and (max-width: $smallScreen) {
+    position: static;
+    .Filters {
+      // height: 20vh;
+      .tags {
+        font-size: 2em;
+      }
+      .hosts {
+        font-size: 1.5em;
+      }
+    }
+  }
+}

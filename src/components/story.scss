@@ -1,3 +1,5 @@
+$smallScreen: 700px;
+
 .Feed {
   display: flex;
   flex-direction: row;
@@ -13,6 +15,11 @@
     flex-grow: 1;
     flex-basis: auto;
     width: 30em;
+    @media screen and (max-width: $smallScreen) {
+      padding: 0.5em 0;
+      margin: 0.5em 0;
+      width: 100vw;
+    }
     .image {
       padding: 0.5em;
       flex: 1;
@@ -51,6 +58,11 @@
         background: white;
         box-shadow: 0.1em 0.2em 0.3em 0 rgba(black, 0.5);
         font-size: 1rem;
+        .timestamp {
+          display: block;
+          font-size: smaller;
+          color: #888;
+        }
       }
     }
     height: 25em;

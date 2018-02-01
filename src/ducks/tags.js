@@ -3,12 +3,8 @@ const SLICE = 'tags'
 const INITIAL_STATE = {
   nyheter: true,
   okonomi: true,
-  sport: false,
+  sport: true,
   underholdning: true,
-  film: true,
-  musikk: true,
-  kjendis: true,
-  utenlandske: true,
 }
 
 // actions
