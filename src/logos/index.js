@@ -1,6 +1,7 @@
 import React from 'react'
 import icons from './icons'
 import logos from './full'
+import './index.css'
 
 export const Icon = ({ host, ...props }) =>
   icons[host] ? (

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Hegnar = props => (
-  <svg id="Layer_1" width={648.04} height={128} {...props}>
+  <svg id="Layer_1" viewBox="0 0 648.04 128" {...props}>
     <g id="g6063" transform="translate(-1.3 106.3)">
       <g id="g13582" transform="translate(-6.74 -112.48) scale(6.18357)">
         <path
