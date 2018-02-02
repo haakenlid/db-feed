@@ -6,15 +6,18 @@ import { Provider } from 'react-redux'
 import configureStore from './configureStore'
 import { AppContainer } from 'react-hot-loader'
 import Page from 'components/Page'
+import { PersistGate } from 'redux-persist/lib/integration/react'
 
-const rootStore = configureStore()
+const { store, persistor } = configureStore()
 const rootElement = document.getElementById('root')
 
 const render = App => {
   ReactDOM.render(
-    <Provider store={rootStore}>
+    <Provider store={store}>
       <AppContainer>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </AppContainer>
     </Provider>,
     rootElement
