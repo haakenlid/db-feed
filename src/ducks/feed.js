@@ -3,22 +3,28 @@ const SLICE = 'feed'
 const INITIAL_STATE = {
   active: [],
   items: {},
+  selected: null,
   error: null,
   fetching: false,
   offset: 0,
 }
 
 // action constants
-export const FEED_REQUESTED = 'FEED_REQUESTED'
-export const FEED_RECEIVED = 'FEED_RECEIVED'
-export const FEED_REQUEST_FAILED = 'FEED_REQUEST_FAILED'
-export const FEED_RESET_OFFSET = 'FEED_RESET_OFFSET'
+export const FEED_REQUESTED = 'feed/REQUESTED'
+export const FEED_RECEIVED = 'feed/RECEIVED'
+export const FEED_REQUEST_FAILED = 'feed/REQUEST_FAILED'
+export const FEED_RESET_OFFSET = 'feed/RESET_OFFSET'
+export const VIEW_STORY = 'feed/VIEW_STORY'
 
 // action creators
 export const feedRequested = payload => ({ type: FEED_REQUESTED, payload })
 export const feedReceived = payload => ({ type: FEED_RECEIVED, payload })
 export const feedRequestFailed = error => ({ type: FEED_REQUEST_FAILED, error })
 export const feedResetOffset = () => ({ type: FEED_RESET_OFFSET })
+export const viewStory = id => ({
+  type: VIEW_STORY,
+  payload: { id },
+})
 
 // selectors
 export const selectFeed = R.prop(SLICE)
@@ -39,6 +45,7 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
         active = R.concat(state.active, keys)
       }
       return {
+        ...state,
         fetching: false,
         items,
         active,
@@ -54,6 +61,11 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
       return {
         ...state,
         fetching: true,
+      }
+    case VIEW_STORY:
+      return {
+        ...state,
+        selected: payload.id,
       }
     case FEED_REQUEST_FAILED:
       return {

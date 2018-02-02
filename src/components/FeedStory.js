@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { selectFeedItem } from 'ducks/feed'
+import { selectFeedItem, viewStory } from 'ducks/feed'
 import { formatDate } from 'services/text'
 import { Logo } from 'logos'
 
@@ -16,19 +16,29 @@ const Vignette = ({ host, posted }) => (
   </div>
 )
 
-const Story = ({ url, title, description, image, host, content, posted }) => (
-  <article className="Story">
+const Story = ({
+  viewStory,
+  id,
+  url,
+  title,
+  description,
+  image,
+  host,
+  content,
+  posted,
+}) => (
+  <article className="FeedStory" onClick={e => viewStory(id)}>
     <div className="image" style={{ backgroundImage: `url(${image})` }}>
       <Vignette host={host} posted={posted} />
       <div className="spacer" />
       <h1>
-        <a href={url}>
-          <span className="title">{title}</span>
-        </a>
+        <span className="title">{title}</span>
       </h1>
       {description && <Lede posted={posted}>{description}</Lede>}
     </div>
   </article>
 )
 
-export default connect((state, { id }) => selectFeedItem(id)(state))(Story)
+export default connect((state, { id }) => selectFeedItem(id)(state), {
+  viewStory,
+})(Story)

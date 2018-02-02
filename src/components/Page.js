@@ -5,7 +5,7 @@ import './page.css'
 
 export default () => (
   <section>
-    <header>
+    <header className="pageHeader">
       <Filters />
       <GoToTop />
     </header>

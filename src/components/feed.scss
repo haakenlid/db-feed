@@ -4,12 +4,13 @@ $smallScreen: 700px;
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
-  .Story {
+  .FeedStory {
     .Vignette {
       font-size: 2em;
     }
     display: flex;
     flex-direction: column;
+    cursor: pointer;
     margin: 0.5em;
     padding: 0.5em;
     flex-grow: 1;
