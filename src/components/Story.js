@@ -22,7 +22,7 @@ const Vignette = ({ host, posted }) => (
 const ExternalLink = ({ host, url }) => (
   <div className="ExternalLink">
     <a onClick={e => e.stopPropagation()} href={url}>
-      les resten på {host}
+      les videre på {host} >>
     </a>
   </div>
 )
