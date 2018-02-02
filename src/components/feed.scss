@@ -4,6 +4,7 @@ $smallScreen: 700px;
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
+  font-size: 1rem;
   .FeedStory {
     .Vignette {
       font-size: 2em;
@@ -15,11 +16,13 @@ $smallScreen: 700px;
     padding: 0.5em;
     flex-grow: 1;
     flex-basis: auto;
-    width: 30em;
+    width: 25em;
+    height: 20em;
     @media screen and (max-width: $smallScreen) {
       padding: 0.5em 0;
       margin: 0.5em 0;
       width: 100vw;
+      font-size: 0.8rem;
     }
     .image {
       padding: 0.5em;
@@ -33,7 +36,7 @@ $smallScreen: 700px;
         flex: 1;
       }
       h1 {
-        font-size: 1.8rem;
+        font-size: 2em;
         margin: 0.2em 0;
         font-family: "Roboto Condensed", sans-serif;
         // font-family: 'Fjalla One', sans-serif;
@@ -55,18 +58,6 @@ $smallScreen: 700px;
           // box-shadow: 0.1em 0.2em 0.3em 0 rgba(black, 0.5);
         }
       }
-      .ledeWrapper {
-        padding: 0.1rem 0.4rem;
-        background: white;
-        box-shadow: 0.1em 0.2em 0.3em 0 rgba(black, 0.5);
-        font-size: 1rem;
-        .timestamp {
-          display: block;
-          font-size: smaller;
-          color: #888;
-        }
-      }
     }
-    height: 25em;
   }
 }

@@ -7,8 +7,10 @@ import { Logo } from 'logos'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
 
-const Dateline = ({ posted, ...props }) => (
-  <div className="Dateline">publisert for {formatDate(posted)}</div>
+const Dateline = ({ posted, host, ...props }) => (
+  <div className="Dateline">
+    publisert på {host} for {formatDate(posted)}
+  </div>
 )
 
 const Vignette = ({ host, posted }) => (
@@ -17,7 +19,15 @@ const Vignette = ({ host, posted }) => (
   </div>
 )
 
-const extract = text => text.substr(0, 1000) + ' ...'
+const ExternalLink = ({ host, url }) => (
+  <div className="ExternalLink">
+    <a onClick={e => e.stopPropagation()} href={url}>
+      les resten på {host}
+    </a>
+  </div>
+)
+
+const extract = text => text.substr(0, 200) + ' ...'
 
 const Story = ({
   url,
@@ -38,9 +48,10 @@ const Story = ({
         </h1>
       </div>
       <main>
-        <Dateline posted={posted} />
         {description && <Lede posted={posted}>{description}</Lede>}
+        <Dateline posted={posted} host={host} />
         <div className="body">{extract(content)}</div>
+        <ExternalLink host={host} url={url} />
       </main>
     </article>
   </div>

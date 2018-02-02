@@ -1,15 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeedItem, viewStory } from 'ducks/feed'
-import { formatDate } from 'services/text'
 import { Logo } from 'logos'
 
-const Lede = ({ posted, ...props }) => (
-  <div className="ledeWrapper">
-    <span className="lede" {...props} />
-    <span className="timestamp">publisert for {formatDate(posted)}</span>
-  </div>
-)
 const Vignette = ({ host, posted }) => (
   <div className="Vignette">
     <Logo host={host.replace('.no', '')} />
@@ -34,7 +27,6 @@ const Story = ({
       <h1>
         <span className="title">{title}</span>
       </h1>
-      {description && <Lede posted={posted}>{description}</Lede>}
     </div>
   </article>
 )
