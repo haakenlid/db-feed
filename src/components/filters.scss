@@ -6,8 +6,9 @@ header {
   display: flex;
   color: white;
   user-select: none;
-  background-color: #666;
   .Filters {
+    background-color: #666;
+    z-index: 100;
     flex: 1;
     font-size: 1.2em;
     .tags,
@@ -35,8 +36,26 @@ header {
       }
     }
   }
+  .GoToTop {
+    display: none;
+    position: fixed;
+    padding: 0.5em;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    background-color: #666;
+    top: 0.5em;
+    left: 0.5em;
+    box-shadow: 0 0.2em 0.5em 0 rgba(black, 0.5);
+    svg {
+      fill: white;
+    }
+  }
   @media screen and (max-width: $smallScreen) {
     position: static;
+    .GoToTop {
+      display: block;
+    }
     .Filters {
       // height: 20vh;
       .tags {

@@ -29,7 +29,6 @@ class ScrollSpy extends React.Component {
   render() {
     return (
       <div className="ScrollSpy" ref={el => (this.element = el)}>
-        <h2>Scrollspy</h2>
         {this.props.children}
       </div>
     )

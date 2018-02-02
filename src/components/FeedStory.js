@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { selectFeedItem } from 'ducks/feed'
 import { formatDate } from 'services/text'
 import { Logo } from 'logos'
-import './story.css'
 
 const Lede = ({ posted, ...props }) => (
   <div className="ledeWrapper">

@@ -17,7 +17,7 @@ const selectFeedParameters = state => ({
   includeAnyTags: tags.selectActiveTags(state),
   excludeTags: tags.selectInactiveTags(state),
   offset: feed.selectOffset(state),
-  limit: 15,
+  limit: 12,
 })
 
 function* filterListener() {
