@@ -3,16 +3,22 @@ import icons from './icons'
 import logos from './full'
 import './index.css'
 
-export const Icon = ({ host, ...props }) =>
-  icons[host] ? (
-    icons[host]({ className: 'Icon', ...props })
-  ) : (
-    <span>Icon for {host}</span>
-  )
+const getComponent = (lib, hostname) => lib[hostname.replace('.no', '')]
 
-export const Logo = ({ host, ...props }) =>
-  logos[host] ? (
-    logos[host]({ className: 'Logo', ...props })
+export const Icon = ({ host, ...props }) => {
+  const Component = getComponent(icons, host)
+  return Component ? (
+    <Component className="Icon" {...props} />
   ) : (
-    <span>Logo for {host}</span>
+    <span className="Icon fallback">{host}</span>
   )
+}
+
+export const Logo = ({ host, ...props }) => {
+  const Component = getComponent(logos, host)
+  return Component ? (
+    <Component className="Logo" {...props} />
+  ) : (
+    <span className="Logo fallback">{host}</span>
+  )
+}

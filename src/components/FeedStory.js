@@ -1,13 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeedItem, viewStory } from 'ducks/feed'
-import { Logo } from 'logos'
-
-const Vignette = ({ host, posted }) => (
-  <div className="Vignette">
-    <Logo host={host.replace('.no', '')} />
-  </div>
-)
+import Vignette from 'components/Vignette'
 
 const Story = ({
   viewStory,

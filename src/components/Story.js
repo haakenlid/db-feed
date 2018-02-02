@@ -3,19 +3,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeedItem, viewStory } from 'ducks/feed'
 import { formatDate } from 'services/text'
-import { Logo } from 'logos'
+import Vignette from 'components/Vignette'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
 
 const Dateline = ({ posted, host, ...props }) => (
   <div className="Dateline">
     publisert på {host} for {formatDate(posted)}
-  </div>
-)
-
-const Vignette = ({ host, posted }) => (
-  <div className="Vignette">
-    <Logo host={host.replace('.no', '')} />
   </div>
 )
 

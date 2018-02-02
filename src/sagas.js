@@ -26,12 +26,17 @@ function* persistListener() {
   yield put(feed.feedRequested())
 }
 
+function scrollToTop() {
+  window.scrollTo(0, 0)
+}
+
 function* filterListener() {
   // refetch feed when filter inputs are changed
   const DEBOUNCE = 500
   yield call(delay, DEBOUNCE)
   yield put(feed.feedResetOffset())
   yield put(feed.feedRequested())
+  yield call(scrollToTop)
 }
 
 function* fetchFeed() {

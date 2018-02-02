@@ -4,4 +4,12 @@
   width: auto;
   padding: 0.02em;
   fill: currentcolor;
+  &.fallback {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 0.7em;
+    padding: 0.1em 0.3em;
+    color: black;
+    font-weight: 700;
+    background-color: rgba(white, 0.6);
+  }
 }
