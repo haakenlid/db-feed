@@ -5,10 +5,12 @@ import * as hosts from 'ducks/hosts'
 import * as tags from 'ducks/tags'
 import * as api from 'services/api'
 
+const REHYDRATE = 'persist/REHYDRATE'
+
 export function* feedSaga() {
   yield takeLatest(feed.FEED_REQUESTED, fetchFeed)
   yield takeLatest([tags.TOGGLE_TAG, hosts.TOGGLE_HOST], filterListener)
-  yield put(feed.feedRequested())
+  yield takeLatest(REHYDRATE, persistListener)
 }
 
 const selectFeedParameters = state => ({
@@ -19,6 +21,10 @@ const selectFeedParameters = state => ({
   offset: feed.selectOffset(state),
   limit: 12,
 })
+
+function* persistListener() {
+  yield put(feed.feedRequested())
+}
 
 function* filterListener() {
   // refetch feed when filter inputs are changed
