@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { Icon } from 'logos'
-import { selectTags, toggleTag } from 'ducks/tags'
+import { selectTags, toggleTag, onlyTag } from 'ducks/tags'
 import { selectHosts, toggleHost, onlyHost } from 'ducks/hosts'
 import './filters.css'
 
@@ -26,7 +26,14 @@ export const GoToTop = () => (
   </nav>
 )
 
-const FilterComponent = ({ tags, hosts, toggleHost, toggleTag, onlyHost }) => (
+const FilterComponent = ({
+  tags,
+  hosts,
+  toggleHost,
+  toggleTag,
+  onlyHost,
+  onlyTag,
+}) => (
   <section className="Filters">
     <nav className="hosts">
       {Object.keys(hosts).map(name => (
@@ -52,6 +59,11 @@ const FilterComponent = ({ tags, hosts, toggleHost, toggleTag, onlyHost }) => (
           name={name}
           active={tags[name]}
           onClick={e => toggleTag(name)}
+          onDoubleClick={e => {
+            e.stopPropagation()
+            e.preventDefault()
+            onlyTag(name)
+          }}
         />
       ))}
     </nav>
@@ -63,6 +75,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 const mapDispatchToProps = {
   toggleTag,
+  onlyTag,
   toggleHost,
   onlyHost,
 }

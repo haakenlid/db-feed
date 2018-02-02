@@ -6,6 +6,7 @@ import dagbladet from './Dagbladet'
 import dagsavisen from './Dagsavisen'
 import dn from './Dn'
 import faedrelandsvennen from './Faedrelandsvennen'
+import github from './GitHub'
 import nrk from './Nrk'
 import stavangeraftenblad from './StavangerAftenblad'
 import tv2 from './Tv2'
@@ -20,6 +21,7 @@ export default {
   dagsavisen,
   dn,
   fvn: faedrelandsvennen,
+  github,
   nrk,
   aftenbladet: stavangeraftenblad,
   tv2,

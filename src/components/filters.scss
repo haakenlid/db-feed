@@ -1,25 +1,45 @@
 $smallScreen: 700px;
+$SolBlue: #455c7b;
+$SolRed: #e20613;
 
 .pageHeader {
   position: sticky;
+  z-index: 100;
   top: 0;
   display: flex;
   color: white;
   user-select: none;
+  background-color: $SolBlue;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  align-items: center;
+  #pageLogo {
+    font-size: 4em;
+    padding-right: 1rem;
+  }
+  #githubLink {
+    font-size: 4em;
+    line-height: 1;
+    height: 1em;
+    width: 1em;
+    // background-color: red;
+    color: mix($SolBlue, black, 80);
+    &:hover {
+      color: mix($SolBlue, white, 50);
+    }
+  }
   .Filters {
-    background-color: #666;
-    z-index: 100;
-    flex: 1;
     font-size: 1.2em;
     .tags,
     .hosts {
       font-weight: bold;
       display: flex;
       flex-flow: row wrap;
+      justify-content: space-between;
       .Tag,
       .Host {
         padding: 0.2rem 0.4rem;
-        color: #999;
+        color: mix($SolBlue, white, 60);
         cursor: pointer;
         &.active {
           color: #eee;
@@ -32,38 +52,49 @@ $smallScreen: 700px;
         }
       }
       .Host {
+        line-height: 1;
         font-size: 2em;
       }
-    }
-  }
-  .GoToTop {
-    display: none;
-    position: fixed;
-    padding: 0.5em;
-    width: 2.5em;
-    height: 2.5em;
-    border-radius: 50%;
-    background-color: #666;
-    top: 0.5em;
-    left: 0.5em;
-    box-shadow: 0 0.2em 0.5em 0 rgba(black, 0.5);
-    svg {
-      fill: white;
     }
   }
   @media screen and (max-width: $smallScreen) {
-    position: static;
-    .GoToTop {
-      display: block;
-    }
+    flex-direction: column;
+    position: relative;
     .Filters {
-      // height: 20vh;
-      .tags {
-        font-size: 2em;
-      }
       .hosts {
+        justify-content: space-around;
         font-size: 1.5em;
+        padding: 0.5rem;
+        padding-bottom: 0;
+      }
+      .tags {
+        justify-content: center;
+        font-size: 1.5em;
+        padding: 0.5rem;
       }
     }
+    #githubLink {
+      display: none;
+    }
+  }
+}
+.GoToTop {
+  position: fixed;
+  z-index: 0;
+  display: none;
+  font-size: 1.8rem;
+  padding: 0.35em;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: $SolRed;
+  top: 0.5em;
+  left: 0.5em;
+  box-shadow: 0 0.2em 0.4em 0 rgba(black, 0.4);
+  svg {
+    fill: white;
+  }
+  @media screen and (max-width: $smallScreen) {
+    display: block;
   }
 }

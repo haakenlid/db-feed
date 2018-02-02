@@ -16,7 +16,7 @@ const Dateline = ({ posted, host, ...props }) => (
 const ExternalLink = ({ host, url }) => (
   <div className="ExternalLink">
     <a onClick={e => e.stopPropagation()} href={url}>
-      les videre på {host} >>
+      les videre på {host}
     </a>
   </div>
 )
