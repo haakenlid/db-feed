@@ -8,6 +8,7 @@ import * as api from 'services/api'
 import { scrollToTop } from 'services/misc'
 
 const REHYDRATE = 'persist/REHYDRATE'
+const FEED_PAGINATION = 12
 
 export function* feedSaga() {
   yield takeLatest(feed.FEED_REQUESTED, fetchFeed)
@@ -23,12 +24,12 @@ const selectFeedParameters = state => ({
   includeAnyTags: tags.selectActiveTags(state),
   excludeTags: tags.selectInactiveTags(state),
   offset: feed.selectOffset(state),
-  limit: 12,
+  limit: FEED_PAGINATION,
 })
 
 function* fetchIfLast() {
   const { active, openStory } = yield select(feed.selectFeed)
-  if (active.length - R.indexOf(openStory, active) < 3)
+  if (active.length - R.indexOf(openStory, active) < FEED_PAGINATION / 2)
     yield put(feed.feedRequested())
 }
 

@@ -16,6 +16,8 @@ html {
 body {
   padding: 0;
   margin: 0;
+  // disable pull-to-refresh
+  overscroll-behavior-y: contain;
 }
 h1 {
   margin: 0;
