@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { selectOpenStory, viewStory, nextStory } from 'ducks/feed'
 import { formatDate, textExtract } from 'services/text'
 import Vignette from 'components/Vignette'
+import Swipeable from 'react-swipeable'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
 
@@ -39,32 +40,39 @@ const Story = ({
   previous,
 }) =>
   !url ? null : (
-    <div className="storyBackground" onClick={close}>
-      <article className="Story">
-        <div className="image" style={{ backgroundImage: `url(${image})` }}>
-          <Vignette host={host} posted={posted} />
-          <h1>
-            <span className="title">{title}</span>
-          </h1>
-        </div>
-        <main>
-          {description && <Lede posted={posted}>{description}</Lede>}
-          <Dateline posted={posted} />
-          <div className="body">
-            {textExtract(350 - description.length, content)}
+    <Swipeable
+      onSwipedUp={next}
+      onSwipedLeft={next}
+      onSwipedRight={previous}
+      onSwipedDown={previous}
+    >
+      <div className="storyBackground" onClick={close}>
+        <article className="Story">
+          <div className="image" style={{ backgroundImage: `url(${image})` }}>
+            <Vignette host={host} posted={posted} />
+            <h1>
+              <span className="title">{title}</span>
+            </h1>
           </div>
-        </main>
-        <nav className="navigate">
-          <div className="back" onClick={previous}>
-            <Chevron />
-          </div>
-          <ExternalLink host={host} url={url} />
-          <div className="forward" onClick={next}>
-            <Chevron />
-          </div>
-        </nav>
-      </article>
-    </div>
+          <main>
+            {description && <Lede posted={posted}>{description}</Lede>}
+            <Dateline posted={posted} />
+            <div className="body">
+              {textExtract(350 - description.length, content)}
+            </div>
+          </main>
+          <nav className="navigate">
+            <div className="back" onClick={previous}>
+              <Chevron />
+            </div>
+            <ExternalLink host={host} url={url} />
+            <div className="forward" onClick={next}>
+              <Chevron />
+            </div>
+          </nav>
+        </article>
+      </div>
+    </Swipeable>
   )
 
 const eventListener = fn => e => {

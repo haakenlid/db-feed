@@ -3,6 +3,11 @@
   flex-direction: row;
   flex-flow: wrap;
   padding-left: $padding;
+  &.storyIsOpen {
+    height: 10vh;
+    position: relative;
+    overflow: hidden;
+  }
   .FeedStory {
     .Vignette {
       font-size: 2em;
