@@ -2,7 +2,7 @@ import * as R from 'ramda'
 const SLICE = 'hosts'
 const INITIAL_STATE = {
   abcnyheter: true,
-  adresseavisen: false,
+  adressa: false,
   aftenposten: true,
   bt: true,
   dagbladet: true,

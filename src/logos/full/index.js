@@ -1,5 +1,5 @@
 import abcnyheter from './AbcNyheter'
-import adresseavisen from './Adresseavisen'
+import adressa from './Adresseavisen'
 import aftenbladet from './StavangerAftenblad'
 import aftenposten from './Aftenposten'
 import bt from './BergensTidende'
@@ -15,7 +15,7 @@ import vg from './Vg'
 
 export default {
   abcnyheter,
-  adresseavisen,
+  adressa,
   aftenbladet,
   aftenposten,
   bt,

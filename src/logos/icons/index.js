@@ -14,7 +14,7 @@ import vg from './Vg'
 
 export default {
   abcnyheter,
-  adresseavisen,
+  adressa: adresseavisen,
   aftenposten,
   bt: bergenstidende,
   dagbladet,
