@@ -1,10 +1,11 @@
+import * as R from 'ramda'
 import { select, takeEvery, takeLatest, call, put } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import * as feed from 'ducks/feed'
 import * as hosts from 'ducks/hosts'
 import * as tags from 'ducks/tags'
 import * as api from 'services/api'
-import * as R from 'ramda'
+import { scrollToTop } from 'services/misc'
 
 const REHYDRATE = 'persist/REHYDRATE'
 
@@ -24,17 +25,15 @@ const selectFeedParameters = state => ({
   offset: feed.selectOffset(state),
   limit: 12,
 })
+
 function* fetchIfLast() {
-  const { active, selected } = yield select(feed.selectFeed)
-  if (active.length - R.indexOf(selected, active) < 2)
+  const { active, openStory } = yield select(feed.selectFeed)
+  if (active.length - R.indexOf(openStory, active) < 3)
     yield put(feed.feedRequested())
 }
+
 function* persistListener() {
   yield put(feed.feedRequested())
-}
-
-function scrollToTop() {
-  window.scrollTo(0, 0)
 }
 
 function* filterListener() {
@@ -46,11 +45,18 @@ function* filterListener() {
   yield call(scrollToTop)
 }
 
+const preFetchImage = ({ image }) => {
+  if (!image) return
+  const im = new Image()
+  im.src = image
+}
+
 function* fetchFeed() {
   const params = yield select(selectFeedParameters)
   const { response, error } = yield call(api.fetchFeed, params)
   if (response) {
     yield put(feed.feedReceived(response))
+    yield call(R.map(preFetchImage), response)
   } else {
     yield put(feed.feedRequestFailed(error))
   }

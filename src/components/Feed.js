@@ -7,13 +7,16 @@ import Story from 'components/Story'
 import LoadingIndicator from 'components/LoadingIndicator'
 import { isVisible } from 'services/misc'
 
-const Feed = ({ active, selected, feedRequested }) => {
+const Feed = ({ active, openStory, storyIsOpen, feedRequested }) => {
   const scrollHandler = element => isVisible(element) && feedRequested()
 
-  return (
+  return storyIsOpen ? (
+    <Story id={openStory} />
+  ) : (
     <section className="Feed">
-      {selected && <Story id={selected} />}
-      {active.map(id => <FeedStory key={id} id={id} />)}
+      {active.map(id => (
+        <FeedStory key={id} id={id} current={id === openStory} />
+      ))}
       <ScrollSpy onScroll={scrollHandler} />
       <LoadingIndicator />
     </section>

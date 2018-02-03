@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeedItem, viewStory } from 'ducks/feed'
 import Vignette from 'components/Vignette'
+import { scrollToElement } from 'services/misc'
 
 const Story = ({
   viewStory,
@@ -13,8 +14,13 @@ const Story = ({
   host,
   content,
   posted,
+  current,
 }) => (
-  <article className="FeedStory" onClick={e => viewStory(id)}>
+  <article
+    ref={current ? scrollToElement : null}
+    className="FeedStory"
+    onClick={e => viewStory(id)}
+  >
     <div className="image" style={{ backgroundImage: `url(${image})` }}>
       <Vignette host={host} posted={posted} />
       <div className="spacer" />

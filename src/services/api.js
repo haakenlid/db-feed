@@ -18,7 +18,7 @@ const selectApiData = ({
 }) => ({
   externalId,
   title,
-  description: htmlDecode(description),
+  description: htmlDecode(description || ''),
   content,
   posted,
   host,

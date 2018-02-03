@@ -14,4 +14,7 @@ export const formatDate = (value, locale = norwayLocale) =>
   distanceInWordsToNow(new Date(value), { addSuffix: true, locale })
 
 export const textExtract = (maxLength, text) =>
-  text.substr(0, maxLength).replace(/([.?])[^.?]*$/, '$1')
+  text
+    .replace(/.*: ?\d\dZ/, '')
+    .substr(0, maxLength)
+    .replace(/([.?])[^.?]*$/, '$1')

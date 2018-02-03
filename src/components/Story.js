@@ -6,10 +6,8 @@ import Vignette from 'components/Vignette'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
 
-const Dateline = ({ posted, host, ...props }) => (
-  <div className="Dateline">
-    publisert på {host} for {formatDate(posted)}
-  </div>
+const Dateline = ({ posted, ...props }) => (
+  <div className="Dateline">publisert for {formatDate(posted)}</div>
 )
 
 const Chevron = props => (
@@ -50,9 +48,9 @@ const Story = ({
       </div>
       <main>
         {description && <Lede posted={posted}>{description}</Lede>}
-        <Dateline posted={posted} host={host} />
+        <Dateline posted={posted} />
         <div className="body">
-          {textExtract(400 - description.length, content)}
+          {textExtract(350 - description.length, content)}
         </div>
       </main>
       <nav className="navigate">

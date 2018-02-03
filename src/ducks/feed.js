@@ -3,7 +3,8 @@ const SLICE = 'feed'
 const INITIAL_STATE = {
   active: [],
   items: {},
-  selected: null,
+  openStory: null,
+  storyIsOpen: false,
   error: null,
   fetching: false,
   offset: 0,
@@ -70,17 +71,20 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
     case VIEW_STORY:
       return {
         ...state,
-        selected: payload.id,
+        openStory: payload.id || state.openStory,
+        storyIsOpen: Boolean(payload.id),
       }
     case NEXT_STORY: {
       const { step } = payload
-      const { selected, active } = state
-      let index = R.indexOf(selected, active) + step
-      if (index >= active.length) index -= active.length
-      if (index < 0) index += active.length
+      const { openStory, active } = state
+      let index = R.indexOf(openStory, active) + step
+      // if (index >= active.length) index -= active.length
+      // if (index < 0) index += active.length
+      const newStory = active[index]
       return {
         ...state,
-        selected: active[index],
+        openStory: newStory || openStory,
+        storyIsOpen: Boolean(newStory),
       }
     }
     case FEED_REQUEST_FAILED:
