@@ -17,9 +17,8 @@ export const isVisible = element => {
 
 export const scrollToElement = element => {
   if (!element) return
-  const domRect = element.getBoundingClientRect()
-  const offset = (window.innerHeight - domRect.height) / 2
-  const scrollTop = offset > 0 ? domRect.top - offset : domRect.top
+  const offset = (window.innerHeight - element.offsetHeight) / 2
+  const scrollTop = offset < 0 ? element.offsetTop : element.offsetTop - offset
   window.scrollTo(0, scrollTop)
 }
 

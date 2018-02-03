@@ -1,6 +1,7 @@
 import React from 'react'
 import Feed from 'components/Feed'
 import Filters from 'components/Filters'
+import Story from 'components/Story'
 import GoToTop from 'components/GoToTop'
 import { Logo, Icon } from 'logos'
 
@@ -19,6 +20,7 @@ export default () => (
     </header>
     <GoToTop />
     <main className="Page">
+      <Story />
       <Feed />
     </main>
   </div>

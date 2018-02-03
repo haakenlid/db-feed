@@ -34,6 +34,10 @@ export const nextStory = step => ({
 
 // selectors
 export const selectFeed = R.prop(SLICE)
+export const selectOpenStory = R.pipe(
+  selectFeed,
+  ({ items, openStory, storyIsOpen }) => (storyIsOpen ? items[openStory] : {})
+)
 export const selectFeedItem = key =>
   R.pipe(selectFeed, R.prop('items'), R.prop(key))
 export const selectOffset = state => {

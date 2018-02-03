@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { selectFeedItem, viewStory, nextStory } from 'ducks/feed'
+import { selectOpenStory, viewStory, nextStory } from 'ducks/feed'
 import { formatDate, textExtract } from 'services/text'
 import Vignette from 'components/Vignette'
 
@@ -37,34 +37,35 @@ const Story = ({
   close,
   next,
   previous,
-}) => (
-  <div className="storyBackground" onClick={close}>
-    <article className="Story">
-      <div className="image" style={{ backgroundImage: `url(${image})` }}>
-        <Vignette host={host} posted={posted} />
-        <h1>
-          <span className="title">{title}</span>
-        </h1>
-      </div>
-      <main>
-        {description && <Lede posted={posted}>{description}</Lede>}
-        <Dateline posted={posted} />
-        <div className="body">
-          {textExtract(350 - description.length, content)}
+}) =>
+  !url ? null : (
+    <div className="storyBackground" onClick={close}>
+      <article className="Story">
+        <div className="image" style={{ backgroundImage: `url(${image})` }}>
+          <Vignette host={host} posted={posted} />
+          <h1>
+            <span className="title">{title}</span>
+          </h1>
         </div>
-      </main>
-      <nav className="navigate">
-        <div className="back" onClick={previous}>
-          <Chevron />
-        </div>
-        <ExternalLink host={host} url={url} />
-        <div className="forward" onClick={next}>
-          <Chevron />
-        </div>
-      </nav>
-    </article>
-  </div>
-)
+        <main>
+          {description && <Lede posted={posted}>{description}</Lede>}
+          <Dateline posted={posted} />
+          <div className="body">
+            {textExtract(350 - description.length, content)}
+          </div>
+        </main>
+        <nav className="navigate">
+          <div className="back" onClick={previous}>
+            <Chevron />
+          </div>
+          <ExternalLink host={host} url={url} />
+          <div className="forward" onClick={next}>
+            <Chevron />
+          </div>
+        </nav>
+      </article>
+    </div>
+  )
 
 const eventListener = fn => e => {
   e.preventDefault()
@@ -72,11 +73,8 @@ const eventListener = fn => e => {
   fn(e)
 }
 
-export default connect(
-  (state, { id }) => selectFeedItem(id)(state),
-  dispatch => ({
-    close: eventListener(e => dispatch(viewStory(null))),
-    next: eventListener(e => dispatch(nextStory(1))),
-    previous: eventListener(e => dispatch(nextStory(-1))),
-  })
-)(Story)
+export default connect(selectOpenStory, dispatch => ({
+  close: eventListener(e => dispatch(viewStory(null))),
+  next: eventListener(e => dispatch(nextStory(1))),
+  previous: eventListener(e => dispatch(nextStory(-1))),
+}))(Story)
