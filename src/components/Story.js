@@ -54,16 +54,16 @@ const Story = ({
         <div className="body">
           {textExtract(400 - description.length, content)}
         </div>
-        <nav className="navigate">
-          <div className="back" onClick={previous}>
-            <Chevron />
-          </div>
-          <ExternalLink host={host} url={url} />
-          <div className="forward" onClick={next}>
-            <Chevron />
-          </div>
-        </nav>
       </main>
+      <nav className="navigate">
+        <div className="back" onClick={previous}>
+          <Chevron />
+        </div>
+        <ExternalLink host={host} url={url} />
+        <div className="forward" onClick={next}>
+          <Chevron />
+        </div>
+      </nav>
     </article>
   </div>
 )
