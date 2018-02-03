@@ -28,7 +28,8 @@ const ExternalLink = ({ host, url }) => (
   </a>
 )
 
-const extract = text => text.substr(0, 300).replace(/([.?])[^.?]*$/, '$1')
+const extract = (maxLength, text) =>
+  text.substr(0, maxLength).replace(/([.?])[^.?]*$/, '$1')
 
 const Story = ({
   url,
@@ -51,7 +52,7 @@ const Story = ({
       <main>
         {description && <Lede posted={posted}>{description}</Lede>}
         <Dateline posted={posted} host={host} />
-        <div className="body">{extract(content)}</div>
+        <div className="body">{extract(400 - description.length, content)}</div>
       </main>
       <ExternalLink host={host} url={url} />
     </article>

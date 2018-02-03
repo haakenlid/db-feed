@@ -15,6 +15,7 @@ export function* feedSaga() {
 
 const selectFeedParameters = state => ({
   excludePaywall: true,
+  excludeDupes: 95,
   includeHosts: hosts.selectActiveHosts(state),
   includeAnyTags: tags.selectActiveTags(state),
   excludeTags: tags.selectInactiveTags(state),

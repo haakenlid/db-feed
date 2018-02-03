@@ -3,6 +3,11 @@ import { buildUrl } from './url'
 
 const BASE_URL = 'https://harvester.sol.no/get'
 
+const htmlDecode = input => {
+  const doc = new DOMParser().parseFromString(input, 'text/html')
+  return doc.documentElement.textContent.trim()
+}
+
 const selectApiData = ({
   externalId,
   host,
@@ -13,7 +18,7 @@ const selectApiData = ({
 }) => ({
   externalId,
   title,
-  description,
+  description: htmlDecode(description),
   content,
   posted,
   host,
