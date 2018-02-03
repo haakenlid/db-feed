@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { selectFeedItem, viewStory } from 'ducks/feed'
+import { selectFeedItem, viewStory, nextStory } from 'ducks/feed'
 import { formatDate, textExtract } from 'services/text'
 import Vignette from 'components/Vignette'
 
@@ -12,18 +12,19 @@ const Dateline = ({ posted, host, ...props }) => (
   </div>
 )
 
-const Chevron = () => (
+const Chevron = props => (
   <svg
-    style={{ verticalAlign: '-15%', height: '1em', fill: 'currentColor' }}
+    className="Chevron"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 640 640"
+    {...props}
   >
     <path d="M120.4 512.98l192-192-192-192 128-128 320 320-320 320z" />
   </svg>
 )
 const ExternalLink = ({ host, url }) => (
   <a className="ExternalLink" onClick={e => e.stopPropagation()} href={url}>
-    les videre på {host} <Chevron />
+    les saken på {host}
   </a>
 )
 
@@ -36,6 +37,8 @@ const Story = ({
   content,
   posted,
   close,
+  next,
+  previous,
 }) => (
   <div className="storyBackground" onClick={close}>
     <article className="Story">
@@ -51,13 +54,31 @@ const Story = ({
         <div className="body">
           {textExtract(400 - description.length, content)}
         </div>
-        <ExternalLink host={host} url={url} />
+        <nav className="navigate">
+          <div className="back" onClick={previous}>
+            <Chevron />
+          </div>
+          <ExternalLink host={host} url={url} />
+          <div className="forward" onClick={next}>
+            <Chevron />
+          </div>
+        </nav>
       </main>
     </article>
   </div>
 )
 
+const eventListener = fn => e => {
+  e.preventDefault()
+  e.stopPropagation()
+  fn(e)
+}
+
 export default connect(
   (state, { id }) => selectFeedItem(id)(state),
-  dispatch => ({ close: e => dispatch(viewStory(null)) })
+  dispatch => ({
+    close: eventListener(e => dispatch(viewStory(null))),
+    next: eventListener(e => dispatch(nextStory(1))),
+    previous: eventListener(e => dispatch(nextStory(-1))),
+  })
 )(Story)

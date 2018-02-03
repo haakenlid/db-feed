@@ -2,8 +2,7 @@
 
 .LoadingIndicator {
   width: 100%;
-  min-height: 1em;
-  font-size: 3em;
+  font-size: 4rem;
 }
 
 .sk-cube-grid {
@@ -12,48 +11,40 @@
   margin: 1em auto;
 
   .sk-cube {
-    width: 33%;
-    height: 33%;
+    width: 1em;
+    height: 1em;
     background-color: $SolLightBlue;
     float: left;
-    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-  }
-  .sk-cube1 {
-    animation-delay: 0.2s;
-  }
-  .sk-cube2 {
-    animation-delay: 0.3s;
-  }
-  .sk-cube3 {
-    animation-delay: 0.4s;
-  }
-  .sk-cube4 {
-    animation-delay: 0.1s;
-  }
-  .sk-cube5 {
-    animation-delay: 0.2s;
-  }
-  .sk-cube6 {
-    animation-delay: 0.3s;
+    animation: sk-cubeGridScaleDelay 1100ms infinite ease-in-out;
   }
   .sk-cube7 {
-    animation-delay: 0s;
+    animation-delay: 0ms;
   }
+  .sk-cube4,
   .sk-cube8 {
-    animation-delay: 0.1s;
+    animation-delay: 100ms;
   }
+  .sk-cube1,
+  .sk-cube5,
   .sk-cube9 {
-    animation-delay: 0.2s;
+    animation-delay: 200ms;
+  }
+  .sk-cube2,
+  .sk-cube6 {
+    animation-delay: 300ms;
+  }
+  .sk-cube3 {
+    animation-delay: 400ms;
   }
 }
 
 @keyframes sk-cubeGridScaleDelay {
   0%,
-  70%,
+  80%,
   100% {
-    transform: scale3D(1, 1, 1);
+    transform: scale(1, 1);
   }
-  35% {
-    transform: scale3D(0, 0, 1);
+  40% {
+    transform: scale(0, 0);
   }
 }

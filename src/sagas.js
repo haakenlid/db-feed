@@ -1,14 +1,16 @@
-import { select, takeLatest, call, put } from 'redux-saga/effects'
+import { select, takeEvery, takeLatest, call, put } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import * as feed from 'ducks/feed'
 import * as hosts from 'ducks/hosts'
 import * as tags from 'ducks/tags'
 import * as api from 'services/api'
+import * as R from 'ramda'
 
 const REHYDRATE = 'persist/REHYDRATE'
 
 export function* feedSaga() {
   yield takeLatest(feed.FEED_REQUESTED, fetchFeed)
+  yield takeEvery(feed.NEXT_STORY, fetchIfLast)
   yield takeLatest([tags.TOGGLE_TAG, hosts.TOGGLE_HOST], filterListener)
   yield takeLatest(REHYDRATE, persistListener)
 }
@@ -22,7 +24,11 @@ const selectFeedParameters = state => ({
   offset: feed.selectOffset(state),
   limit: 12,
 })
-
+function* fetchIfLast() {
+  const { active, selected } = yield select(feed.selectFeed)
+  if (active.length - R.indexOf(selected, active) < 2)
+    yield put(feed.feedRequested())
+}
 function* persistListener() {
   yield put(feed.feedRequested())
 }

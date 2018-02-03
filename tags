@@ -13,6 +13,7 @@ Aftenposten	src/logos/icons/Aftenposten.js	/^const Aftenposten = props => ($/;"	
 BASE_URL	src/services/api.js	/^const BASE_URL = 'https:\/\/harvester.sol.no\/get'$/;"	r
 BergensTidende	src/logos/full/BergensTidende.js	/^const BergensTidende = props => ($/;"	r
 BergensTidende	src/logos/icons/BergensTidende.js	/^const BergensTidende = props => ($/;"	r
+Chevron	src/components/Story.js	/^const Chevron = () => ($/;"	r
 Component	src/logos/index.js	/^  const Component = getComponent(icons, host)$/;"	r
 Component	src/logos/index.js	/^  const Component = getComponent(logos, host)$/;"	r
 DEBOUNCE	src/sagas.js	/^  const DEBOUNCE = 500$/;"	r
@@ -31,10 +32,9 @@ FEED_REQUEST_FAILED	src/ducks/feed.js	/^export const FEED_REQUEST_FAILED = 'feed
 FEED_RESET_OFFSET	src/ducks/feed.js	/^export const FEED_RESET_OFFSET = 'feed\/RESET_OFFSET'$/;"	r
 Faedrelandsvennen	src/logos/full/Faedrelandsvennen.js	/^const Faedrelandsvennen = props => ($/;"	r
 Faedrelandsvennen	src/logos/icons/Faedrelandsvennen.js	/^const Faedrelandsvennen = props => ($/;"	r
-Feed	src/components/Feed.js	/^const Feed = ({ active, feedRequested, selected }) => ($/;"	r
-FilterComponent	src/components/Filters.js	/^const FilterComponent = ({$/;"	r
-Filters	src/components/Filters.js	/^export const Filters = connect(mapStateToProps, mapDispatchToProps)($/;"	r
-GoToTop	src/components/Filters.js	/^export const GoToTop = () => ($/;"	r
+Feed	src/components/Feed.js	/^const Feed = ({ active, selected, feedRequested }) => {$/;"	r
+Filters	src/components/Filters.js	/^const Filters = ({ tags, hosts, toggleHost, toggleTag, onlyHost, onlyTag }) => ($/;"	r
+GitHub	src/logos/icons/GitHub.js	/^const GitHub = props => ($/;"	r
 Hegnar	src/logos/full/Hegnar.js	/^const Hegnar = props => ($/;"	r
 Host	src/components/Filters.js	/^const Host = ({ name, active, ...props }) => ($/;"	r
 INITIAL_STATE	src/ducks/feed.js	/^const INITIAL_STATE = {$/;"	r
@@ -45,15 +45,18 @@ Lede	src/components/Story.js	/^const Lede = ({ posted, ...props }) => <span clas
 Loader	src/components/LoadingIndicator.js	/^const Loader = () => ($/;"	r
 LoadingIndicator	src/components/LoadingIndicator.js	/^const LoadingIndicator = ({ fetching }) => ($/;"	r
 Logo	src/logos/index.js	/^export const Logo = ({ host, ...props }) => {$/;"	r
+NEXT_STORY	src/ducks/feed.js	/^export const NEXT_STORY = 'feed\/NEXT_STORY'$/;"	r
 Nrk	src/logos/full/Nrk.js	/^const Nrk = props => ($/;"	r
 Nrk	src/logos/icons/Nrk.js	/^const Nrk = props => ($/;"	r
 ONLY_HOST	src/ducks/hosts.js	/^export const ONLY_HOST = 'hosts\/ONLY_HOST'$/;"	r
 ONLY_TAG	src/ducks/tags.js	/^export const ONLY_TAG = 'tags\/ONLY_TAG'$/;"	r
 REHYDRATE	src/sagas.js	/^const REHYDRATE = 'persist\/REHYDRATE'$/;"	r
+REPO	src/components/Page.js	/^const REPO = 'https:\/\/github.com\/haakenlid\/db-feed'$/;"	r
 SLICE	src/ducks/feed.js	/^const SLICE = 'feed'$/;"	r
 SLICE	src/ducks/hosts.js	/^const SLICE = 'hosts'$/;"	r
 SLICE	src/ducks/tags.js	/^const SLICE = 'tags'$/;"	r
 ScrollSpy	src/components/ScrollSpy.js	/^class ScrollSpy extends React.Component {$/;"	r
+Sol	src/logos/full/Sol.js	/^const Sol = props => ($/;"	r
 StavangerAftenblad	src/logos/full/StavangerAftenblad.js	/^const StavangerAftenblad = props => ($/;"	r
 StavangerAftenblad	src/logos/icons/StavangerAftenblad.js	/^const StavangerAftenblad = props => ($/;"	r
 Story	src/components/FeedStory.js	/^const Story = ({$/;"	r
@@ -70,9 +73,10 @@ buildUrl	src/services/url.js	/^export const buildUrl = R.curryN(2, (baseurl = ''
 cleanValues	src/services/url.js	/^export const cleanValues = R.pipe($/;"	r
 cleanedData	src/services/api.test.js	/^  const cleanedData = normalizeData(apidata)$/;"	r
 composeEnhancers	src/configureStore.js	/^const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose$/;"	r
-debounce	src/components/ScrollSpy.js	/^const debounce = (func, wait) => {$/;"	r
+debounce	src/services/misc.js	/^export const debounce = (func, wait) => {$/;"	r
+doc	src/services/api.js	/^  const doc = new DOMParser().parseFromString(input, 'text\/html')$/;"	r
+domRect	src/services/misc.js	/^  const domRect = element.getBoundingClientRect()$/;"	r
 entry	src/services/api.test.js	/^  const entry = R.values(cleanedData)[0]$/;"	r
-extract	src/components/Story.js	/^const extract = text => text.substr(0, 200) + ' ...'$/;"	r
 feedReceived	src/ducks/feed.js	/^export const feedReceived = payload => ({ type: FEED_RECEIVED, payload })$/;"	r
 feedRequestFailed	src/ducks/feed.js	/^export const feedRequestFailed = error => ({ type: FEED_REQUEST_FAILED, error })$/;"	r
 feedRequested	src/ducks/feed.js	/^export const feedRequested = payload => ({ type: FEED_REQUESTED, payload })$/;"	r
@@ -82,15 +86,18 @@ formatDate	src/services/text.js	/^export const formatDate = (value, locale = nor
 getComponent	src/logos/index.js	/^const getComponent = (lib, hostname) => lib[hostname.replace('.no', '')]$/;"	r
 getReducer	src/ducks/hosts.js	/^const getReducer = ({ type, payload }) => {$/;"	r
 getReducer	src/ducks/tags.js	/^const getReducer = ({ type, payload }) => {$/;"	r
+htmlDecode	src/services/api.js	/^const htmlDecode = input => {$/;"	r
+index	src/ducks/feed.js	/^      const index = (R.indexOf(selected, active) + step) % active.length$/;"	r
 installingWorker	src/registerServiceWorker.js	/^        const installingWorker = registration.installing;$/;"	r
 isEmpty	src/services/url.js	/^const isEmpty = R.contains(R.__, [{}, undefined, null, [], ''])$/;"	r
 isLocalhost	src/registerServiceWorker.js	/^const isLocalhost = Boolean($/;"	r
-isVisible	src/components/Feed.js	/^const isVisible = element => {$/;"	r
+isVisible	src/services/misc.js	/^export const isVisible = element => {$/;"	r
 items	src/ducks/feed.js	/^      const items = R.merge(state.items, payload)$/;"	r
 keys	src/ducks/feed.js	/^      const keys = R.keys(payload)$/;"	r
 mapDispatchToProps	src/components/Filters.js	/^const mapDispatchToProps = {$/;"	r
 mapObject	src/services/url.js	/^const mapObject = fn =>$/;"	r
 mapStateToProps	src/components/Filters.js	/^const mapStateToProps = (state, ownProps) => ({$/;"	r
+nextStory	src/ducks/feed.js	/^export const nextStory = step => ({$/;"	r
 normalizeData	src/services/api.js	/^export const normalizeData = R.pipe($/;"	r
 onlyHost	src/ducks/hosts.js	/^export const onlyHost = host => ({$/;"	r
 onlyTag	src/ducks/tags.js	/^export const onlyTag = tag => ({$/;"	r
@@ -100,12 +107,13 @@ persistConfig	src/configureStore.js	/^const persistConfig = {$/;"	r
 persistor	src/configureStore.js	/^  const persistor = persistStore(store)$/;"	r
 publicUrl	src/registerServiceWorker.js	/^    const publicUrl = new URL(process.env.PUBLIC_URL, window.location);$/;"	r
 queryString	src/services/url.js	/^const queryString = R.pipe($/;"	r
-rect	src/components/Feed.js	/^  const rect = element.getBoundingClientRect()$/;"	r
 reducer	src/configureStore.js	/^  const reducer = persistReducer(persistConfig, rootReducer)$/;"	r
 render	src/index.js	/^const render = App => {$/;"	r
 rootElement	src/index.js	/^const rootElement = document.getElementById('root')$/;"	r
 rootReducer	src/configureStore.js	/^  const rootReducer = combineReducers({ feed, tags, hosts })$/;"	r
 sagaMiddleware	src/configureStore.js	/^  const sagaMiddleware = createSagaMiddleware()$/;"	r
+scrollHandler	src/components/Feed.js	/^  const scrollHandler = element => isVisible(element) && feedRequested()$/;"	r
+scrollUp	src/components/GoToTop.js	/^const scrollUp = e => window.scrollTo(0, 0)$/;"	r
 selectActiveHosts	src/ducks/hosts.js	/^export const selectActiveHosts = R.pipe($/;"	r
 selectActiveTags	src/ducks/tags.js	/^export const selectActiveTags = R.pipe($/;"	r
 selectApiData	src/services/api.js	/^const selectApiData = ({$/;"	r
@@ -119,6 +127,7 @@ selectTags	src/ducks/tags.js	/^export const selectTags = R.prop(SLICE)$/;"	r
 store	src/configureStore.js	/^  const store = createStore($/;"	r
 stringify	src/services/text.js	/^export const stringify = R.cond([$/;"	r
 swUrl	src/registerServiceWorker.js	/^      const swUrl = `${process.env.PUBLIC_URL}\/service-worker.js`;$/;"	r
+textExtract	src/services/text.js	/^export const textExtract = (maxLength, text) =>$/;"	r
 toggleHost	src/ducks/hosts.js	/^export const toggleHost = host => ({$/;"	r
 toggleTag	src/ducks/tags.js	/^export const toggleTag = tag => ({$/;"	r
 url	src/services/url.test.js	/^  const url = 'http:\/\/example.com\/get'$/;"	r

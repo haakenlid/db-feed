@@ -6,13 +6,21 @@ import { selectTags, toggleTag, onlyTag } from 'ducks/tags'
 import { selectHosts, toggleHost, onlyHost } from 'ducks/hosts'
 
 const Host = ({ name, active, ...props }) => (
-  <div className={classNames('Host', { active })} {...props}>
+  <div
+    className={classNames('Host', { active })}
+    {...props}
+    title={`${active ? 'skjul' : 'vis'} saker fra ${name}.no`}
+  >
     <Icon host={name} />
   </div>
 )
 
 const Tag = ({ name, active, ...props }) => (
-  <div className={classNames('Tag', { active })} {...props}>
+  <div
+    className={classNames('Tag', { active })}
+    {...props}
+    title={`${active ? 'skjul' : 'vis'} kategorien ${name}`}
+  >
     {name}
   </div>
 )

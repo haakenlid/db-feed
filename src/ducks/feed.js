@@ -75,7 +75,9 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
     case NEXT_STORY: {
       const { step } = payload
       const { selected, active } = state
-      const index = (R.indexOf(selected, active) + step) % active.length
+      let index = R.indexOf(selected, active) + step
+      if (index >= active.length) index -= active.length
+      if (index < 0) index += active.length
       return {
         ...state,
         selected: active[index],
