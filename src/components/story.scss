@@ -1,4 +1,5 @@
 $smallScreen: 700px;
+$verySmallScreen: 400px;
 $SolRed: #e20613;
 $SolBlue: #455c7b;
 $SolDarkBlue: darken($SolBlue, 20);
@@ -21,8 +22,8 @@ $SolLightBlue: lighten($SolBlue, 20);
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 70em;
-  height: 100em;
+  width: 60em;
+  height: 60em;
   max-height: 100%;
   .Vignette {
     font-size: 2em;
@@ -70,7 +71,6 @@ $SolLightBlue: lighten($SolBlue, 20);
     margin: 0.5em 0;
   }
   .body {
-    font-size: 1.1em;
   }
   a {
     text-decoration: none;
@@ -98,5 +98,8 @@ $SolLightBlue: lighten($SolBlue, 20);
     .ExternalLink {
       align-self: stretch;
     }
+  }
+  @media screen and (max-width: $verySmallScreen) {
+    font-size: 0.9em;
   }
 }
