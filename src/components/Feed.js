@@ -16,9 +16,8 @@ const Feed = ({ active, feedRequested, selected }) => (
   <section className="Feed">
     {selected && <Story id={selected} />}
     {active.map(id => <FeedStory key={id} id={id} />)}
-    <ScrollSpy onScroll={el => isVisible(el) && feedRequested()}>
-      <LoadingIndicator />
-    </ScrollSpy>
+    <ScrollSpy onScroll={el => isVisible(el) && feedRequested()} />
+    <LoadingIndicator />
   </section>
 )
 export default connect(selectFeed, { feedRequested })(Feed)

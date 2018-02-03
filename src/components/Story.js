@@ -13,15 +13,22 @@ const Dateline = ({ posted, host, ...props }) => (
   </div>
 )
 
+const Chevron = () => (
+  <svg
+    style={{ verticalAlign: '-15%', height: '1em', fill: 'currentColor' }}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 640 640"
+  >
+    <path d="M120.4 512.98l192-192-192-192 128-128 320 320-320 320z" />
+  </svg>
+)
 const ExternalLink = ({ host, url }) => (
-  <div className="ExternalLink">
-    <a onClick={e => e.stopPropagation()} href={url}>
-      les videre på {host}
-    </a>
-  </div>
+  <a className="ExternalLink" onClick={e => e.stopPropagation()} href={url}>
+    les videre på {host} <Chevron />
+  </a>
 )
 
-const extract = text => text.substr(0, 200) + ' ...'
+const extract = text => text.substr(0, 300).replace(/([.?])[^.?]*$/, '$1')
 
 const Story = ({
   url,
@@ -45,8 +52,8 @@ const Story = ({
         {description && <Lede posted={posted}>{description}</Lede>}
         <Dateline posted={posted} host={host} />
         <div className="body">{extract(content)}</div>
-        <ExternalLink host={host} url={url} />
       </main>
+      <ExternalLink host={host} url={url} />
     </article>
   </div>
 )

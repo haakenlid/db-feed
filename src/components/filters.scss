@@ -15,7 +15,6 @@ $SolRed: #e20613;
   align-items: center;
   #pageLogo {
     font-size: 4em;
-    padding-right: 1rem;
   }
   #githubLink {
     font-size: 4em;
@@ -80,21 +79,24 @@ $SolRed: #e20613;
 }
 .GoToTop {
   position: fixed;
-  z-index: 0;
+  z-index: 00;
   display: none;
-  font-size: 1.8rem;
-  padding: 0.35em;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  background-color: $SolRed;
-  top: 0.5em;
-  left: 0.5em;
-  box-shadow: 0 0.2em 0.4em 0 rgba(black, 0.4);
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  justify-content: center;
   svg {
+    font-size: 2rem;
+    padding: 0.35em;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: $SolRed;
+    box-shadow: 0 0.1em 0.2em 0 rgba(black, 0.4);
     fill: white;
   }
   @media screen and (max-width: $smallScreen) {
-    display: block;
+    display: flex;
   }
 }

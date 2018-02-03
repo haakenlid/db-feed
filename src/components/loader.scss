@@ -1,4 +1,7 @@
 // source: https://github.com/tobiasahlin/SpinKit
+$SolBlue: #455c7b;
+$SolLightBlue: lighten($SolBlue, 30);
+
 .sk-cube-grid {
   width: 3em;
   height: 3em;
@@ -7,7 +10,7 @@
   .sk-cube {
     width: 33%;
     height: 33%;
-    background-color: #999;
+    background-color: $SolLightBlue;
     float: left;
     animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
   }

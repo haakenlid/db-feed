@@ -24,7 +24,7 @@ const selectApiData = ({
 export const normalizeData = R.pipe(
   R.prop('items'),
   R.map(selectApiData),
-  R.map(item => [`${item.posted}/${item.externalId}`, item]),
+  R.map(item => [R.replace(/https?:/, '', item.url), item]),
   R.fromPairs
 )
 

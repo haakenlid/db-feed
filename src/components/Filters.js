@@ -18,22 +18,7 @@ const Tag = ({ name, active, ...props }) => (
   </div>
 )
 
-export const GoToTop = () => (
-  <nav className="GoToTop" onClick={e => window.scrollTo(0, 0)}>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-      <path d="M512 530L320 338 128 530 0 402 320 82l320 320z" />
-    </svg>
-  </nav>
-)
-
-const FilterComponent = ({
-  tags,
-  hosts,
-  toggleHost,
-  toggleTag,
-  onlyHost,
-  onlyTag,
-}) => (
+const Filters = ({ tags, hosts, toggleHost, toggleTag, onlyHost, onlyTag }) => (
   <section className="Filters">
     <nav className="hosts">
       {Object.keys(hosts).map(name => (
@@ -79,6 +64,4 @@ const mapDispatchToProps = {
   toggleHost,
   onlyHost,
 }
-export const Filters = connect(mapStateToProps, mapDispatchToProps)(
-  FilterComponent
-)
+export default connect(mapStateToProps, mapDispatchToProps)(Filters)

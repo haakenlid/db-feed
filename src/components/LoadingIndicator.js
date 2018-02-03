@@ -18,6 +18,8 @@ const Loader = () => (
 )
 
 const LoadingIndicator = ({ fetching }) => (
-  <div className="LoadingIndicator">{fetching && <Loader />}</div>
+  <div className="LoadingIndicator">
+    <Loader />
+  </div>
 )
 export default connect(selectFeed)(LoadingIndicator)
