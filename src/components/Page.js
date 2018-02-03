@@ -3,7 +3,6 @@ import Feed from 'components/Feed'
 import Filters from 'components/Filters'
 import GoToTop from 'components/GoToTop'
 import { Logo, Icon } from 'logos'
-import './page.css'
 
 const REPO = 'https://github.com/haakenlid/db-feed'
 

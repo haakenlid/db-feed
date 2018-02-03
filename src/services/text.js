@@ -12,3 +12,6 @@ export const stringify = R.cond([
 // :: Date -> string
 export const formatDate = (value, locale = norwayLocale) =>
   distanceInWordsToNow(new Date(value), { addSuffix: true, locale })
+
+export const textExtract = (maxLength, text) =>
+  text.substr(0, maxLength).replace(/([.?])[^.?]*$/, '$1')

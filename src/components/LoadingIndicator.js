@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeed } from 'ducks/feed'
-import './loader.css'
 
 const Loader = () => (
   <div className="sk-cube-grid">

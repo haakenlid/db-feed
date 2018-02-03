@@ -1,7 +1,3 @@
-$smallScreen: 700px;
-$SolBlue: #455c7b;
-$SolRed: #e20613;
-
 .pageHeader {
   position: sticky;
   z-index: 100;
@@ -28,7 +24,7 @@ $SolRed: #e20613;
     }
   }
   .Filters {
-    font-size: 1.2em;
+    font-size: 1.2rem;
     .tags,
     .hosts {
       font-weight: bold;
@@ -76,18 +72,24 @@ $SolRed: #e20613;
       display: none;
     }
   }
+  @media screen and (max-width: $verySmallScreen) {
+    .Filters {
+      font-size: 1rem;
+    }
+  }
 }
 .GoToTop {
+  font-size: 2rem;
   position: fixed;
   z-index: 00;
   display: none;
   top: 0;
   left: 0;
   right: 0;
-  padding: 0.5rem;
+  padding: $padding;
+  cursor: pointer;
   justify-content: center;
   svg {
-    font-size: 2rem;
     padding: 0.35em;
     width: 1em;
     height: 1em;

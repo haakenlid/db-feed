@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { Icon } from 'logos'
 import { selectTags, toggleTag, onlyTag } from 'ducks/tags'
 import { selectHosts, toggleHost, onlyHost } from 'ducks/hosts'
-import './filters.css'
 
 const Host = ({ name, active, ...props }) => (
   <div className={classNames('Host', { active })} {...props}>

@@ -1,29 +1,18 @@
 import React from 'react'
-
-const debounce = (func, wait) => {
-  let timeout = null
-  return (...args) => {
-    timeout && clearTimeout(timeout)
-    timeout = setTimeout(() => {
-      timeout = null
-      func(...args)
-    }, wait)
-  }
-}
+import { debounce } from 'services/misc'
 
 class ScrollSpy extends React.Component {
   constructor(props) {
     super(props)
-    const { onScroll } = props
-    this.onScroll = debounce(e => onScroll(this.element), 200)
+    this.scrollHandler = debounce(event => props.onScroll(this.element), 100)
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.onScroll)
+    window.addEventListener('scroll', this.scrollHandler)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll)
+    window.removeEventListener('scroll', this.scrollHandler)
   }
 
   render() {

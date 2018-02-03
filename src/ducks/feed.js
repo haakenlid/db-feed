@@ -15,6 +15,7 @@ export const FEED_RECEIVED = 'feed/RECEIVED'
 export const FEED_REQUEST_FAILED = 'feed/REQUEST_FAILED'
 export const FEED_RESET_OFFSET = 'feed/RESET_OFFSET'
 export const VIEW_STORY = 'feed/VIEW_STORY'
+export const NEXT_STORY = 'feed/NEXT_STORY'
 
 // action creators
 export const feedRequested = payload => ({ type: FEED_REQUESTED, payload })
@@ -24,6 +25,10 @@ export const feedResetOffset = () => ({ type: FEED_RESET_OFFSET })
 export const viewStory = id => ({
   type: VIEW_STORY,
   payload: { id },
+})
+export const nextStory = step => ({
+  type: NEXT_STORY,
+  payload: { step },
 })
 
 // selectors
@@ -42,7 +47,7 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
       const keys = R.keys(payload)
       let active = keys
       if (state.offset > 0) {
-        active = R.concat(state.active, keys)
+        active = R.uniq(R.concat(state.active, keys))
       }
       return {
         ...state,
@@ -67,6 +72,15 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
         ...state,
         selected: payload.id,
       }
+    case NEXT_STORY: {
+      const { step } = payload
+      const { selected, active } = state
+      const index = (R.indexOf(selected, active) + step) % active.length
+      return {
+        ...state,
+        selected: active[index],
+      }
+    }
     case FEED_REQUEST_FAILED:
       return {
         ...state,

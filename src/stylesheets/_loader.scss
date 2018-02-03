@@ -1,6 +1,10 @@
 // source: https://github.com/tobiasahlin/SpinKit
-$SolBlue: #455c7b;
-$SolLightBlue: lighten($SolBlue, 30);
+
+.LoadingIndicator {
+  width: 100%;
+  min-height: 1em;
+  font-size: 3em;
+}
 
 .sk-cube-grid {
   width: 3em;

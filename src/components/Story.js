@@ -1,8 +1,7 @@
-import './story.css'
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeedItem, viewStory } from 'ducks/feed'
-import { formatDate } from 'services/text'
+import { formatDate, textExtract } from 'services/text'
 import Vignette from 'components/Vignette'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
@@ -28,9 +27,6 @@ const ExternalLink = ({ host, url }) => (
   </a>
 )
 
-const extract = (maxLength, text) =>
-  text.substr(0, maxLength).replace(/([.?])[^.?]*$/, '$1')
-
 const Story = ({
   url,
   title,
@@ -52,9 +48,11 @@ const Story = ({
       <main>
         {description && <Lede posted={posted}>{description}</Lede>}
         <Dateline posted={posted} host={host} />
-        <div className="body">{extract(400 - description.length, content)}</div>
+        <div className="body">
+          {textExtract(400 - description.length, content)}
+        </div>
+        <ExternalLink host={host} url={url} />
       </main>
-      <ExternalLink host={host} url={url} />
     </article>
   </div>
 )

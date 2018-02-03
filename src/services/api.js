@@ -29,8 +29,7 @@ const selectApiData = ({
 export const normalizeData = R.pipe(
   R.prop('items'),
   R.map(selectApiData),
-  R.map(item => [R.replace(/https?:/, '', item.url), item]),
-  R.fromPairs
+  R.indexBy(R.prop('url'))
 )
 
 export const fetchFeed = params =>
