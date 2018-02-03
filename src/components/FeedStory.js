@@ -4,7 +4,7 @@ import { selectFeedItem, viewStory } from 'ducks/feed'
 import Vignette from 'components/Vignette'
 import { scrollToElement } from 'services/misc'
 
-const Story = ({
+const FeedStory = ({
   viewStory,
   id,
   url,
@@ -14,10 +14,10 @@ const Story = ({
   host,
   content,
   posted,
-  current,
+  scrollTo,
 }) => (
   <article
-    ref={current ? scrollToElement : null}
+    ref={scrollTo ? scrollToElement : null}
     className="FeedStory"
     onClick={e => viewStory(id)}
   >
@@ -33,4 +33,4 @@ const Story = ({
 
 export default connect((state, { id }) => selectFeedItem(id)(state), {
   viewStory,
-})(Story)
+})(FeedStory)

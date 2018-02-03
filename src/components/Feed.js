@@ -13,7 +13,11 @@ const Feed = ({ active, openStory, storyIsOpen, feedRequested }) => {
   return (
     <section className={classNames({ Feed: true, storyIsOpen })}>
       {active.map(id => (
-        <FeedStory key={id} id={id} current={id === openStory} />
+        <FeedStory
+          key={id}
+          id={id}
+          scrollTo={!storyIsOpen && id === openStory}
+        />
       ))}
       <ScrollSpy onScroll={scrollHandler} />
       <LoadingIndicator />
