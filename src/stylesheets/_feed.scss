@@ -1,12 +1,14 @@
+.Vignette {
+  filter: drop-shadow(1px 2px 3px rgba(black, 0.4));
+  font-size: 3em;
+  // align-self: flex-end;
+}
 .Feed {
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
   padding-left: $padding;
   .FeedStory {
-    .Vignette {
-      font-size: 2em;
-    }
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -20,7 +22,7 @@
     }
     &:hover {
       h1 .title {
-        background-color: $SolBlue;
+        background-color: $SolRed;
       }
     }
   }
