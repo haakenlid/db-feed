@@ -5,16 +5,15 @@ import { formatDate, textExtract } from 'utils/text'
 import Vignette from 'components/Vignette'
 import Chevron from 'components/Chevron'
 import Swipeable from 'react-swipeable'
+import { isAndroid } from 'utils/misc'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
-
-const isPhone = () => document && 'ontouchstart' in document.documentElement
 
 const Link = ({ children, ...props }) => (
   <a
     {...props}
     onClick={e => e.stopPropagation()}
-    target={isPhone() ? '_blank' : '_self'}
+    target={isAndroid() ? '_blank' : '_self'}
   >
     {children}
   </a>
@@ -43,7 +42,7 @@ const Story = ({
         <article className="Story">
           <div className="image" style={{ backgroundImage: `url(${image})` }}>
             <Vignette host={host} posted={posted} />
-            <h1 title={`åpne i ny tab`}>
+            <h1>
               <Link className="title" href={url} target="_blank">
                 {title}
               </Link>

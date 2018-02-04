@@ -9,6 +9,11 @@ export const debounce = (func, wait) => {
   }
 }
 
+export const isTouchDevice = () =>
+  document && 'ontouchstart' in document.documentElement
+export const isAndroid = () => navigator && /android/i.test(navigator.userAgent)
+export const isiPhone = () => navigator && /iphone/i.test(navigator.userAgent)
+
 export const isVisible = element => {
   if (!element) return false
   const domRect = element.getBoundingClientRect()
