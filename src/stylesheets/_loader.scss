@@ -1,44 +1,70 @@
-// source: https://github.com/tobiasahlin/SpinKit
+// based on: https://github.com/tobiasahlin/SpinKit
+
+$loaderSpeed: 90ms;
 
 .LoadingIndicator {
   width: 100%;
   font-size: 4rem;
+  .stopped {
+    color: white;
+    background-color: $SolLightBlue;
+    cursor: pointer;
+    div {
+      padding: $padding;
+      font-size: 0.5em;
+    }
+  }
 }
 
-.sk-cube-grid {
-  width: 3em;
-  height: 3em;
+.cubeGrid {
+  width: 3.1em;
+  height: 3.1em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
   margin: 1em auto;
 
-  .sk-cube {
+  .cube {
     width: 1em;
     height: 1em;
+    transition: 1s background ease-out;
+    transform: scale(1, 1);
     background-color: $SolLightBlue;
     float: left;
-    animation: sk-cubeGridScaleDelay 1100ms infinite ease-in-out;
+    animation: cubeGridScaleDelay $loaderSpeed * 11 infinite ease-out;
+    &.quiet {
+      animation: none;
+      background-color: #eee;
+      &:hover {
+        background-color: $SolRed;
+      }
+    }
   }
-  .sk-cube7 {
+  &.stalled {
+    cursor: pointer;
+  }
+  .cube7 {
     animation-delay: 0ms;
   }
-  .sk-cube4,
-  .sk-cube8 {
-    animation-delay: 100ms;
+  .cube4,
+  .cube8 {
+    animation-delay: $loaderSpeed * 1;
   }
-  .sk-cube1,
-  .sk-cube5,
-  .sk-cube9 {
-    animation-delay: 200ms;
+  .cube1,
+  .cube5,
+  .cube9 {
+    animation-delay: $loaderSpeed * 2;
   }
-  .sk-cube2,
-  .sk-cube6 {
-    animation-delay: 300ms;
+  .cube2,
+  .cube6 {
+    animation-delay: $loaderSpeed * 3;
   }
-  .sk-cube3 {
-    animation-delay: 400ms;
+  .cube3 {
+    animation-delay: $loaderSpeed * 4;
   }
 }
 
-@keyframes sk-cubeGridScaleDelay {
+@keyframes cubeGridScaleDelay {
   0%,
   80%,
   100% {

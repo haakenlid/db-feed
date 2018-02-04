@@ -19,7 +19,7 @@ export const VIEW_STORY = 'feed/VIEW_STORY'
 export const NEXT_STORY = 'feed/NEXT_STORY'
 
 // action creators
-export const feedRequested = payload => ({ type: FEED_REQUESTED, payload })
+export const feedRequested = () => ({ type: FEED_REQUESTED })
 export const feedReceived = payload => ({ type: FEED_RECEIVED, payload })
 export const feedRequestFailed = error => ({ type: FEED_REQUEST_FAILED, error })
 export const feedResetOffset = () => ({ type: FEED_RESET_OFFSET })

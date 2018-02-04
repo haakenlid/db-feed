@@ -5,7 +5,7 @@ import * as feed from 'ducks/feed'
 import * as hosts from 'ducks/hosts'
 import * as tags from 'ducks/tags'
 import * as api from 'utils/api'
-import { scrollToTop } from 'utils/misc'
+import { preFetchImage, scrollToTop } from 'utils/misc'
 
 const REHYDRATE = 'persist/REHYDRATE'
 const FEED_PAGINATION = 12
@@ -46,12 +46,6 @@ function* filterListener() {
   yield call(scrollToTop)
 }
 
-const preFetchImage = ({ image }) => {
-  if (!image) return
-  const im = new Image()
-  im.src = image
-}
-
 function* fetchFeed() {
   const params = yield select(selectFeedParameters)
   const { response, error } = yield call(api.fetchFeed, params)
@@ -62,7 +56,3 @@ function* fetchFeed() {
     yield put(feed.feedRequestFailed(error))
   }
 }
-
-// function* scrollSpySaga() {
-//   yield call(delay, 100)
-// }
