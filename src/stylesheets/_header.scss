@@ -52,7 +52,7 @@
       }
     }
   }
-  @media screen and (max-width: $smallScreen) {
+  @media screen and (max-width: $smallScreen), (max-height: $smallScreen) {
     flex-direction: column;
     position: relative;
     .Filters {
@@ -72,7 +72,8 @@
       display: none;
     }
   }
-  @media screen and (max-width: $verySmallScreen) {
+  @media screen and (max-width: $verySmallScreen),
+    (max-height: $verySmallScreen) {
     .Filters {
       font-size: 1rem;
     }
