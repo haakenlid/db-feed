@@ -39,9 +39,11 @@ $modalWidth: 60rem;
   h1 {
     font-size: 3.5rem;
     cursor: pointer;
-    &:hover {
-      .title {
-        background-color: $SolBlue;
+    @media (hover: hover) {
+      &:hover {
+        .title {
+          background-color: $SolBlue;
+        }
       }
     }
   }
@@ -58,6 +60,13 @@ $modalWidth: 60rem;
     margin-bottom: $padding;
   }
   @media screen and (max-width: $smallScreen) {
+    height: unset;
+    width: unset;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    bottom: 0;
+
     h1 {
       // font-weight: 400;
       font-size: 2.2em;

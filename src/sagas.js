@@ -12,7 +12,7 @@ const FEED_PAGINATION = 12
 
 export function* feedSaga() {
   yield takeLatest(feed.FEED_REQUESTED, fetchFeed)
-  yield takeEvery(feed.NEXT_STORY, fetchIfLast)
+  yield takeEvery(feed.NEXT_STORY, nextStorySaga)
   yield takeLatest([tags.TOGGLE_TAG, hosts.TOGGLE_HOST], filterListener)
   yield takeLatest(REHYDRATE, persistListener)
 }
@@ -27,7 +27,7 @@ const selectFeedParameters = state => ({
   limit: FEED_PAGINATION,
 })
 
-function* fetchIfLast() {
+function* nextStorySaga() {
   const { active, openStory } = yield select(feed.selectFeed)
   if (active.length - R.indexOf(openStory, active) < FEED_PAGINATION / 2)
     yield put(feed.feedRequested())

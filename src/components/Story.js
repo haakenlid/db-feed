@@ -8,8 +8,16 @@ import Swipeable from 'react-swipeable'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
 
-const Link = ({ ...props }) => (
-  <a {...props} onClick={e => e.stopPropagation()} />
+const isPhone = () => document && 'ontouchstart' in document.documentElement
+
+const Link = ({ children, ...props }) => (
+  <a
+    {...props}
+    onClick={e => e.stopPropagation()}
+    target={isPhone() ? '_blank' : '_self'}
+  >
+    {children}
+  </a>
 )
 
 const Story = ({
@@ -42,7 +50,9 @@ const Story = ({
             </h1>
           </div>
           <main>
-            {description && <Lede posted={posted}>{description}</Lede>}
+            {description && (
+              <Lede posted={posted}>{textExtract(200, description)}</Lede>
+            )}
             <div className="Dateline">publisert for {formatDate(posted)}</div>
             <div className="body">
               {textExtract(350 - description.length, content)}
