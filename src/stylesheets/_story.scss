@@ -38,6 +38,12 @@ $modalWidth: 60rem;
   }
   h1 {
     font-size: 3.5rem;
+    cursor: pointer;
+    &:hover {
+      .title {
+        background-color: $SolBlue;
+      }
+    }
   }
   .lede {
     font-family: "Roboto Condensed", sans-serif;

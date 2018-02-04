@@ -8,6 +8,10 @@ import Swipeable from 'react-swipeable'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
 
+const Link = ({ ...props }) => (
+  <a {...props} onClick={e => e.stopPropagation()} />
+)
+
 const Story = ({
   url,
   title,
@@ -31,8 +35,10 @@ const Story = ({
         <article className="Story">
           <div className="image" style={{ backgroundImage: `url(${image})` }}>
             <Vignette host={host} posted={posted} />
-            <h1>
-              <span className="title">{title}</span>
+            <h1 title={`åpne i ny tab`}>
+              <Link className="title" href={url} target="_blank">
+                {title}
+              </Link>
             </h1>
           </div>
           <main>
@@ -46,13 +52,9 @@ const Story = ({
             <div className="back" onClick={previous}>
               <Chevron />
             </div>
-            <a
-              className="ExternalLink"
-              onClick={e => e.stopPropagation()}
-              href={url}
-            >
+            <Link className="ExternalLink" href={url}>
               les saken på {host}
-            </a>
+            </Link>
             <div className="forward" onClick={next}>
               <Chevron />
             </div>

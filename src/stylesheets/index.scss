@@ -8,6 +8,10 @@ $SolDarkBlue: darken($SolBlue, 20);
 $SolLightBlue: lighten($SolBlue, 40);
 $SolLightRed: lighten($SolRed, 30);
 
+a {
+  text-decoration: none;
+}
+
 html {
   margin: 0;
   font-family: "Roboto", sans-serif;

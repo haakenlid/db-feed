@@ -1,7 +1,7 @@
 {
-  "name": "db-feed",
-  "homepage": "https://haakenlid.github.io/db-feed",
-  "version": "0.1.0",
+  "name": "newsfeed",
+  "homepage": "https://haakenlid.github.io/newsfeed",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",

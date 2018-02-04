@@ -18,6 +18,11 @@
     h1 {
       font-size: 2em;
     }
+    &:hover {
+      h1 .title {
+        background-color: $SolBlue;
+      }
+    }
   }
   @media screen and (max-width: $smallScreen) {
     padding-left: 0;
