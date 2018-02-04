@@ -3,22 +3,23 @@ import { buildUrl } from './url'
 
 const BASE_URL = 'https://harvester.sol.no/get'
 
+// Fix HTML entities in input data
+// :: ?String -> String
 const htmlDecode = input => {
-  const doc = new DOMParser().parseFromString(input, 'text/html')
+  const doc = new DOMParser().parseFromString(input || '', 'text/html')
   return doc.documentElement.textContent.trim()
 }
 
+// pluck and flatten data from backend
 const selectApiData = ({
-  externalId,
   host,
   title,
   posted,
   url,
   fields: { description, content, image },
 }) => ({
-  externalId,
   title,
-  description: htmlDecode(description || ''),
+  description: htmlDecode(description),
   content,
   posted,
   host,
@@ -26,12 +27,16 @@ const selectApiData = ({
   image,
 })
 
+// convert data from api into the shape used in the redux state.
 export const normalizeData = R.pipe(
   R.prop('items'),
   R.map(selectApiData),
   R.indexBy(R.prop('url'))
 )
 
+// Use the Fetch API to get data from the backend.
+// url parameters can be numbers, strings or an array of numbers/strings.
+// fetchFeed :: {urlParamaters} -> Promise({error|response})
 export const fetchFeed = params =>
   fetch(buildUrl(BASE_URL, params))
     .then(response => response.json().then(json => ({ json, response })))

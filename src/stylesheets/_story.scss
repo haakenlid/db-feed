@@ -1,3 +1,6 @@
+$modalHeight: 50rem;
+$modalWidth: 60rem;
+
 .storyBackground {
   background-color: rgba(black, 0.8);
   z-index: 200;
@@ -16,9 +19,14 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 55em;
-  height: 45em;
-  max-height: 100%;
+  @media screen and (min-width: $modalWidth * 1.25) {
+    width: $modalWidth;
+  }
+  @media screen and (min-height: $modalHeight * 1.25) {
+    height: $modalHeight;
+  }
+  height: 100vh;
+  width: 100vw;
   .Vignette {
     font-size: 2em;
   }
@@ -44,8 +52,6 @@
     margin-bottom: $padding;
   }
   @media screen and (max-width: $smallScreen) {
-    height: 100vh;
-    width: 100vw;
     h1 {
       // font-weight: 400;
       font-size: 2.2em;

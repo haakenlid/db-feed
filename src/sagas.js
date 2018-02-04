@@ -4,8 +4,8 @@ import { delay } from 'redux-saga'
 import * as feed from 'ducks/feed'
 import * as hosts from 'ducks/hosts'
 import * as tags from 'ducks/tags'
-import * as api from 'services/api'
-import { scrollToTop } from 'services/misc'
+import * as api from 'utils/api'
+import { scrollToTop } from 'utils/misc'
 
 const REHYDRATE = 'persist/REHYDRATE'
 const FEED_PAGINATION = 12

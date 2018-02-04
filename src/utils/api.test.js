@@ -1,4 +1,4 @@
-import { normalizeData } from 'services/api'
+import { normalizeData } from 'utils/api'
 import * as R from 'ramda'
 import apidata from './apidata.json'
 

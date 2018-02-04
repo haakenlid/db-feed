@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeedItem, viewStory } from 'ducks/feed'
 import Vignette from 'components/Vignette'
-import { scrollToElement } from 'services/misc'
+import { scrollToElement } from 'utils/misc'
 
 const FeedStory = ({
   viewStory,

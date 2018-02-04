@@ -4,7 +4,7 @@ import { selectFeed, feedRequested } from 'ducks/feed'
 import FeedStory from 'components/FeedStory'
 import ScrollSpy from 'components/ScrollSpy'
 import LoadingIndicator from 'components/LoadingIndicator'
-import { isVisible } from 'services/misc'
+import { isVisible } from 'utils/misc'
 import classNames from 'classnames'
 
 const Feed = ({ active, openStory, storyIsOpen, feedRequested }) => {

@@ -1,31 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectOpenStory, viewStory, nextStory } from 'ducks/feed'
-import { formatDate, textExtract } from 'services/text'
+import { formatDate, textExtract } from 'utils/text'
 import Vignette from 'components/Vignette'
+import Chevron from 'components/Chevron'
 import Swipeable from 'react-swipeable'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
-
-const Dateline = ({ posted, ...props }) => (
-  <div className="Dateline">publisert for {formatDate(posted)}</div>
-)
-
-const Chevron = props => (
-  <svg
-    className="Chevron"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 640 640"
-    {...props}
-  >
-    <path d="M120.4 512.98l192-192-192-192 128-128 320 320-320 320z" />
-  </svg>
-)
-const ExternalLink = ({ host, url }) => (
-  <a className="ExternalLink" onClick={e => e.stopPropagation()} href={url}>
-    les saken på {host}
-  </a>
-)
 
 const Story = ({
   url,
@@ -56,7 +37,7 @@ const Story = ({
           </div>
           <main>
             {description && <Lede posted={posted}>{description}</Lede>}
-            <Dateline posted={posted} />
+            <div className="Dateline">publisert for {formatDate(posted)}</div>
             <div className="body">
               {textExtract(350 - description.length, content)}
             </div>
@@ -65,7 +46,13 @@ const Story = ({
             <div className="back" onClick={previous}>
               <Chevron />
             </div>
-            <ExternalLink host={host} url={url} />
+            <a
+              className="ExternalLink"
+              onClick={e => e.stopPropagation()}
+              href={url}
+            >
+              les saken på {host}
+            </a>
             <div className="forward" onClick={next}>
               <Chevron />
             </div>
@@ -75,14 +62,14 @@ const Story = ({
     </Swipeable>
   )
 
-const eventListener = fn => e => {
+const event = fn => e => {
   e.preventDefault()
   e.stopPropagation()
   fn(e)
 }
 
 export default connect(selectOpenStory, dispatch => ({
-  close: eventListener(e => dispatch(viewStory(null))),
-  next: eventListener(e => dispatch(nextStory(1))),
-  previous: eventListener(e => dispatch(nextStory(-1))),
+  close: event(e => dispatch(viewStory(null))),
+  next: event(e => dispatch(nextStory(1))),
+  previous: event(e => dispatch(nextStory(-1))),
 }))(Story)

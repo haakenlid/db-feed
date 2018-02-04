@@ -6,11 +6,12 @@ import GoToTop from 'components/GoToTop'
 import { Logo, Icon } from 'logos'
 
 const REPO = 'https://github.com/haakenlid/db-feed'
+const SOL = 'https://sol.no'
 
 export default () => (
   <div id="pageWrapper">
     <header className="pageHeader">
-      <a href="https://sol.no">
+      <a href={SOL}>
         <Logo id="pageLogo" host="sol.no" />
       </a>
       <Filters />

@@ -1,7 +1,7 @@
 import React from 'react'
 import icons from './icons'
 import logos from './full'
-import './index.css'
+import './logos.css'
 
 const getComponent = (lib, hostname) => lib[hostname.replace('.no', '')]
 

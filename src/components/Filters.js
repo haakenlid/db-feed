@@ -61,7 +61,7 @@ const Filters = ({ tags, hosts, toggleHost, toggleTag, onlyHost, onlyTag }) => (
     </nav>
   </section>
 )
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   tags: selectTags(state),
   hosts: selectHosts(state),
 })
