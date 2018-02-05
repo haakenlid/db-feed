@@ -7,7 +7,6 @@ import dagbladet from './Dagbladet'
 import dagsavisen from './Dagsavisen'
 import dn from './Dn'
 import fvn from './Faedrelandsvennen'
-import hegnar from './Hegnar'
 import nrk from './Nrk'
 import sol from './Sol'
 import tv2 from './Tv2'
@@ -23,7 +22,6 @@ export default {
   dagsavisen,
   dn,
   fvn,
-  hegnar,
   nrk,
   sol,
   tv2,
