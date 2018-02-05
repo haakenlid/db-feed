@@ -7,7 +7,10 @@ class ScrollSpy extends React.Component {
     this.scrollHandler = debounce(event => props.onScroll(this.element), 100)
   }
   componentDidMount() {
-    window.addEventListener('scroll', this.scrollHandler)
+    window.addEventListener('scroll', this.scrollHandler, {
+      capture: true,
+      passive: true,
+    })
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.scrollHandler)
