@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeedItem, viewStory } from 'ducks/feed'
-import Vignette from 'components/Vignette'
+import Brand from 'components/Brand'
 import { scrollToElement } from 'utils/misc'
 
 const FeedStory = ({
@@ -22,7 +22,7 @@ const FeedStory = ({
     onClick={e => viewStory(id)}
   >
     <div className="image" style={{ backgroundImage: `url(${image})` }}>
-      <Vignette host={host} posted={posted} />
+      <Brand host={host} posted={posted} />
       <div className="spacer" />
       <h1>
         <span className="title">{title}</span>

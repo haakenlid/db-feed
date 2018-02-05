@@ -82,8 +82,6 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
       const { step } = payload
       const { openStory, active } = state
       let index = R.indexOf(openStory, active) + step
-      // if (index >= active.length) index -= active.length
-      // if (index < 0) index += active.length
       const newStory = active[index]
       return {
         ...state,

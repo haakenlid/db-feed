@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Icon } from 'logos'
 import { selectTags, toggleTag, onlyTag } from 'ducks/tags'
 import { selectHosts, toggleHost, onlyHost } from 'ducks/hosts'
+import { stopPropagation } from 'utils/misc'
 
 const Host = ({ name, active, ...props }) => (
   <div
@@ -33,14 +34,8 @@ const Filters = ({ tags, hosts, toggleHost, toggleTag, onlyHost, onlyTag }) => (
           key={name}
           name={name}
           active={hosts[name]}
-          onClick={e => {
-            toggleHost(name)
-          }}
-          onDoubleClick={e => {
-            e.stopPropagation()
-            e.preventDefault()
-            onlyHost(name)
-          }}
+          onClick={e => toggleHost(name)}
+          onDoubleClick={stopPropagation(onlyHost, name)}
         />
       ))}
     </nav>
@@ -51,11 +46,7 @@ const Filters = ({ tags, hosts, toggleHost, toggleTag, onlyHost, onlyTag }) => (
           name={name}
           active={tags[name]}
           onClick={e => toggleTag(name)}
-          onDoubleClick={e => {
-            e.stopPropagation()
-            e.preventDefault()
-            onlyTag(name)
-          }}
+          onDoubleClick={stopPropagation(onlyTag, name)}
         />
       ))}
     </nav>

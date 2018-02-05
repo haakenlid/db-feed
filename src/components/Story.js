@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { selectOpenStory, viewStory, nextStory } from 'ducks/feed'
 import { formatDate, textExtract } from 'utils/text'
-import Vignette from 'components/Vignette'
+import Brand from 'components/Brand'
 import Chevron from 'components/Chevron'
 import Swipeable from 'react-swipeable'
-import { isAndroid } from 'utils/misc'
+import { isAndroid, stopPropagation } from 'utils/misc'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
 
@@ -41,7 +41,7 @@ const Story = ({
       <div className="storyBackground" onClick={close}>
         <article className="Story">
           <div className="image" style={{ backgroundImage: `url(${image})` }}>
-            <Vignette host={host} posted={posted} />
+            <Brand host={host} posted={posted} />
             <h1>
               <Link className="title" href={url} target="_blank">
                 {title}
@@ -73,14 +73,8 @@ const Story = ({
     </Swipeable>
   )
 
-const event = fn => e => {
-  e.preventDefault()
-  e.stopPropagation()
-  fn(e)
-}
-
 export default connect(selectOpenStory, dispatch => ({
-  close: event(e => dispatch(viewStory(null))),
-  next: event(e => dispatch(nextStory(1))),
-  previous: event(e => dispatch(nextStory(-1))),
+  close: stopPropagation(dispatch, viewStory(null)),
+  next: stopPropagation(dispatch, nextStory(1)),
+  previous: stopPropagation(dispatch, nextStory(-1)),
 }))(Story)

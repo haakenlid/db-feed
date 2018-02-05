@@ -1,14 +1,8 @@
 import * as R from 'ramda'
 import { buildUrl } from './url'
+import { htmlDecode } from 'utils/text'
 
 const BASE_URL = 'https://harvester.sol.no/get'
-
-// Fix HTML entities in input data
-// :: ?String -> String
-const htmlDecode = input => {
-  const doc = new DOMParser().parseFromString(input || '', 'text/html')
-  return doc.documentElement.textContent.trim()
-}
 
 // pluck and flatten data from backend
 const selectApiData = ({
@@ -40,17 +34,6 @@ export const normalizeData = R.pipe(
 export const fetchFeed = params =>
   fetch(buildUrl(BASE_URL, params))
     .then(response => response.json().then(json => ({ json, response })))
-    .then(({ json, response }) => {
-      if (!response.ok) {
-        return Promise.reject(json)
-      }
-      return json
-    })
+    .then(({ json, response }) => (response.ok ? json : Promise.reject(json)))
     .then(normalizeData)
-    .then(
-      response => ({ response }),
-      error => {
-        console.log(error)
-        return { error: error.message || `Fetch failed` }
-      }
-    )
+    .then(response => ({ response }), error => ({ error }))

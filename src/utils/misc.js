@@ -44,3 +44,10 @@ export const preFetchImage = ({ image }) => {
   const im = new Image()
   im.src = image
 }
+
+// event handler wrapper
+export const stopPropagation = (eventHandler, ...args) => e => {
+  e.stopPropagation()
+  e.preventDefault()
+  eventHandler(...args)
+}

@@ -12,11 +12,12 @@ const INITIAL_STATE = {
 
 // actions
 export const TOGGLE_TAG = 'tags/TOGGLE_TAG'
+export const ONLY_TAG = 'tags/ONLY_TAG'
+
 export const toggleTag = tag => ({
   type: TOGGLE_TAG,
   payload: { tag },
 })
-export const ONLY_TAG = 'tags/ONLY_TAG'
 export const onlyTag = tag => ({
   type: ONLY_TAG,
   payload: { tag },
@@ -30,8 +31,6 @@ export const selectActiveTags = R.pipe(
   R.keys,
   R.map(R.replace(/ø/g, 'o'))
 )
-export const selectInactiveTags = R.always([])
-// export const selectInactiveTags = R.pipe(selectTags, R.filter(R.not), R.keys)
 
 // reducer
 const getReducer = ({ type, payload }) => {

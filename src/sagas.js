@@ -22,7 +22,6 @@ const selectFeedParameters = state => ({
   excludeDupes: 95,
   includeHosts: hosts.selectActiveHosts(state),
   includeAnyTags: tags.selectActiveTags(state),
-  excludeTags: tags.selectInactiveTags(state),
   offset: feed.selectOffset(state),
   limit: FEED_PAGINATION,
 })

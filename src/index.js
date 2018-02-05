@@ -1,18 +1,20 @@
 import 'react-hot-loader/patch'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import registerServiceWorker from './registerServiceWorker'
-import { Provider } from 'react-redux'
-import configureStore from './configureStore'
-import { AppContainer } from 'react-hot-loader'
-import Page from 'components/Page'
-import { PersistGate } from 'redux-persist/lib/integration/react'
 import 'stylesheets/index.css'
 
-const { store, persistor } = configureStore()
-const rootElement = document.getElementById('root')
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const render = App => {
+import { Provider } from 'react-redux'
+import { AppContainer } from 'react-hot-loader'
+import { PersistGate } from 'redux-persist/lib/integration/react'
+
+import registerServiceWorker from './registerServiceWorker'
+import configureStore from './configureStore'
+import Page from 'components/Page'
+
+const { store, persistor } = configureStore()
+
+const render = App =>
   ReactDOM.render(
     <Provider store={store}>
       <AppContainer>
@@ -21,13 +23,10 @@ const render = App => {
         </PersistGate>
       </AppContainer>
     </Provider>,
-    rootElement
+    document.getElementById('root')
   )
-}
+
+render(Page)
+module.hot && module.hot.accept('components/Page', () => render(Page))
 
 registerServiceWorker()
-render(Page)
-
-if (module.hot) {
-  module.hot.accept('components/Page', () => render(Page))
-}
