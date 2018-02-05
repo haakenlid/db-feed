@@ -2,7 +2,7 @@
 export const debounce = (func, wait) => {
   let timeout = null
   return (...args) => {
-    timeout && clearTimeout(timeout)
+    clearTimeout(timeout)
     timeout = setTimeout(() => {
       timeout = null
       func(...args)

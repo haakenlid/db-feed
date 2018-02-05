@@ -17,7 +17,6 @@
     line-height: 1;
     height: 1em;
     width: 1em;
-    // background-color: red;
     color: mix($SolBlue, black, 80);
     &:hover {
       color: mix($SolBlue, white, 50);
@@ -40,10 +39,7 @@
           color: #eee;
         }
         &:hover {
-          text-shadow: 0 0 4px black;
-          .Icon {
-            filter: drop-shadow(0 0 2px black);
-          }
+          filter: drop-shadow(0 0 0.2rem darken($SolBlue, 40));
         }
       }
       .Host {
@@ -82,7 +78,7 @@
 .GoToTop {
   font-size: 2rem;
   position: fixed;
-  z-index: 00;
+  z-index: 10;
   display: none;
   top: 0;
   left: 0;

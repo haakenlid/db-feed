@@ -15,9 +15,11 @@
     h1 {
       font-size: 2em;
     }
-    &:hover {
-      h1 .title {
-        background-color: $SolRed;
+    @media (hover: hover) {
+      &:hover {
+        h1 .title {
+          background-color: $SolBlue;
+        }
       }
     }
   }

@@ -16,6 +16,8 @@ $modalWidth: 60rem;
 
 .Story {
   font-size: 1.2em;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -25,10 +27,9 @@ $modalWidth: 60rem;
   @media screen and (min-height: $modalHeight * 1.1) {
     height: $modalHeight;
   }
-  height: 100vh;
-  width: 100vw;
   .Brand {
     font-size: 4em;
+    margin-bottom: -4em;
   }
   main {
     display: flex;
@@ -36,13 +37,16 @@ $modalWidth: 60rem;
     padding: $padding;
     padding-bottom: 0;
   }
+  a {
+    text-decoration: none;
+  }
   h1 {
     font-size: 3.5rem;
     cursor: pointer;
     @media (hover: hover) {
       &:hover {
         .title {
-          background-color: $SolRed;
+          background-color: $SolBlue;
         }
       }
     }
@@ -79,18 +83,17 @@ $modalWidth: 60rem;
     (max-height: $verySmallScreen) {
     font-size: 0.9em;
   }
-  @media screen and (max-height: 550px) {
+  @media screen and (max-height: 500px) {
     h1 {
       font-size: 1.8em;
+    }
+    .lede,
+    .Dateline {
+      margin-bottom: $padding * 0.5;
     }
   }
 }
 
-.Chevron {
-  vertical-align: -15%;
-  fill: currentColor;
-  display: inline;
-}
 .navigate {
   display: flex;
   color: white;
@@ -114,7 +117,6 @@ $modalWidth: 60rem;
     border-left: none;
     border-right: none;
     color: white;
-    text-decoration: none;
     flex: 1;
   }
   .back {
@@ -122,4 +124,10 @@ $modalWidth: 60rem;
       transform: scale(-1, 1);
     }
   }
+}
+
+.Chevron {
+  vertical-align: -15%;
+  fill: currentColor;
+  display: inline;
 }

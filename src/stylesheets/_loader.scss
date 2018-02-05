@@ -35,8 +35,10 @@ $loaderSpeed: 90ms;
     &.quiet {
       animation: none;
       background-color: #eee;
-      &:hover {
-        background-color: $SolRed;
+      @media (hover: hover) {
+        &:hover {
+          background-color: $SolRed;
+        }
       }
     }
   }
