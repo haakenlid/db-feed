@@ -17,6 +17,10 @@ export const isTouchDevice = () =>
 // check if client is an Android device
 export const isAndroid = () => navigator && /android/i.test(navigator.userAgent)
 
+// check if page is running as standalone Progressive Web App
+export const isPWA = () =>
+  window && window.matchMedia('(display-mode: standalone)').matches
+
 // check if client is an iPhone device
 export const isIphone = () => navigator && /iphone/i.test(navigator.userAgent)
 
@@ -46,7 +50,7 @@ export const preFetchImage = ({ image }) => {
 }
 
 // event handler wrapper
-export const stopPropagation = (eventHandler, ...args) => e => {
+export const eventHandler = (eventHandler, ...args) => e => {
   e.stopPropagation()
   e.preventDefault()
   eventHandler(...args)

@@ -39,7 +39,7 @@ const LoadingIndicator = ({ fetching, active, feedRequested }) => (
   <div
     title="klikk for å laste på nytt"
     className="LoadingIndicator"
-    onClick={() => feedRequested()}
+    onClick={() => feedRequested(true)}
   >
     <Loader stalled={!fetching} />
   </div>

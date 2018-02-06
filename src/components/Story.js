@@ -5,7 +5,7 @@ import { formatDate, textExtract } from 'utils/text'
 import Brand from 'components/Brand'
 import Chevron from 'components/Chevron'
 import Swipeable from 'react-swipeable'
-import { isAndroid, stopPropagation } from 'utils/misc'
+import { isPWA, eventHandler } from 'utils/misc'
 
 const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
 
@@ -13,7 +13,7 @@ const Link = ({ children, ...props }) => (
   <a
     {...props}
     onClick={e => e.stopPropagation()}
-    target={isAndroid() ? '_blank' : '_self'}
+    target={isPWA() ? '_blank' : '_self'}
   >
     {children}
   </a>
@@ -43,7 +43,7 @@ const Story = ({
           <div className="image" style={{ backgroundImage: `url(${image})` }}>
             <Brand host={host} posted={posted} />
             <h1>
-              <Link className="title" href={url} target="_blank">
+              <Link className="title" href={url}>
                 {title}
               </Link>
             </h1>
@@ -74,7 +74,7 @@ const Story = ({
   )
 
 export default connect(selectOpenStory, dispatch => ({
-  close: stopPropagation(dispatch, viewStory(null)),
-  next: stopPropagation(dispatch, nextStory(1)),
-  previous: stopPropagation(dispatch, nextStory(-1)),
+  close: eventHandler(dispatch, viewStory(null)),
+  next: eventHandler(dispatch, nextStory(1)),
+  previous: eventHandler(dispatch, nextStory(-1)),
 }))(Story)
