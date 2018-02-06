@@ -2,11 +2,11 @@
 export const debounce = (func, wait) => {
   let timeout = null
   return (...args) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => {
+    timeout && window.cancelAnimationFrame(timeout)
+    timeout = window.requestAnimationFrame(() => {
       timeout = null
       func(...args)
-    }, wait)
+    })
   }
 }
 
@@ -27,8 +27,7 @@ export const isIphone = () => navigator && /iphone/i.test(navigator.userAgent)
 // check if dom element not below the fold
 export const isVisible = element => {
   if (!element) return false
-  const domRect = element.getBoundingClientRect()
-  return window.innerHeight - domRect.top > 0
+  return window.scrollY + window.innerHeight > element.offsetTop
 }
 
 // scroll to element vertically. center window on element
@@ -56,6 +55,6 @@ export const eventHandler = (eventHandler, ...args) => e => {
   eventHandler(...args)
 }
 
-// :: Int -> String|Number -> String
-export const addMinutes = (minutes = 30) => timestamp =>
-  new Date(new Date(timestamp).valueOf() + 1000 * 60 * minutes).toISOString()
+// check if timestamp is stale
+export const staleAfter = timeout => timestamp =>
+  Date.now() - new Date(timestamp).valueOf() > timeout * 1000 * 60

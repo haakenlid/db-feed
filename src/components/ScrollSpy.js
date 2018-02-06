@@ -4,7 +4,8 @@ import { debounce } from 'utils/misc'
 class ScrollSpy extends React.Component {
   constructor(props) {
     super(props)
-    this.scrollHandler = debounce(event => props.onScroll(this.element), 100)
+    this.scrollHandler =
+      props.onScroll && debounce(event => props.onScroll(this.element), 100)
   }
   componentDidMount() {
     window.addEventListener('scroll', this.scrollHandler, {

@@ -65,6 +65,7 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
         fetching: false,
         offset: active.length,
         active: R.uniq(active),
+        storyIsOpen: state.storyIsOpen && items[state.openStory],
         items,
       }
     }

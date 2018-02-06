@@ -5,22 +5,24 @@ import * as feed from 'ducks/feed'
 import * as hosts from 'ducks/hosts'
 import * as tags from 'ducks/tags'
 import * as api from 'utils/api'
-import { preFetchImage, scrollToTop } from 'utils/misc'
+import { preFetchImage, scrollToTop, staleAfter } from 'utils/misc'
 
 const REHYDRATE = 'persist/REHYDRATE'
+const VISIBILITY_CHANGED = 'document/VISIBILITY_CHANGED'
 const FEED_PAGINATION = 12
 
 export default function* rootSaga() {
   yield takeLatest(feed.FEED_REQUESTED, fetchFeedSaga)
   yield takeEvery(feed.NEXT_STORY, nextStorySaga)
   yield takeLatest([tags.TOGGLE_TAG, hosts.TOGGLE_HOST], filtersChangedSaga)
-  yield takeLatest(REHYDRATE, initalizeSaga)
+  yield takeLatest(REHYDRATE, loadFeedSaga)
+  yield takeLatest(VISIBILITY_CHANGED, loadFeedSaga)
 }
 
 // runs after state has been hydrated
-function* initalizeSaga() {
-  const { active } = yield select(feed.selectFeed)
-  if (!active.length) yield put(feed.feedRequested())
+function* loadFeedSaga() {
+  const { timestamp } = yield select(feed.selectFeed)
+  if (!timestamp || staleAfter(10)(timestamp)) yield put(feed.feedRequested())
 }
 
 function* filtersChangedSaga() {

@@ -1,14 +1,9 @@
 import { createTransform } from 'redux-persist'
-
-const now = Date.now
-// const now = new Date().valueOf()
-
-const expired = timeout => timestamp =>
-  now() - new Date(timestamp).valueOf() > timeout * 1000 * 60
+import { staleAfter } from 'utils/misc'
 
 export default ({ timeout = 5, ...config }) => {
-  const isExpired = expired(timeout)
-  const inFn = (state, key) => ({ timestamp: now(), ...state })
+  const isExpired = staleAfter(timeout)
+  const inFn = (state, key) => ({ timestamp: Date.now(), ...state })
   const outFn = (state, key) =>
     state.timestamp && isExpired(state.timestamp) ? {} : state
 
