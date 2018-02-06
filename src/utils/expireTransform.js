@@ -8,7 +8,7 @@ const expired = timeout => timestamp =>
 
 export default ({ timeout = 5, ...config }) => {
   const isExpired = expired(timeout)
-  const inFn = (state, key) => ({ ...state, timestamp: now() })
+  const inFn = (state, key) => ({ timestamp: now(), ...state })
   const outFn = (state, key) =>
     state.timestamp && isExpired(state.timestamp) ? {} : state
 

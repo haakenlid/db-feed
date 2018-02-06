@@ -61,6 +61,7 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
       }
       return {
         ...state,
+        timestamp: payload.timestamp,
         fetching: false,
         offset: active.length,
         active: R.uniq(active),

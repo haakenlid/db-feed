@@ -4,6 +4,8 @@ import { htmlDecode } from 'utils/text'
 
 const BASE_URL = 'https://harvester.sol.no/get'
 
+const toHttps = R.replace(/^http:/, 'https:')
+
 // pluck and flatten data from backend
 const selectApiData = ({
   host,
@@ -18,7 +20,7 @@ const selectApiData = ({
   posted,
   host,
   url,
-  image,
+  image: toHttps(image || ''),
 })
 
 // convert data from api into the shape used in the redux state.
