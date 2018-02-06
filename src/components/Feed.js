@@ -8,7 +8,7 @@ import { isVisible } from 'utils/misc'
 import classNames from 'classnames'
 
 const Feed = ({ active, openStory, storyIsOpen, feedRequested }) => {
-  const scrollHandler = element => isVisible(element) && feedRequested()
+  const scrollHandler = element => isVisible(element) && feedRequested(true)
 
   return (
     <section className={classNames({ Feed: true, storyIsOpen })}>

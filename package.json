@@ -18,6 +18,7 @@
     "react-swipeable": "^4.2.0",
     "redux": "^3.7.2",
     "redux-persist": "^5.6.5",
+    "redux-persist-transform-expire": "0.0.2",
     "redux-saga": "^0.16.0"
   },
   "scripts": {

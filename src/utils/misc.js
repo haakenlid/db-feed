@@ -51,3 +51,7 @@ export const stopPropagation = (eventHandler, ...args) => e => {
   e.preventDefault()
   eventHandler(...args)
 }
+
+// :: Int -> String|Number -> String
+export const addMinutes = (minutes = 30) => timestamp =>
+  new Date(new Date(timestamp).valueOf() + 1000 * 60 * minutes).toISOString()

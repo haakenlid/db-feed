@@ -36,4 +36,12 @@ export const fetchFeed = params =>
     .then(response => response.json().then(json => ({ json, response })))
     .then(({ json, response }) => (response.ok ? json : Promise.reject(json)))
     .then(normalizeData)
-    .then(response => ({ response }), error => ({ error }))
+    .then(
+      items => ({
+        response: {
+          timestamp: new Date().toISOString(),
+          items,
+        },
+      }),
+      error => ({ error })
+    )

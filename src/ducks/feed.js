@@ -1,4 +1,5 @@
 import * as R from 'ramda'
+
 const SLICE = 'feed'
 const INITIAL_STATE = {
   active: [],
@@ -14,15 +15,19 @@ const INITIAL_STATE = {
 export const FEED_REQUESTED = 'feed/REQUESTED'
 export const FEED_RECEIVED = 'feed/RECEIVED'
 export const FEED_REQUEST_FAILED = 'feed/REQUEST_FAILED'
-export const FEED_RESET_OFFSET = 'feed/RESET_OFFSET'
 export const VIEW_STORY = 'feed/VIEW_STORY'
 export const NEXT_STORY = 'feed/NEXT_STORY'
 
 // action creators
-export const feedRequested = () => ({ type: FEED_REQUESTED })
-export const feedReceived = payload => ({ type: FEED_RECEIVED, payload })
+export const feedRequested = (append = false) => ({
+  type: FEED_REQUESTED,
+  payload: { append },
+})
+export const feedReceived = (response, append) => ({
+  type: FEED_RECEIVED,
+  payload: { append, ...response },
+})
 export const feedRequestFailed = error => ({ type: FEED_REQUEST_FAILED, error })
-export const feedResetOffset = () => ({ type: FEED_RESET_OFFSET })
 export const viewStory = id => ({
   type: VIEW_STORY,
   payload: { id },
@@ -48,25 +53,20 @@ export const selectOffset = state => {
 export default (state = INITIAL_STATE, { type, payload, error }) => {
   switch (type) {
     case FEED_RECEIVED: {
-      const items = R.merge(state.items, payload)
-      const keys = R.keys(payload)
-      let active = keys
-      if (state.offset > 0) {
-        active = R.uniq(R.concat(state.active, keys))
+      let items = payload.items
+      let active = R.keys(items)
+      if (payload.append) {
+        items = R.merge(state.items, items)
+        active = R.concat(state.active, active)
       }
       return {
         ...state,
         fetching: false,
-        items,
-        active,
         offset: active.length,
+        active: R.uniq(active),
+        items,
       }
     }
-    case FEED_RESET_OFFSET:
-      return {
-        ...state,
-        offset: 0,
-      }
     case FEED_REQUESTED:
       return {
         ...state,
