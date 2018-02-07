@@ -18,7 +18,7 @@ export const formatDate = (value, locale = norwayLocale) =>
 // :: number, string -> string
 export const textExtract = (maxLength, text) =>
   text
-    .replace(/.*: ?\d\dZ/, '') // strip metadata and timestamp in some stories
+    .replace(/^.{0,300}T\d\d: ?\d\d: ?\d\dZ/, '') // strip metadata and timestamp in some stories
     .substr(0, maxLength)
     .replace(/([.?])[^.?]*$/, '$1')
 
