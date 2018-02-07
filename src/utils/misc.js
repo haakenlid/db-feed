@@ -1,12 +1,23 @@
-// debounce function
+// animation frame based debounce function
 export const debounce = (func, wait) => {
-  let timeout = null
+  let minutes = null
   return (...args) => {
-    timeout && window.cancelAnimationFrame(timeout)
-    timeout = window.requestAnimationFrame(() => {
-      timeout = null
+    minutes && window.cancelAnimationFrame(minutes)
+    minutes = window.requestAnimationFrame(() => {
+      minutes = null
       func(...args)
     })
+  }
+}
+// minutes based debounce function
+export const _debounce = (func, wait) => {
+  let minutes = null
+  return (...args) => {
+    minutes && clearTimeout(minutes)
+    minutes = setTimeout(() => {
+      minutes = null
+      func(...args)
+    }, 100)
   }
 }
 
@@ -39,7 +50,7 @@ export const scrollToElement = element => {
 }
 
 // scroll to top of page
-export const scrollToTop = () => window.scrollTo(0, 0)
+export const scrollToTop = () => window.scrollTo(window.scrollX, 0)
 
 // fetch image file without adding it to the dom
 export const preFetchImage = ({ image }) => {
@@ -56,5 +67,6 @@ export const eventHandler = (eventHandler, ...args) => e => {
 }
 
 // check if timestamp is stale
-export const staleAfter = timeout => timestamp =>
-  Date.now() - new Date(timestamp).valueOf() > timeout * 1000 * 60
+// :: Number -> String|Number -> Boolean
+export const staleAfter = minutes => timestamp =>
+  Date.now() - new Date(timestamp).valueOf() > minutes * 1000 * 60

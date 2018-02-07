@@ -9,8 +9,8 @@ import { isVisible } from 'utils/misc'
 import classNames from 'classnames'
 
 const Feed = ({ active, fetching, openStory, storyIsOpen, feedRequested }) => {
-  const scrollHandler = element => isVisible(element) && feedRequested(true)
-
+  const scrollHandler = element =>
+    fetching || (isVisible(element) && feedRequested(true))
   return (
     <section className={classNames({ Feed: true, storyIsOpen })}>
       {active.map(id => (
@@ -20,7 +20,7 @@ const Feed = ({ active, fetching, openStory, storyIsOpen, feedRequested }) => {
           scrollTo={!storyIsOpen && id === openStory}
         />
       ))}
-      <ScrollSpy onScroll={fetching ? null : scrollHandler} />
+      <ScrollSpy onScroll={scrollHandler} />
       <LoadingIndicator />
       <VisibilitySpy />
     </section>
