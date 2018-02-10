@@ -21,7 +21,8 @@
     "react-test-renderer": "^16.2.0",
     "redux": "^3.7.2",
     "redux-persist": "^5.7.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "surge": "^0.19.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/ --recursive",
@@ -36,7 +37,6 @@
     "predeploy": "npm run build",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook -o public/storybook"
-
+    "build-storybook": "build-storybook -c .storybook -o build-storybook && surge -d sol-feed.surge.sh -p build-storybook"
   }
 }
