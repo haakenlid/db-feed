@@ -45,7 +45,7 @@ export const isVisible = element => {
 
 // scroll to element vertically. center window on element
 export const scrollToElement = element => {
-  if (!element) return
+  if (!(element && window.scrollTo)) return
   const offset = (window.innerHeight - element.offsetHeight) / 2
   const scrollTop = offset < 0 ? element.offsetTop : element.offsetTop - offset
   window.scrollTo(0, scrollTop)

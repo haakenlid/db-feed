@@ -18,7 +18,7 @@
     "react-swipeable": "^4.2.0",
     "react-test-renderer": "^16.2.0",
     "redux": "^3.7.2",
-    "redux-persist": "^5.6.5",
+    "redux-persist": "^5.7.0",
     "redux-saga": "^0.16.0"
   },
   "scripts": {
@@ -28,10 +28,10 @@
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "tags": "ctags -R src/",
+    "predeploy": "npm run build",
     "eject": "react-scripts eject"
   }
 }
