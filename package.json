@@ -1,8 +1,10 @@
 {
   "name": "newsfeed",
-  "homepage": "https://haakenlid.github.io/newsfeed",
   "version": "0.2.0",
   "private": true,
+  "author": "Håken Lid <haakenlid@google.com> (http://haken.no/)",
+  "homepage": "https://haakenlid.github.io/newsfeed",
+  "repository": "github:haakenlid/newsfeed",
   "dependencies": {
     "classnames": "^2.2.5",
     "date-fns": "^1.29.0",
@@ -18,7 +20,7 @@
     "react-swipeable": "^4.2.0",
     "react-test-renderer": "^16.2.0",
     "redux": "^3.7.2",
-    "redux-persist": "^5.6.5",
+    "redux-persist": "^5.7.0",
     "redux-saga": "^0.16.0"
   },
   "scripts": {
