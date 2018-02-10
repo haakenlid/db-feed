@@ -21,10 +21,10 @@ const Link = ({ children, ...props }) => (
 
 export const Story = ({
   url,
-  title,
-  description,
+  title = '[ingen tittel]',
+  description = '',
   image,
-  host,
+  host = 'example.news.com',
   content,
   posted,
   close,
@@ -50,7 +50,11 @@ export const Story = ({
           </div>
           <main>
             {description && <Lede>{textExtract(200, description)}</Lede>}
-            <div className="Dateline">publisert for {formatDate(posted)}</div>
+            <div className="Dateline">
+              {posted
+                ? `publisert for ${formatDate(posted)}`
+                : 'ukjent publiseringsdato'}
+            </div>
             <div className="body">
               {textExtract(350 - description.length, content)}
             </div>

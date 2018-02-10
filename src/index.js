@@ -13,9 +13,13 @@ import configureStore from './configureStore'
 import Page from 'components/Page'
 
 const { store, persistor } = configureStore()
+const rootElement = document.getElementById('root')
 
-const render = App =>
-  ReactDOM.render(
+const renderApp = App => {
+  const render = rootElement.hasChildNodes()
+    ? ReactDOM.hydrate
+    : ReactDOM.render
+  return render(
     <Provider store={store}>
       <AppContainer>
         <PersistGate loading={null} persistor={persistor}>
@@ -23,10 +27,11 @@ const render = App =>
         </PersistGate>
       </AppContainer>
     </Provider>,
-    document.getElementById('root')
+    rootElement
   )
+}
 
-render(Page)
-module.hot && module.hot.accept('components/Page', () => render(Page))
+renderApp(Page)
+module.hot && module.hot.accept('components/Page', () => renderApp(Page))
 
 registerServiceWorker()
