@@ -222,6 +222,7 @@ exports[`Page renders correctly 1`] = `
   >
     <a
       href="https://sol.no"
+      title="SOL.no"
     >
       <Logo
         host="sol.no"
@@ -312,8 +313,7 @@ exports[`Story renders correctly 1`] = `
         <div
           className="Dateline"
         >
-          publisert for 
-          rundt 48 år siden
+          publisert for rundt 48 år siden
         </div>
         <div
           className="body"
