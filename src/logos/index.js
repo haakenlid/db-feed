@@ -22,3 +22,8 @@ export const Logo = ({ host = 'example.com', ...props }) => {
     <span className="Logo fallback">{host}</span>
   )
 }
+
+export const hosts = {
+  logos: Object.keys(logos),
+  icons: Object.keys(icons),
+}
