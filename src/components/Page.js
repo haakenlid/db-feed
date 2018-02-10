@@ -12,7 +12,7 @@ const Page = () => (
   <div id="pageWrapper">
     <header className="pageHeader">
       <a href={SOL} title="SOL.no">
-        <Logo id="pageLogo" host="sol.no" />
+        <Logo id="pageLogo" host="los.no" />
       </a>
       <Filters />
       <a id="githubLink" href={REPO} title="source code">

@@ -12,8 +12,7 @@ const lorem =
 const Wrapper = ({ hosts, Component }) => (
   <section
     style={{
-      fontSize: '4em',
-      color: '#FFF',
+      fontSize: '5em',
       display: 'flex',
       flexFlow: 'column wrap',
       height: '10em',
@@ -22,7 +21,7 @@ const Wrapper = ({ hosts, Component }) => (
     {hosts.map(name => (
       <Component
         title={name}
-        style={{ backgroundColor: '#555', padding: '0.2em' }}
+        style={{ padding: '0.1em' }}
         key={name}
         host={name}
       />

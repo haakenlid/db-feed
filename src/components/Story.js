@@ -49,7 +49,7 @@ export const Story = ({
             </h1>
           </div>
           <main>
-            {description && <Lede>{textExtract(200, description)}</Lede>}
+            {description && <Lede>{textExtract(300, description)}</Lede>}
             <div className="Dateline">
               {posted
                 ? `publisert for ${formatDate(posted)}`

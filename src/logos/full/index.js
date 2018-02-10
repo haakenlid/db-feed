@@ -9,6 +9,7 @@ import dn from './Dn'
 import fvn from './Faedrelandsvennen'
 import nrk from './Nrk'
 import sol from './Sol'
+import los from './Los'
 import tv2 from './Tv2'
 import vg from './Vg'
 
@@ -22,6 +23,7 @@ export default {
   dagsavisen,
   dn,
   fvn,
+  los,
   nrk,
   sol,
   tv2,
