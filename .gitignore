@@ -5,9 +5,6 @@
 # production
 /build
 
-# compiled css
-*.css
-
 # misc
 tags
 .DS_Store
