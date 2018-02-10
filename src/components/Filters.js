@@ -26,7 +26,14 @@ const Tag = ({ name, active, ...props }) => (
   </div>
 )
 
-const Filters = ({ tags, hosts, toggleHost, toggleTag, onlyHost, onlyTag }) => (
+export const Filters = ({
+  tags,
+  hosts,
+  toggleHost,
+  toggleTag,
+  onlyHost,
+  onlyTag,
+}) => (
   <section className="Filters">
     <nav className="hosts">
       {Object.keys(hosts).map(name => (

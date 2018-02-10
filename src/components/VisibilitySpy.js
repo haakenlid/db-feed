@@ -1,12 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-const VISIBILITY_CHANGED = 'document/VISIBILITY_CHANGED'
-
-const visibilityChanged = visibility => ({
-  type: VISIBILITY_CHANGED,
-  payload: visibility,
-})
+import { visibilityChanged } from 'ducks/feed'
 
 class VisibilitySpy extends React.Component {
   constructor(props) {

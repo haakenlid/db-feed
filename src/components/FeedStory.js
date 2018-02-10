@@ -2,27 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { selectFeedItem, viewStory } from 'ducks/feed'
 import Brand from 'components/Brand'
-import { scrollToElement } from 'utils/misc'
 
-const FeedStory = ({
+export const FeedStory = ({
   viewStory,
-  id,
-  url,
   title,
   description,
   image,
   host,
-  content,
-  posted,
-  scrollTo,
+  refFunc,
+  id,
 }) => (
-  <article
-    ref={scrollTo ? scrollToElement : null}
-    className="FeedStory"
-    onClick={e => viewStory(id)}
-  >
+  <article ref={refFunc} className="FeedStory" onClick={e => viewStory(id)}>
     <div className="image" style={{ backgroundImage: `url(${image})` }}>
-      <Brand host={host} posted={posted} />
+      <Brand host={host} />
       <div className="spacer" />
       <h1>
         <span className="title">{title}</span>

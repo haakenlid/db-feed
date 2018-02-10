@@ -8,7 +8,7 @@ import { Logo, Icon } from 'logos'
 const REPO = 'https://github.com/haakenlid/db-feed'
 const SOL = 'https://sol.no'
 
-export default () => (
+const Page = () => (
   <div id="pageWrapper">
     <header className="pageHeader">
       <a href={SOL}>
@@ -26,3 +26,4 @@ export default () => (
     </main>
   </div>
 )
+export default Page

@@ -17,6 +17,7 @@ export const FEED_RECEIVED = 'feed/RECEIVED'
 export const FEED_REQUEST_FAILED = 'feed/REQUEST_FAILED'
 export const VIEW_STORY = 'feed/VIEW_STORY'
 export const NEXT_STORY = 'feed/NEXT_STORY'
+export const VISIBILITY_CHANGED = 'feed/VISIBILITY_CHANGED'
 
 // action creators
 export const feedRequested = (append = false) => ({
@@ -35,6 +36,10 @@ export const viewStory = id => ({
 export const nextStory = step => ({
   type: NEXT_STORY,
   payload: { step },
+})
+export const visibilityChanged = visibility => ({
+  type: VISIBILITY_CHANGED,
+  payload: visibility,
 })
 
 // selectors

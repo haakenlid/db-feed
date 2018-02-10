@@ -1,6 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { selectFeed, feedRequested } from 'ducks/feed'
 import classNames from 'classnames'
 
 class Cube extends React.Component {
@@ -27,7 +25,7 @@ class Cube extends React.Component {
   }
 }
 
-const Loader = ({ stalled }) => (
+const CubeGrid = ({ stalled }) => (
   <div className={classNames({ stalled, cubeGrid: true })}>
     {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => (
       <Cube n={n} key={n} stalled={stalled} />
@@ -35,13 +33,9 @@ const Loader = ({ stalled }) => (
   </div>
 )
 
-const LoadingIndicator = ({ fetching, active, feedRequested }) => (
-  <div
-    title="klikk for å laste på nytt"
-    className="LoadingIndicator"
-    onClick={() => feedRequested(true)}
-  >
-    <Loader stalled={!fetching} />
+const LoadingIndicator = ({ stalled, ...props }) => (
+  <div {...props} className="LoadingIndicator">
+    <CubeGrid stalled={stalled} />
   </div>
 )
-export default connect(selectFeed, { feedRequested })(LoadingIndicator)
+export default LoadingIndicator

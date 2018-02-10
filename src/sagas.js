@@ -1,62 +1,75 @@
 import * as R from 'ramda'
-import { select, takeEvery, takeLatest, call, put } from 'redux-saga/effects'
+import { select, takeLatest, call, put, all } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
+import { REHYDRATE } from 'redux-persist'
+
+import { preFetchImages, scrollToTop, staleAfter } from 'utils/misc'
+import * as api from 'utils/api'
 import * as feed from 'ducks/feed'
 import * as hosts from 'ducks/hosts'
 import * as tags from 'ducks/tags'
-import * as api from 'utils/api'
-import { preFetchImage, scrollToTop, staleAfter } from 'utils/misc'
 
-const REHYDRATE = 'persist/REHYDRATE'
-const VISIBILITY_CHANGED = 'document/VISIBILITY_CHANGED'
-const FEED_PAGINATION = 12
+const FEED_PAGINATION = 12 // number of items fetched from api in one request
+const EXPIRATION_MINUTES = 10 // cached feed items expiration timeout
+const DEBOUNCE_MILLISECONDS = 500 // filter change debounce time
+
+// Calculate query paramaters for api http request
+// :: State -> {k:v}
+export const selectFeedParameters = R.applySpec({
+  includeHosts: hosts.selectActiveHosts,
+  includeAnyTags: tags.selectActiveTags,
+  offset: feed.selectOffset,
+  limit: R.always(FEED_PAGINATION),
+  excludePaywall: R.T,
+  excludeDupes: R.always(95),
+})
 
 export default function* rootSaga() {
-  yield takeLatest(feed.FEED_REQUESTED, fetchFeedSaga)
-  yield takeEvery(feed.NEXT_STORY, nextStorySaga)
-  yield takeLatest([tags.TOGGLE_TAG, hosts.TOGGLE_HOST], filtersChangedSaga)
-  yield takeLatest(REHYDRATE, loadFeedSaga)
-  yield takeLatest(VISIBILITY_CHANGED, loadFeedSaga)
+  yield all([
+    takeLatest([feed.FEED_REQUESTED], fetchFeedSaga),
+    takeLatest([feed.NEXT_STORY], nextStorySaga),
+    takeLatest([tags.TOGGLE_TAG, hosts.TOGGLE_HOST], filtersChangedSaga),
+    takeLatest([feed.VISIBILITY_CHANGED, REHYDRATE], loadFeedSaga),
+    takeLatest([feed.FEED_RECEIVED], feedReceivedSaga),
+  ])
 }
 
-// runs after state has been hydrated
+export function* fetchFeedSaga(action) {
+  // Fetch new items from api
+  const { payload: { append } } = action
+  let params = yield select(selectFeedParameters)
+  if (!append) params = R.assoc('offset', 0, params)
+  const { response, error } = yield call(api.fetchFeed, params)
+  if (response) {
+    yield put(feed.feedReceived(response, append))
+  } else {
+    yield put(feed.feedRequestFailed(error))
+  }
+}
+
 function* loadFeedSaga() {
+  // Check if feed is stale and request new data from api if needed
   const { timestamp } = yield select(feed.selectFeed)
-  if (!timestamp || staleAfter(10)(timestamp)) yield put(feed.feedRequested())
+  const isStale = staleAfter(EXPIRATION_MINUTES)
+  if (!timestamp || isStale(timestamp)) yield put(feed.feedRequested())
 }
 
 function* filtersChangedSaga() {
-  // refetch feed when filter inputs are changed
-  const DEBOUNCE = 500
-  yield call(delay, DEBOUNCE)
+  // Refetch feed from api when filter values have been changed
+  yield call(delay, DEBOUNCE_MILLISECONDS) // debounce
   yield put(feed.feedRequested())
 }
 
 function* nextStorySaga() {
+  // Request more items if the user has swiped far enough
   const { active, openStory } = yield select(feed.selectFeed)
   if (active.length - R.indexOf(openStory, active) < FEED_PAGINATION / 2)
     yield put(feed.feedRequested(true))
 }
 
-const selectFeedParameters = state => ({
-  excludePaywall: true,
-  excludeDupes: 95,
-  includeHosts: hosts.selectActiveHosts(state),
-  includeAnyTags: tags.selectActiveTags(state),
-  offset: feed.selectOffset(state),
-  limit: FEED_PAGINATION,
-})
-
-function* fetchFeedSaga(action) {
-  const { payload: { append } } = action
-  const params = yield select(selectFeedParameters)
-  if (!append) params.offset = 0
-  const { response, error } = yield call(api.fetchFeed, params)
-  if (response) {
-    if (!append) yield call(scrollToTop)
-    yield put(feed.feedReceived(response, append))
-    yield call(R.map(preFetchImage), response)
-  } else {
-    yield put(feed.feedRequestFailed(error))
-  }
+function* feedReceivedSaga(action) {
+  // Scroll to top of page and prefetch images if needed
+  const { items, append } = action.payload
+  if (!append) yield call(scrollToTop)
+  yield call(preFetchImages, items)
 }

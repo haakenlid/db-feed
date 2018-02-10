@@ -1,3 +1,5 @@
+import * as R from 'ramda'
+
 // animation frame based debounce function
 export const debounce = (func, wait) => {
   let minutes = null
@@ -53,11 +55,12 @@ export const scrollToElement = element => {
 export const scrollToTop = () => window.scrollTo(window.scrollX, 0)
 
 // fetch image file without adding it to the dom
-export const preFetchImage = ({ image }) => {
+const preFetchImage = ({ image }) => {
   if (!image) return
   const im = new Image()
   im.src = image
 }
+export const preFetchImages = R.map(preFetchImage)
 
 // event handler wrapper
 export const eventHandler = (eventHandler, ...args) => e => {

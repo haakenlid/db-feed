@@ -7,7 +7,7 @@ import Chevron from 'components/Chevron'
 import Swipeable from 'react-swipeable'
 import { isPWA, eventHandler } from 'utils/misc'
 
-const Lede = ({ posted, ...props }) => <span className="lede" {...props} />
+const Lede = ({ ...props }) => <span className="lede" {...props} />
 
 const Link = ({ children, ...props }) => (
   <a
@@ -19,7 +19,7 @@ const Link = ({ children, ...props }) => (
   </a>
 )
 
-const Story = ({
+export const Story = ({
   url,
   title,
   description,
@@ -41,7 +41,7 @@ const Story = ({
       <div className="storyBackground" onClick={close}>
         <article className="Story">
           <div className="image" style={{ backgroundImage: `url(${image})` }}>
-            <Brand host={host} posted={posted} />
+            <Brand host={host} />
             <h1>
               <Link className="title" href={url}>
                 {title}
@@ -49,9 +49,7 @@ const Story = ({
             </h1>
           </div>
           <main>
-            {description && (
-              <Lede posted={posted}>{textExtract(200, description)}</Lede>
-            )}
+            {description && <Lede>{textExtract(200, description)}</Lede>}
             <div className="Dateline">publisert for {formatDate(posted)}</div>
             <div className="body">
               {textExtract(350 - description.length, content)}

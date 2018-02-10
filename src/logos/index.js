@@ -5,7 +5,7 @@ import './logos.css'
 
 const getComponent = (lib, hostname) => lib[hostname.replace('.no', '')]
 
-export const Icon = ({ host, ...props }) => {
+export const Icon = ({ host = 'example.com', ...props }) => {
   const Component = getComponent(icons, host)
   return Component ? (
     <Component className="Icon" {...props} />
@@ -14,7 +14,7 @@ export const Icon = ({ host, ...props }) => {
   )
 }
 
-export const Logo = ({ host, ...props }) => {
+export const Logo = ({ host = 'example.com', ...props }) => {
   const Component = getComponent(logos, host)
   return Component ? (
     <Component className="Logo" {...props} />

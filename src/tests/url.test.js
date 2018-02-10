@@ -1,4 +1,4 @@
-import { buildUrl } from './url'
+import { buildUrl } from 'utils/url'
 
 test('build url', () => {
   const url = 'http://example.com/get'

@@ -1,33 +1,28 @@
 import * as R from 'ramda'
 import { buildUrl } from './url'
-import { htmlDecode } from 'utils/text'
+import { cleanString } from 'utils/text'
 
-const BASE_URL = 'https://harvester.sol.no/get'
+export const BASE_URL = 'https://harvester.sol.no/get'
 
-const toHttps = R.replace(/^http:/, 'https:')
+const normalizeItem = R.pipe(
+  ({ host, posted, title, url, fields: { description, content, image } }) => ({
+    title,
+    description,
+    content,
+    posted,
+    host,
+    url,
+    image,
+  }),
+  R.map(cleanString),
+  R.over(R.lensProp('image'), R.replace(/^http:/, 'https:'))
+)
 
-// pluck and flatten data from backend
-const selectApiData = ({
-  host,
-  title,
-  posted,
-  url,
-  fields: { description, content, image },
-}) => ({
-  title,
-  description: htmlDecode(description),
-  content,
-  posted,
-  host,
-  url,
-  image: toHttps(image || ''),
-})
-
-// convert data from api into the shape used in the redux state.
+// pluck and flatten data from backend to suit the redux state
 export const normalizeData = R.pipe(
   R.prop('items'),
-  R.map(selectApiData),
-  R.indexBy(R.prop('url'))
+  R.map(normalizeItem),
+  R.indexBy(R.prop('url')) // turn array into object using `url` as key
 )
 
 // Use the Fetch API to get data from the backend.
@@ -36,14 +31,9 @@ export const normalizeData = R.pipe(
 export const fetchFeed = params =>
   fetch(buildUrl(BASE_URL, params))
     .then(response => response.json().then(json => ({ json, response })))
+    .catch(error => Promise.reject({ message: error.toString() })) // json serializable error
     .then(({ json, response }) => (response.ok ? json : Promise.reject(json)))
     .then(normalizeData)
-    .then(
-      items => ({
-        response: {
-          timestamp: new Date().toISOString(),
-          items,
-        },
-      }),
-      error => ({ error })
-    )
+    .then(R.objOf('items'))
+    .then(R.assoc('timestamp', new Date().toJSON()))
+    .then(response => ({ response }), error => ({ error }))
