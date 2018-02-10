@@ -1,12 +1,36 @@
+[![badge]][travis]
 # Newsfeed SPA
 
-Nyhets-feed med data fra sol.no
+## Demo:
+The app is available here: [newsfeed]
 
-Bygget med react, redux, redux-saga etc.
+## Usage:
+To install and run locally with hot reloading and compiling of scss
 
-app: [newsfeed]
+    npm install
+    npm start
 
-react-komponenter: [storybooks]
+## Running the test:
+
+    npm test
+
+## Story books
+Live demo of components: [storybooks]
+
+## Credits:
+This app was bootstrapped with [react-create-app].
+
+The backend data comes from [sol.no].
+
+The rest was made by me.
+
+## Licence:
+This project is licensed under the MIT License – see the LICENSE file for details.
+
 
 [storybooks]: https://sol-feed.surge.sh/
 [newsfeed]: https://haakenlid.github.io/newsfeed/
+[react-create-app]: https://github.com/facebook/create-react-app
+[sol.no]: https://sol.no
+[badge]: https://travis-ci.org/haakenlid/newsfeed.svg?branch=master
+[travis]: https://travis-ci.org/haakenlid/newsfeed
