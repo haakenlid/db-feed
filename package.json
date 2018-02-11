@@ -6,6 +6,7 @@
   "homepage": "https://haakenlid.github.io/newsfeed",
   "repository": "github:haakenlid/newsfeed",
   "dependencies": {
+    "@storybook/addon-storyshots": "^3.3.13",
     "@storybook/react": "^3.3.12",
     "babel-core": "^6.26.0",
     "classnames": "^2.2.5",

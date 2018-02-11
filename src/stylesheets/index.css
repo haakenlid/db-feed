@@ -267,57 +267,56 @@ h1 {
   display: inline; }
 
 .LoadingIndicator {
-  width: 100%;
-  font-size: 4rem; }
-  .LoadingIndicator .stopped {
-    color: white;
-    background-color: #95a9c4;
-    cursor: pointer; }
-    .LoadingIndicator .stopped div {
-      padding: 0.8rem;
-      font-size: 0.5em; }
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.8rem; }
 
 .cubeGrid {
+  font-size: 4rem;
+  margin: 0.5em;
   width: 3.1em;
   height: 3.1em;
   display: flex;
-  flex-flow: row wrap;
   justify-content: space-between;
-  margin: 1em auto; }
+  flex-flow: row wrap-reverse; }
   .cubeGrid .cube {
     width: 1em;
     height: 1em;
     transition: 0.5s background ease-out;
     transform: scale(1, 1);
-    background-color: #95a9c4;
-    float: left;
-    animation: cubeGridScaleDelay 990ms infinite ease-in-out; }
-    .cubeGrid .cube.quiet {
-      animation: none;
-      background-color: #ddd; }
+    animation: cubeGridScaleDelay 1200ms infinite ease-in-out; }
+    .cubeGrid .cube.isLoading {
+      background-color: #95a9c4; }
+    .cubeGrid .cube.isQuiet {
+      background-color: #ddd;
+      animation: none; }
       @media (hover: hover) {
-        .cubeGrid .cube.quiet:hover {
+        .cubeGrid .cube.isQuiet:hover {
           background-color: #e20613; } }
-  .cubeGrid.stalled {
-    cursor: pointer; }
-  .cubeGrid .cube7 {
+  .cubeGrid .cube-0 {
     animation-delay: 0ms; }
-  .cubeGrid .cube4,
-  .cubeGrid .cube8 {
-    animation-delay: 90ms; }
-  .cubeGrid .cube1,
-  .cubeGrid .cube5,
-  .cubeGrid .cube9 {
-    animation-delay: 180ms; }
-  .cubeGrid .cube2,
-  .cubeGrid .cube6 {
-    animation-delay: 270ms; }
-  .cubeGrid .cube3 {
+  .cubeGrid .cube-1 {
+    animation-delay: 120ms; }
+  .cubeGrid .cube-2 {
+    animation-delay: 240ms; }
+  .cubeGrid .cube-3 {
+    animation-delay: 120ms; }
+  .cubeGrid .cube-4 {
+    animation-delay: 240ms; }
+  .cubeGrid .cube-5 {
     animation-delay: 360ms; }
+  .cubeGrid .cube-6 {
+    animation-delay: 240ms; }
+  .cubeGrid .cube-7 {
+    animation-delay: 360ms; }
+  .cubeGrid .cube-8 {
+    animation-delay: 480ms; }
 
 @keyframes cubeGridScaleDelay {
-  5%,
-  75% {
+  10%,
+  70% {
     transform: scale(1, 1); }
   40% {
     transform: scale(0, 0); } }

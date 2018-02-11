@@ -1,40 +1,34 @@
 // based on: https://github.com/tobiasahlin/SpinKit
 
-$loaderSpeed: 90ms;
+$loaderSpeed: 1200ms;
 
 .LoadingIndicator {
-  width: 100%;
-  font-size: 4rem;
-  .stopped {
-    color: white;
-    background-color: $SolLightBlue;
-    cursor: pointer;
-    div {
-      padding: $padding;
-      font-size: 0.5em;
-    }
-  }
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $padding;
 }
 
 .cubeGrid {
+  font-size: 4rem;
+  margin: 0.5em;
   width: 3.1em;
   height: 3.1em;
   display: flex;
-  flex-flow: row wrap;
   justify-content: space-between;
-  margin: 1em auto;
-
   .cube {
     width: 1em;
     height: 1em;
     transition: 0.5s background ease-out;
     transform: scale(1, 1);
-    background-color: $SolLightBlue;
-    float: left;
-    animation: cubeGridScaleDelay $loaderSpeed * 11 infinite ease-in-out;
-    &.quiet {
-      animation: none;
+    animation: cubeGridScaleDelay $loaderSpeed infinite ease-in-out;
+    &.isLoading {
+      background-color: $SolLightBlue;
+    }
+    &.isQuiet {
       background-color: #ddd;
+      animation: none;
       @media (hover: hover) {
         &:hover {
           background-color: $SolRed;
@@ -42,33 +36,18 @@ $loaderSpeed: 90ms;
       }
     }
   }
-  &.stalled {
-    cursor: pointer;
-  }
-  .cube7 {
-    animation-delay: 0ms;
-  }
-  .cube4,
-  .cube8 {
-    animation-delay: $loaderSpeed * 1;
-  }
-  .cube1,
-  .cube5,
-  .cube9 {
-    animation-delay: $loaderSpeed * 2;
-  }
-  .cube2,
-  .cube6 {
-    animation-delay: $loaderSpeed * 3;
-  }
-  .cube3 {
-    animation-delay: $loaderSpeed * 4;
+  flex-flow: row wrap-reverse;
+  @for $n from 0 through 8 {
+    .cube-#{$n} {
+      $delay: floor($n / 3) + ($n % 3);
+      animation-delay: $loaderSpeed / 10 * $delay;
+    }
   }
 }
 
 @keyframes cubeGridScaleDelay {
-  5%,
-  75% {
+  10%,
+  70% {
     transform: scale(1, 1);
   }
   40% {

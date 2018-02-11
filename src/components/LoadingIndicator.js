@@ -1,41 +1,48 @@
+import * as R from 'ramda'
 import React from 'react'
 import classNames from 'classnames'
 
 class Cube extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { quiet: false }
+    this.state = {
+      isLoading: props.isLoading,
+      isQuiet: !props.isLoading,
+    }
     this.handleAnimate = this.handleAnimate.bind(this)
   }
-  handleAnimate(e) {
-    if (!this.props.stalled) return
-    this.setState({ quiet: true })
+  handleAnimate() {
+    if (this.props.isLoading) return
+    this.setState({ isLoading: false, isQuiet: true })
   }
-  componentWillReceiveProps({ stalled }) {
-    if (stalled) return
-    this.setState({ quiet: false })
+  componentWillReceiveProps({ isLoading }) {
+    if (!isLoading) return
+    this.setState({ isLoading: true, isQuiet: false })
   }
   render() {
     return (
       <div
-        className={classNames('cube', `cube${this.props.n}`, this.state)}
+        className={classNames('cube', `cube-${this.props.n}`, this.state)}
         onAnimationIteration={this.handleAnimate}
       />
     )
   }
 }
 
-const CubeGrid = ({ stalled }) => (
-  <div className={classNames({ stalled, cubeGrid: true })}>
-    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => (
-      <Cube n={n} key={n} stalled={stalled} />
-    ))}
+const CubeGrid = ({ isLoading }) => (
+  <div className={classNames({ isLoading, cubeGrid: true })}>
+    {R.map(n => <Cube n={n} key={n} isLoading={isLoading} />, R.range(0, 9))}
   </div>
 )
 
-const LoadingIndicator = ({ stalled, ...props }) => (
-  <div {...props} className="LoadingIndicator">
-    <CubeGrid stalled={stalled} />
+const LoadingIndicator = ({ children, isLoading, ...props }) => (
+  <div
+    {...props}
+    className="LoadingIndicator"
+    style={{ cursor: props.onClick ? 'pointer' : 'unset' }}
+  >
+    <CubeGrid isLoading={isLoading} />
+    {children}
   </div>
 )
 export default LoadingIndicator

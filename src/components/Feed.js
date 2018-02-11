@@ -28,7 +28,7 @@ export const Feed = ({
         />
       ))}
       <ScrollSpy onScroll={scrollHandler} />
-      <LoadingIndicator onClick={clickHandler} stalled={!fetching} />
+      <LoadingIndicator onClick={clickHandler} isLoading={fetching} />
       <VisibilitySpy />
     </section>
   )

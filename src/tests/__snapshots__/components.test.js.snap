@@ -28,8 +28,8 @@ exports[`Feed renders correctly 1`] = `
     onScroll={[Function]}
   />
   <LoadingIndicator
+    isLoading={undefined}
     onClick={[Function]}
-    stalled={true}
   />
   <Connect(VisibilitySpy) />
 </section>
@@ -168,45 +168,51 @@ exports[`GoToTop renders correctly 1`] = `
 exports[`LoadingIndicator renders correctly 1`] = `
 <div
   className="LoadingIndicator"
+  stalled={true}
+  style={
+    Object {
+      "cursor": "unset",
+    }
+  }
   title="click to reload"
 >
   <div
-    className="stalled cubeGrid"
+    className="cubeGrid"
   >
     <div
-      className="cube cube1"
+      className="cube cube-0 isQuiet"
       onAnimationIteration={[Function]}
     />
     <div
-      className="cube cube2"
+      className="cube cube-1 isQuiet"
       onAnimationIteration={[Function]}
     />
     <div
-      className="cube cube3"
+      className="cube cube-2 isQuiet"
       onAnimationIteration={[Function]}
     />
     <div
-      className="cube cube4"
+      className="cube cube-3 isQuiet"
       onAnimationIteration={[Function]}
     />
     <div
-      className="cube cube5"
+      className="cube cube-4 isQuiet"
       onAnimationIteration={[Function]}
     />
     <div
-      className="cube cube6"
+      className="cube cube-5 isQuiet"
       onAnimationIteration={[Function]}
     />
     <div
-      className="cube cube7"
+      className="cube cube-6 isQuiet"
       onAnimationIteration={[Function]}
     />
     <div
-      className="cube cube8"
+      className="cube cube-7 isQuiet"
       onAnimationIteration={[Function]}
     />
     <div
-      className="cube cube9"
+      className="cube cube-8 isQuiet"
       onAnimationIteration={[Function]}
     />
   </div>
