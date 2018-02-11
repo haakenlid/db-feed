@@ -1,26 +1,26 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Story } from 'components/Story'
-import { object } from '@storybook/addon-knobs'
+import { text } from '@storybook/addon-knobs'
 import placeholderImage from './26-kult-astroillustrasjon2_HL.jpg'
 import loremHipsum from 'lorem-hipsum'
 
 const sentences = n => loremHipsum({ count: n, units: 'sentences' })
 const words = n => loremHipsum({ count: n, units: 'words' })
 
-const baseProps = {
-  host: 'db',
-  title: 'Tumblr Williamsburg normcore asymmetrical street art',
-  description:
-    'Sriracha meggings artisan jean shorts cliche brunch Helvetica tote bag vinyl.',
-  content:
-    'Thundercats lomo art party tofu retro pork belly. Sustainable Schlitz asymmetrical craft beer kitsch tofu gluten-free pour-over banh mi tousled artisan cliche trust fund Cosby sweater Odd Future. Fingerstache mustache iPhone normcore banh mi pug lo-fi craft beer Vice mustache fixie pop-up.',
-  url: 'https://example.com/story',
-  posted: '1973-05-06',
-  image: placeholderImage,
-}
+const txt = 'Thundercats lomo art party tofu retro pork belly. Sustainable Schlitz asymmetrical craft beer kitsch tofu gluten-free pour-over banh mi tousled artisan cliche trust fund Cosby sweater Odd Future. Fingerstache mustache iPhone normcore banh mi pug lo-fi craft beer Vice mustache fixie pop-up.'
 
-storiesOf('Story', module).add('with props', () => {
-  const props = object('props', baseProps)
-  return <Story {...props} />
-})
+const lede ='Sriracha meggings artisan jean shorts cliche brunch Helvetica tote bag vinyl.'
+
+storiesOf('Story', module).addWithJSX('with props', () => {
+  const props = {
+    host: text('host', 'db'),
+    title: text('title', 'Tumblr Williamsburg normcore asymmetrical street art'),
+    description: text('description',lede),
+    content: text('content', txt),
+    url: text('url','https://example.com/story'),
+    posted: text('posted', '2018-02-04'),
+    image: text('image',placeholderImage ),
+  }
+  return <Story {...props}/>}
+)

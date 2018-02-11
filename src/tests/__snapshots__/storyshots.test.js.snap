@@ -63,11 +63,12 @@ exports[`Storyshots Logos all icons 1`] = `
     }
   }
 >
-  <span>
+  <span
+    title="abcnyheter"
+  >
     <svg
       className="Icon"
       host="abcnyheter"
-      title="abcnyheter"
       viewBox="0 0 180 140"
     >
       <path
@@ -75,11 +76,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="adressa"
+  >
     <svg
       className="Icon"
       host="adressa"
-      title="adressa"
       viewBox="0 0 120 140"
     >
       <path
@@ -87,11 +89,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="aftenposten"
+  >
     <svg
       className="Icon"
       host="aftenposten"
-      title="aftenposten"
       viewBox="0 0 140 140"
     >
       <path
@@ -102,11 +105,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="bt"
+  >
     <svg
       className="Icon"
       host="bt"
-      title="bt"
       viewBox="0 0 160 140"
     >
       <path
@@ -114,11 +118,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="dagbladet"
+  >
     <svg
       className="Icon"
       host="dagbladet"
-      title="dagbladet"
       viewBox="0 0 140 140"
     >
       <path
@@ -126,11 +131,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="dagsavisen"
+  >
     <svg
       className="Icon"
       host="dagsavisen"
-      title="dagsavisen"
       viewBox="0 0 160 140"
     >
       <path
@@ -138,11 +144,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="dn"
+  >
     <svg
       className="Icon"
       host="dn"
-      title="dn"
       viewBox="0 0 170 140"
     >
       <path
@@ -153,11 +160,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="fvn"
+  >
     <svg
       className="Icon"
       host="fvn"
-      title="fvn"
       viewBox="0 0 140 140"
     >
       <path
@@ -168,11 +176,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="github"
+  >
     <svg
       className="Icon"
       host="github"
-      title="github"
       viewBox="0 0 128 128"
     >
       <path
@@ -181,11 +190,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="nrk"
+  >
     <svg
       className="Icon"
       host="nrk"
-      title="nrk"
       viewBox="0 0 205 140"
     >
       <path
@@ -193,11 +203,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="aftenbladet"
+  >
     <svg
       className="Icon"
       host="aftenbladet"
-      title="aftenbladet"
       viewBox="0 0 120 140"
     >
       <path
@@ -205,11 +216,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="tv2"
+  >
     <svg
       className="Icon"
       host="tv2"
-      title="tv2"
       viewBox="0 0 120 140"
     >
       <path
@@ -217,11 +229,12 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="vg"
+  >
     <svg
       className="Icon"
       host="vg"
-      title="vg"
       viewBox="0 0 210 140"
     >
       <path
@@ -229,10 +242,11 @@ exports[`Storyshots Logos all icons 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="fallback"
+  >
     <span
       className="fallback Icon"
-      title="fallback"
     >
       fallback
     </span>
@@ -251,11 +265,12 @@ exports[`Storyshots Logos all logos 1`] = `
     }
   }
 >
-  <span>
+  <span
+    title="abcnyheter"
+  >
     <svg
       className="Logo"
       host="abcnyheter"
-      title="abcnyheter"
       viewBox="0 0 720 300"
     >
       <path
@@ -267,11 +282,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="adressa"
+  >
     <svg
       className="Logo"
       host="adressa"
-      title="adressa"
       viewBox="0 0 650 300"
     >
       <path
@@ -279,11 +295,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="aftenbladet"
+  >
     <svg
       className="Logo"
       host="aftenbladet"
-      title="aftenbladet"
       viewBox="0 0 950 300"
     >
       <path
@@ -291,11 +308,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="aftenposten"
+  >
     <svg
       className="Logo"
       host="aftenposten"
-      title="aftenposten"
       viewBox="0 0 600 300"
     >
       <path
@@ -303,11 +321,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="bt"
+  >
     <svg
       className="Logo"
       host="bt"
-      title="bt"
       viewBox="0 0 900 300"
     >
       <path
@@ -315,11 +334,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="dagbladet"
+  >
     <svg
       className="Logo"
       host="dagbladet"
-      title="dagbladet"
       viewBox="0 0 564.6 300"
     >
       <path
@@ -332,11 +352,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="dagsavisen"
+  >
     <svg
       className="Logo"
       host="dagsavisen"
-      title="dagsavisen"
       viewBox="0 0 300 300"
     >
       <path
@@ -353,11 +374,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="dn"
+  >
     <svg
       className="Logo"
       host="dn"
-      title="dn"
       viewBox="0 0 740 300"
     >
       <path
@@ -375,11 +397,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="fvn"
+  >
     <svg
       className="Logo"
       host="fvn"
-      title="fvn"
       viewBox="0 0 900 300"
     >
       <path
@@ -387,11 +410,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="los"
+  >
     <svg
       className="Logo"
       host="los"
-      title="los"
       viewBox="0 0 128 128"
     >
       <circle
@@ -406,11 +430,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="nrk"
+  >
     <svg
       className="Logo"
       host="nrk"
-      title="nrk"
       viewBox="0 0 400 300"
     >
       <path
@@ -423,11 +448,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="sol"
+  >
     <svg
       className="Logo"
       host="sol"
-      title="sol"
       viewBox="0 0 128 128"
     >
       <circle
@@ -442,11 +468,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="tv2"
+  >
     <svg
       className="Logo"
       host="tv2"
-      title="tv2"
       viewBox="0 0 153.45 300"
     >
       <path
@@ -472,11 +499,12 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="vg"
+  >
     <svg
       className="Logo"
       host="vg"
-      title="vg"
       viewBox="0 0 560 300"
     >
       <path
@@ -489,10 +517,11 @@ exports[`Storyshots Logos all logos 1`] = `
       />
     </svg>
   </span>
-  <span>
+  <span
+    title="fallback"
+  >
     <span
       className="fallback Logo"
-      title="fallback"
     >
       fallback
     </span>
@@ -601,7 +630,7 @@ exports[`Storyshots Story with props 1`] = `
         <div
           className="Dateline"
         >
-          publisert for nesten 45 år siden
+          publisert for 5 dager siden
         </div>
         <div
           className="body"

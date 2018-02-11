@@ -13,8 +13,8 @@ const list = (Component, choices) => () => {
   return (
     <section className="logoList" style={style}>
       {choices.map(name => (
-        <span key={name}>
-          <Component title={name} host={name} />
+        <span key={name} title={name}>
+          <Component host={name} />
         </span>
       ))}
     </section>
@@ -40,7 +40,7 @@ const logoList = [...hosts.logos, 'fallback']
 const iconList = [...hosts.icons, 'fallback']
 
 storiesOf('Logos', module)
-  .add('single logo', single(Logo, logoList))
-  .add('single icon', single(Icon, iconList))
-  .add('all logos', list(Logo, logoList))
-  .add('all icons', list(Icon, iconList))
+  .addWithJSX('single logo', single(Logo, logoList), {skip: 1})
+  .addWithJSX('single icon', single(Icon, iconList), {skip: 1})
+  .addWithJSX('all logos', list(Logo, logoList), {skip: 1})
+  .addWithJSX('all icons', list(Icon, iconList), {skip: 1})

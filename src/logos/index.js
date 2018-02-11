@@ -25,8 +25,9 @@ const logoFactory = (lib, baseClass) => ({
   )
 }
 
-export const Logo = logoFactory(logos, 'Logo')
-export const Icon = logoFactory(icons, 'Icon')
+// Loog and Icon must be declared as functions to get display name
+export const Logo = props => logoFactory(logos, 'Logo')(props)
+export const Icon = props => logoFactory(icons, 'Icon')(props)
 
 export const hosts = {
   logos: Object.keys(logos),
