@@ -6,7 +6,7 @@ import { checkA11y } from '@storybook/addon-a11y'
 import jsxAddon from 'storybook-addon-jsx'
 
 setOptions({
-  name: 'LOS newsfeed',
+  name: 'Newsfeed storybook',
   url: 'https://github.com/haakenlid/newsfeed',
   showStoriesPanel: true,
   showAddonPanel: true,
