@@ -13,8 +13,8 @@ const list = (Component, choices) => () => {
   return (
     <section className="logoList" style={style}>
       {choices.map(name => (
-        <span>
-          <Component title={name} key={name} host={name} />
+        <span key={name}>
+          <Component title={name} host={name} />
         </span>
       ))}
     </section>
