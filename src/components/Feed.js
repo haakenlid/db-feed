@@ -11,7 +11,7 @@ import classNames from 'classnames'
 export const Feed = ({
   active = [],
   fetching,
-  openStory,
+  currentStory,
   storyIsOpen,
   feedRequested,
 }) => {
@@ -24,7 +24,7 @@ export const Feed = ({
         <FeedStory
           key={id}
           id={id}
-          refFunc={!storyIsOpen && id === openStory ? scrollToElement : null}
+          refFunc={!storyIsOpen && id === currentStory ? scrollToElement : null}
         />
       ))}
       <ScrollSpy onScroll={scrollHandler} />

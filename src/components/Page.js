@@ -11,7 +11,7 @@ const SOL = 'https://sol.no'
 const Page = () => (
   <div id="pageWrapper">
     <header className="pageHeader">
-      <a href={SOL} title="SOL.no">
+      <a href={SOL} title="sol.no">
         <Logo id="pageLogo" host="los.no" />
       </a>
       <Filters />

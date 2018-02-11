@@ -40,6 +40,7 @@
     "predeploy": "npm run build",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook -o build-storybook && surge -d sol-feed.surge.sh -p build-storybook"
+    "build-sb": "rm -fr build/* && build-storybook -c .storybook -o build",
+    "deploy-sb": "npm run build-sb && surge -d sol-feed.surge.sh -p build"
   }
 }

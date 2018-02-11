@@ -62,8 +62,8 @@ function* filtersChangedSaga() {
 
 function* nextStorySaga() {
   // Request more items if the user has swiped far enough
-  const { active, openStory } = yield select(feed.selectFeed)
-  if (active.length - R.indexOf(openStory, active) < FEED_PAGINATION / 2)
+  const { active, currentStory } = yield select(feed.selectFeed)
+  if (active.length - R.indexOf(currentStory, active) < FEED_PAGINATION / 2)
     yield put(feed.feedRequested(true))
 }
 

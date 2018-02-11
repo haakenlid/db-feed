@@ -4,7 +4,7 @@ const SLICE = 'feed'
 const INITIAL_STATE = {
   active: [],
   items: {},
-  openStory: null,
+  currentStory: null,
   storyIsOpen: false,
   error: null,
   fetching: false,
@@ -46,7 +46,7 @@ export const visibilityChanged = visibility => ({
 export const selectFeed = R.prop(SLICE)
 export const selectOpenStory = R.pipe(
   selectFeed,
-  ({ items, openStory, storyIsOpen }) => (storyIsOpen ? items[openStory] : {})
+  ({ items, currentStory, storyIsOpen }) => (storyIsOpen ? items[currentStory] : {})
 )
 export const selectFeedItem = key =>
   R.pipe(selectFeed, R.prop('items'), R.prop(key))
@@ -60,9 +60,14 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
     case FEED_RECEIVED: {
       let items = payload.items
       let active = R.keys(items)
+      let { currentStory, storyIsOpen } = state
       if (payload.append) {
         items = R.merge(state.items, items)
         active = R.concat(state.active, active)
+      } else if (storyIsOpen) {
+        let openItem = items[currentStory] || state.items[currentStory]
+        if (openItem) items[currentStory] = openItem
+        else storyIsOpen = false
       }
       return {
         ...state,
@@ -70,8 +75,8 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
         fetching: false,
         offset: active.length,
         active: R.uniq(active),
-        storyIsOpen: state.storyIsOpen && items[state.openStory],
         items,
+        storyIsOpen,
       }
     }
     case FEED_REQUESTED:
@@ -82,17 +87,17 @@ export default (state = INITIAL_STATE, { type, payload, error }) => {
     case VIEW_STORY:
       return {
         ...state,
-        openStory: payload.id || state.openStory,
+        currentStory: payload.id || state.currentStory,
         storyIsOpen: Boolean(payload.id),
       }
     case NEXT_STORY: {
       const { step } = payload
-      const { openStory, active } = state
-      let index = R.indexOf(openStory, active) + step
+      const { currentStory, active } = state
+      let index = R.indexOf(currentStory, active) + step
       const newStory = active[index]
       return {
         ...state,
-        openStory: newStory || openStory,
+        currentStory: newStory || currentStory,
         storyIsOpen: Boolean(newStory),
       }
     }

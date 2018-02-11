@@ -21,11 +21,11 @@ const renderApp = App => {
     : ReactDOM.render
   return render(
     <Provider store={store}>
-      <AppContainer>
-        <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
+        <AppContainer>
           <App />
-        </PersistGate>
-      </AppContainer>
+        </AppContainer>
+      </PersistGate>
     </Provider>,
     rootElement
   )
