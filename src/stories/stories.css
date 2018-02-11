@@ -1,0 +1,13 @@
+.logoList {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: start;
+  height: 100vh;
+  padding: 1rem;
+}
+.logoList span {
+  padding: 0.5rem;
+}
+.single {
+  padding: 1rem;
+}

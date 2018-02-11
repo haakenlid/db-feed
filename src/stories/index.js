@@ -1,4 +1,5 @@
 import 'stylesheets/index.css'
+import './stories.css'
 import './icons'
 import './story'
 import './loader'

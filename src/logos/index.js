@@ -1,27 +1,32 @@
 import React from 'react'
 import icons from './icons'
 import logos from './full'
+import classNames from 'classnames'
 import './logos.css'
 
-const getComponent = (lib, hostname) => lib[hostname.replace('.no', '')]
+const Fallback = ({ host, className, ...props }) => (
+  <span className={classNames('fallback', className)} {...props}>
+    {host}
+  </span>
+)
 
-export const Icon = ({ host = 'example.com', ...props }) => {
-  const Component = getComponent(icons, host)
-  return Component ? (
-    <Component className="Icon" {...props} />
-  ) : (
-    <span className="Icon fallback">{host}</span>
+const logoFactory = (lib, baseClass) => ({
+  host = 'example.com',
+  className = '',
+  ...props
+}) => {
+  const Component = lib[host] || lib[host.replace('.no', '')] || Fallback
+  return (
+    <Component
+      className={classNames(baseClass, className)}
+      {...props}
+      host={host}
+    />
   )
 }
 
-export const Logo = ({ host = 'example.com', ...props }) => {
-  const Component = getComponent(logos, host)
-  return Component ? (
-    <Component className="Logo" {...props} />
-  ) : (
-    <span className="Logo fallback">{host}</span>
-  )
-}
+export const Logo = logoFactory(logos, 'Logo')
+export const Icon = logoFactory(icons, 'Icon')
 
 export const hosts = {
   logos: Object.keys(logos),

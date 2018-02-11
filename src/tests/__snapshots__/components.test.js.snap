@@ -6,6 +6,7 @@ exports[`Brand renders correctly 1`] = `
 >
   <svg
     className="Logo"
+    host="dagbladet"
     viewBox="0 0 564.6 300"
   >
     <path
@@ -52,7 +53,7 @@ exports[`FeedStory renders correctly 1`] = `
       className="Brand"
     >
       <span
-        className="Logo fallback"
+        className="fallback Logo"
       >
         newspaper.com
       </span>
@@ -85,7 +86,7 @@ exports[`Filters renders correctly 1`] = `
       title="skjul saker fra ap.no"
     >
       <span
-        className="Icon fallback"
+        className="fallback Icon"
       >
         ap
       </span>
@@ -97,7 +98,7 @@ exports[`Filters renders correctly 1`] = `
       title="skjul saker fra db.no"
     >
       <span
-        className="Icon fallback"
+        className="fallback Icon"
       >
         db
       </span>
@@ -110,6 +111,7 @@ exports[`Filters renders correctly 1`] = `
     >
       <svg
         className="Icon"
+        host="vg"
         viewBox="0 0 210 140"
       >
         <path
@@ -230,7 +232,7 @@ exports[`Page renders correctly 1`] = `
       href="https://sol.no"
       title="sol.no"
     >
-      <Logo
+      <Unknown
         host="los.no"
         id="pageLogo"
       />
@@ -241,7 +243,7 @@ exports[`Page renders correctly 1`] = `
       id="githubLink"
       title="source code"
     >
-      <Icon
+      <Unknown
         host="github"
       />
     </a>
@@ -291,6 +293,7 @@ exports[`Story renders correctly 1`] = `
         >
           <svg
             className="Logo"
+            host="bt.no"
             viewBox="0 0 900 300"
           >
             <path
