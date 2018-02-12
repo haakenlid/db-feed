@@ -3,37 +3,38 @@
   flex-direction: row;
   flex-flow: wrap;
   padding-left: $padding;
-  .FeedStory {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    flex-grow: 1;
-    flex-basis: auto;
-    width: 25em;
-    height: 20em;
-    padding: $padding $padding 0 0;
-    h1 {
-      font-size: 2em;
-    }
-    @media (hover: hover) {
-      &:hover {
-        h1 .title {
-          background-color: $SolBlue;
-        }
+}
+
+.FeedStory {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  flex-grow: 1;
+  flex-basis: auto;
+  width: 25em;
+  height: 20em;
+  padding: $padding $padding 0 0;
+  h1 {
+    font-size: 2em;
+  }
+  @media (hover: hover) {
+    &:hover {
+      h1 .title {
+        background-color: $SolBlue;
       }
     }
   }
-  @media screen and (max-width: $smallScreen) {
-    padding-left: 0;
-    &.storyIsOpen {
-      height: 10vh;
-      position: relative;
-      overflow: hidden;
-    }
-    .FeedStory {
-      padding: $padding 0 0 0;
-      width: 100vw;
-      font-size: 0.8rem;
-    }
+}
+@media screen and (max-width: $smallScreen) {
+  padding-left: 0;
+  &.storyIsOpen {
+    height: 10vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .FeedStory {
+    padding: $padding 0 0 0;
+    width: 100vw;
+    font-size: 0.8rem;
   }
 }

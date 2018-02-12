@@ -134,31 +134,32 @@ h1 {
   flex-direction: row;
   flex-flow: wrap;
   padding-left: 0.8rem; }
-  .Feed .FeedStory {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    flex-grow: 1;
-    flex-basis: auto;
-    width: 25em;
-    height: 20em;
-    padding: 0.8rem 0.8rem 0 0; }
-    .Feed .FeedStory h1 {
-      font-size: 2em; }
-    @media (hover: hover) {
-      .Feed .FeedStory:hover h1 .title {
-        background-color: #455c7b; } }
-  @media screen and (max-width: 700px) {
-    .Feed {
-      padding-left: 0; }
-      .Feed.storyIsOpen {
-        height: 10vh;
-        position: relative;
-        overflow: hidden; }
-      .Feed .FeedStory {
-        padding: 0.8rem 0 0 0;
-        width: 100vw;
-        font-size: 0.8rem; } }
+
+.FeedStory {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  flex-grow: 1;
+  flex-basis: auto;
+  width: 25em;
+  height: 20em;
+  padding: 0.8rem 0.8rem 0 0; }
+  .FeedStory h1 {
+    font-size: 2em; }
+  @media (hover: hover) {
+    .FeedStory:hover h1 .title {
+      background-color: #455c7b; } }
+
+@media screen and (max-width: 700px) {
+  padding-left: 0;
+  .storyIsOpen {
+    height: 10vh;
+    position: relative;
+    overflow: hidden; }
+  .FeedStory {
+    padding: 0.8rem 0 0 0;
+    width: 100vw;
+    font-size: 0.8rem; } }
 
 .storyBackground {
   background-color: rgba(0, 0, 0, 0.8);

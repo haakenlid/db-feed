@@ -11,6 +11,7 @@ class StoryWrapper extends React.Component {
       title: 'click the "random" button to generate random content',
       description: 'You can find the button in the Knobs panel to the right.',
       url: '#',
+      ...props,
     }
   }
   changeProps() {

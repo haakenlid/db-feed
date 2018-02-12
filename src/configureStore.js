@@ -19,10 +19,12 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2, // use initialState of slice if expired
 }
 
+const getReducer = () => combineReducers({ feed, tags, hosts })
+
+// default export for full app
 export default initialState => {
   const sagaMiddleware = createSagaMiddleware()
-  const rootReducer = combineReducers({ feed, tags, hosts })
-  const reducer = persistReducer(persistConfig, rootReducer)
+  const reducer = persistReducer(persistConfig, getReducer())
   const composeEnhancers = // use redux devtools if available
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   const store = createStore(
@@ -34,3 +36,7 @@ export default initialState => {
   sagaMiddleware.run(rootSaga)
   return { store, persistor }
 }
+
+// simple store without middleware for storybook
+export const simpleConfigureStore = initialState =>
+  createStore(getReducer(), initialState)

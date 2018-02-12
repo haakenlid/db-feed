@@ -40,7 +40,7 @@ const logoList = [...hosts.logos, 'fallback']
 const iconList = [...hosts.icons, 'fallback']
 
 storiesOf('Logos', module)
-  .addWithJSX('single logo', single(Logo, logoList), {skip: 1})
-  .addWithJSX('single icon', single(Icon, iconList), {skip: 1})
-  .addWithJSX('all logos', list(Logo, logoList), {skip: 1})
-  .addWithJSX('all icons', list(Icon, iconList), {skip: 1})
+  .addWithJSX('all logos', list(Logo, logoList), { skip: 1 })
+  .addWithJSX('single logo', single(Logo, logoList), { skip: 1 })
+  .addWithJSX('all icons', list(Icon, iconList), { skip: 1 })
+  .addWithJSX('single icon', single(Icon, iconList), { skip: 1 })

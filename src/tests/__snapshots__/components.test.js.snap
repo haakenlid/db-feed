@@ -225,29 +225,6 @@ exports[`Page renders correctly 1`] = `
 <div
   id="pageWrapper"
 >
-  <header
-    className="pageHeader"
-  >
-    <a
-      href="https://sol.no"
-      title="sol.no"
-    >
-      <Unknown
-        host="los.no"
-        id="pageLogo"
-      />
-    </a>
-    <Connect(Component) />
-    <a
-      href="https://github.com/haakenlid/db-feed"
-      id="githubLink"
-      title="source code"
-    >
-      <Unknown
-        host="github"
-      />
-    </a>
-  </header>
   <Unknown />
   <main
     className="Page"

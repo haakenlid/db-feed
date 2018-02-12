@@ -7,6 +7,7 @@
   "repository": "github:haakenlid/newsfeed",
   "dependencies": {
     "@storybook/addon-a11y": "^3.3.13",
+    "@storybook/addon-actions": "^3.3.13",
     "@storybook/addon-knobs": "^3.3.13",
     "@storybook/addon-options": "^3.3.13",
     "@storybook/addon-storyshots": "^3.3.13",
