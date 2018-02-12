@@ -71,7 +71,7 @@ h1 {
       .pageHeader .Filters .hosts .Tag,
       .pageHeader .Filters .hosts .Host {
         padding: 0.2rem 0.4rem;
-        color: #8f9db0;
+        color: #a2aebd;
         cursor: pointer; }
         .pageHeader .Filters .tags .Tag.active,
         .pageHeader .Filters .tags .Host.active,
