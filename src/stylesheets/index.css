@@ -37,86 +37,96 @@ h1 {
   background-size: cover;
   background-position: center; }
 
-.pageHeader {
+.Header {
   position: sticky;
-  z-index: 100;
-  top: 0;
   display: flex;
-  color: white;
   user-select: none;
-  background-color: #455c7b;
+  top: 0;
+  z-index: 100;
+  color: white;
   padding: 0.5rem 1rem;
+  background-color: #455c7b;
   justify-content: space-between;
   align-items: center; }
-  .pageHeader #pageLogo {
+  .Header #pageLogo {
     font-size: 4em; }
-  .pageHeader #githubLink {
+  .Header #githubLink {
     font-size: 4em;
     line-height: 1;
     height: 1em;
     width: 1em;
     color: #374a62; }
-    .pageHeader #githubLink:hover {
+    .Header #githubLink:hover {
       color: #a2aebd; }
-  .pageHeader .Filters {
-    font-size: 1.2rem; }
-    .pageHeader .Filters .tags,
-    .pageHeader .Filters .hosts {
-      font-weight: bold;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between; }
-      .pageHeader .Filters .tags .Tag,
-      .pageHeader .Filters .tags .Host,
-      .pageHeader .Filters .hosts .Tag,
-      .pageHeader .Filters .hosts .Host {
-        padding: 0.2rem 0.4rem;
-        color: #a2aebd;
-        cursor: pointer; }
-        .pageHeader .Filters .tags .Tag.active,
-        .pageHeader .Filters .tags .Host.active,
-        .pageHeader .Filters .hosts .Tag.active,
-        .pageHeader .Filters .hosts .Host.active {
-          color: #eee; }
-        .pageHeader .Filters .tags .Tag:hover,
-        .pageHeader .Filters .tags .Host:hover,
-        .pageHeader .Filters .hosts .Tag:hover,
-        .pageHeader .Filters .hosts .Host:hover {
-          filter: drop-shadow(0 0 0.2rem black); }
-      .pageHeader .Filters .tags .Host,
-      .pageHeader .Filters .hosts .Host {
-        line-height: 1;
-        font-size: 2em; }
   @media screen and (max-width: 700px), (max-height: 700px) {
-    .pageHeader {
+    .Header {
       flex-direction: column;
       position: relative; }
-      .pageHeader .Filters .hosts {
-        justify-content: space-around;
-        font-size: 1.5em;
-        padding: 0.5rem;
-        padding-bottom: 0; }
-      .pageHeader .Filters .tags {
-        justify-content: center;
-        font-size: 1.5em;
-        padding: 0.5rem; }
-      .pageHeader #githubLink {
+      .Header #githubLink {
         display: none; } }
+
+.Filters {
+  font-size: 1.3rem; }
+  .Filters .tags,
+  .Filters .hosts {
+    font-weight: bold;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between; }
+    .Filters .tags .Tag,
+    .Filters .tags .Host,
+    .Filters .hosts .Tag,
+    .Filters .hosts .Host {
+      padding: 0.2rem 0.3rem;
+      color: #a2aebd;
+      cursor: pointer; }
+      .Filters .tags .Tag:hover,
+      .Filters .tags .Host:hover,
+      .Filters .hosts .Tag:hover,
+      .Filters .hosts .Host:hover {
+        filter: drop-shadow(0 0 0.2rem black); }
+      .Filters .tags .Tag.active,
+      .Filters .tags .Host.active,
+      .Filters .hosts .Tag.active,
+      .Filters .hosts .Host.active {
+        color: #eee; }
+    .Filters .tags .Host,
+    .Filters .hosts .Host {
+      line-height: 0.7;
+      font-size: 2em; }
+
+@media screen and (min-width: 700px) and (max-width: 800px), (min-height: 700px) and (max-width: 800px) {
+  .Filters .tags .Host,
+  .Filters .hosts .Host {
+    padding: 0.1rem;
+    font-size: 1.8em; } }
+  @media screen and (max-width: 700px), (max-height: 700px) {
+    .Filters .hosts {
+      justify-content: space-around;
+      padding: 0.5rem;
+      padding-bottom: 0; }
+    .Filters .tags {
+      font-size: 1.1em;
+      justify-content: center;
+      padding: 0.5rem; } }
   @media screen and (max-width: 400px), (max-height: 400px) {
-    .pageHeader .Filters {
-      font-size: 1rem; } }
+    .Filters {
+      font-size: 1.1rem; } }
 
 .GoToTop {
+  display: none;
   font-size: 2rem;
   position: fixed;
   z-index: 10;
-  display: none;
   top: 0;
   left: 0;
   right: 0;
   padding: 0.8rem;
   cursor: pointer;
   justify-content: center; }
+  @media screen and (max-width: 700px), (max-height: 700px) {
+    .GoToTop {
+      display: flex; } }
   .GoToTop svg {
     padding: 0.35em;
     width: 1em;
@@ -125,9 +135,6 @@ h1 {
     background-color: #e20613;
     box-shadow: 0 0.1em 0.2em 0 rgba(0, 0, 0, 0.4);
     fill: white; }
-  @media screen and (max-width: 700px), (max-height: 700px) {
-    .GoToTop {
-      display: flex; } }
 
 .Feed {
   display: flex;
@@ -147,19 +154,20 @@ h1 {
   .FeedStory h1 {
     font-size: 2em; }
   @media (hover: hover) {
-    .FeedStory:hover h1 .title {
+    .FeedStory:hover .title {
       background-color: #455c7b; } }
 
-@media screen and (max-width: 700px) {
-  padding-left: 0;
-  .storyIsOpen {
-    height: 10vh;
-    position: relative;
-    overflow: hidden; }
+@media screen and (max-width: 700px), (max-height: 700px) {
+  .Feed {
+    padding-left: 0; }
   .FeedStory {
     padding: 0.8rem 0 0 0;
     width: 100vw;
-    font-size: 0.8rem; } }
+    font-size: 0.8rem; }
+  .storyBackground + .Feed {
+    height: 10vh;
+    position: relative;
+    overflow: hidden; } }
 
 .storyBackground {
   background-color: rgba(0, 0, 0, 0.8);
@@ -234,38 +242,36 @@ h1 {
     .Story .lede,
     .Story .Dateline {
       margin-bottom: 0.4rem; } }
-
-.navigate {
-  display: flex;
-  color: white;
-  text-align: center;
-  user-select: none; }
-  .navigate .ExternalLink,
-  .navigate .back,
-  .navigate .forward {
-    background-color: #202b3a;
-    width: 1em;
-    cursor: pointer;
-    padding: 0.5em;
-    border: 0.8rem solid white; }
-    .navigate .ExternalLink:hover,
-    .navigate .back:hover,
-    .navigate .forward:hover {
-      background-color: #e20613; }
-  .navigate .ExternalLink {
-    font-weight: bold;
-    background-color: #777;
-    border-left: none;
-    border-right: none;
+  .Story .navigate {
+    display: flex;
     color: white;
-    flex: 1; }
-  .navigate .back .Chevron {
-    transform: scale(-1, 1); }
-
-.Chevron {
-  vertical-align: -15%;
-  fill: currentColor;
-  display: inline; }
+    text-align: center;
+    user-select: none; }
+    .Story .navigate .ExternalLink,
+    .Story .navigate .back,
+    .Story .navigate .forward {
+      background-color: #202b3a;
+      width: 1em;
+      cursor: pointer;
+      padding: 0.5em;
+      border: 0.8rem solid white; }
+      .Story .navigate .ExternalLink:hover,
+      .Story .navigate .back:hover,
+      .Story .navigate .forward:hover {
+        background-color: #e20613; }
+    .Story .navigate .ExternalLink {
+      font-weight: bold;
+      background-color: #777;
+      border-left: none;
+      border-right: none;
+      color: white;
+      flex: 1; }
+    .Story .navigate .Chevron {
+      vertical-align: -15%;
+      fill: currentColor;
+      display: inline; }
+    .Story .navigate .back .Chevron {
+      transform: scale(-1, 1); }
 
 .LoadingIndicator {
   width: 100%;

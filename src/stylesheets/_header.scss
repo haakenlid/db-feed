@@ -1,12 +1,12 @@
-.pageHeader {
+.Header {
   position: sticky;
-  z-index: 100;
-  top: 0;
   display: flex;
-  color: white;
   user-select: none;
-  background-color: $SolBlue;
+  top: 0;
+  z-index: 100;
+  color: white;
   padding: 0.5rem 1rem;
+  background-color: $SolBlue;
   justify-content: space-between;
   align-items: center;
   #pageLogo {
@@ -22,64 +22,70 @@
       color: mix($SolBlue, white, 50);
     }
   }
-  .Filters {
-    font-size: 1.2rem;
-    .tags,
-    .hosts {
-      font-weight: bold;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-      .Tag,
-      .Host {
-        padding: 0.2rem 0.4rem;
-        color: mix($SolBlue, white, 50);
-        cursor: pointer;
-        &.active {
-          color: #eee;
-        }
-        &:hover {
-          filter: drop-shadow(0 0 0.2rem darken($SolBlue, 40));
-        }
-      }
-      .Host {
-        line-height: 1;
-        font-size: 2em;
-      }
-    }
-  }
-  @media screen and (max-width: $smallScreen), (max-height: $smallScreen) {
+  @include smaller-than(M) {
     flex-direction: column;
     position: relative;
-    .Filters {
-      .hosts {
-        justify-content: space-around;
-        font-size: 1.5em;
-        padding: 0.5rem;
-        padding-bottom: 0;
-      }
-      .tags {
-        justify-content: center;
-        font-size: 1.5em;
-        padding: 0.5rem;
-      }
-    }
     #githubLink {
       display: none;
     }
   }
-  @media screen and (max-width: $verySmallScreen),
-    (max-height: $verySmallScreen) {
-    .Filters {
-      font-size: 1rem;
+}
+.Filters {
+  font-size: 1.3rem;
+  .tags,
+  .hosts {
+    font-weight: bold;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    .Tag,
+    .Host {
+      padding: 0.2rem 0.3rem;
+      color: mix($SolBlue, white, 50);
+      cursor: pointer;
+      &:hover {
+        filter: drop-shadow(0 0 0.2rem darken($SolBlue, 40));
+      }
+      &.active {
+        color: #eee;
+      }
+    }
+    .Host {
+      line-height: 0.7;
+      font-size: 2em;
+      @include larger-than(M) {
+        @media (max-width: 800px) {
+          padding: 0.1rem;
+          font-size: 1.8em;
+        }
+      }
     }
   }
+  @include smaller-than(M) {
+    .hosts {
+      justify-content: space-around;
+      padding: 0.5rem;
+      padding-bottom: 0;
+    }
+    .tags {
+      font-size: 1.1em;
+      justify-content: center;
+      padding: 0.5rem;
+    }
+  }
+  @include smaller-than(S) {
+    font-size: 1.1rem;
+  }
 }
+
 .GoToTop {
+  display: none;
+  @include smaller-than(M) {
+    display: flex;
+  }
   font-size: 2rem;
   position: fixed;
   z-index: 10;
-  display: none;
   top: 0;
   left: 0;
   right: 0;
@@ -94,8 +100,5 @@
     background-color: $SolRed;
     box-shadow: 0 0.1em 0.2em 0 rgba(black, 0.4);
     fill: white;
-  }
-  @media screen and (max-width: $smallScreen), (max-height: $smallScreen) {
-    display: flex;
   }
 }

@@ -19,22 +19,24 @@
   }
   @media (hover: hover) {
     &:hover {
-      h1 .title {
+      .title {
         background-color: $SolBlue;
       }
     }
   }
 }
-@media screen and (max-width: $smallScreen) {
-  padding-left: 0;
-  &.storyIsOpen {
-    height: 10vh;
-    position: relative;
-    overflow: hidden;
+@include smaller-than(M) {
+  .Feed {
+    padding-left: 0;
   }
   .FeedStory {
     padding: $padding 0 0 0;
     width: 100vw;
     font-size: 0.8rem;
+  }
+  .storyBackground + .Feed {
+    height: 10vh;
+    position: relative;
+    overflow: hidden;
   }
 }

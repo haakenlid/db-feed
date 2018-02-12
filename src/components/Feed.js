@@ -6,7 +6,6 @@ import ScrollSpy from 'components/ScrollSpy'
 import VisibilitySpy from 'components/VisibilitySpy'
 import LoadingIndicator from 'components/LoadingIndicator'
 import { isVisible, scrollToElement } from 'utils/misc'
-import classNames from 'classnames'
 
 export const Feed = ({
   active = [],
@@ -19,7 +18,7 @@ export const Feed = ({
     fetching || (isVisible(element) && feedRequested(true))
   const clickHandler = () => fetching || feedRequested(true)
   return (
-    <section className={classNames({ Feed: true, storyIsOpen })}>
+    <section className="Feed">
       {active.map(id => (
         <FeedStory
           key={id}

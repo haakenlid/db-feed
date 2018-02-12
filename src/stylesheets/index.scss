@@ -1,5 +1,4 @@
-$smallScreen: 700px;
-$verySmallScreen: 400px;
+$breakpoints: (S: 400px, M: 700px, L: 1500px);
 $padding: 0.8rem;
 
 $SolRed: #e20613;
@@ -11,6 +10,20 @@ $SolLightRed: lighten($SolRed, 30);
 // use css filter for drop shadows instead of box-shadow or text-shadow
 @mixin shadow($size: 1em, $color: rgba(black, 0.5)) {
   filter: drop-shadow(0.01 * $size 0.02 * $size 0.02 * $size $color);
+}
+
+@mixin smaller-than($key) {
+  $screen-size: map-get($breakpoints, $key);
+  @media screen and (max-width: $screen-size), (max-height: $screen-size) {
+    @content;
+  }
+}
+
+@mixin larger-than($key) {
+  $screen-size: map-get($breakpoints, $key);
+  @media screen and (min-width: $screen-size), (min-height: $screen-size) {
+    @content;
+  }
 }
 
 html {

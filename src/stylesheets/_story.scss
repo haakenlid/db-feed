@@ -63,7 +63,7 @@ $modalWidth: 60rem;
     color: $SolBlue;
     margin-bottom: $padding;
   }
-  @media screen and (max-width: $smallScreen), (max-height: $smallScreen) {
+  @include smaller-than(M) {
     height: unset;
     width: unset;
     position: fixed;
@@ -79,8 +79,7 @@ $modalWidth: 60rem;
       font-size: 1.3em;
     }
   }
-  @media screen and (max-width: $verySmallScreen),
-    (max-height: $verySmallScreen) {
+  @include smaller-than(S) {
     font-size: 0.9em;
   }
   @media screen and (max-height: 500px) {
@@ -92,42 +91,41 @@ $modalWidth: 60rem;
       margin-bottom: $padding * 0.5;
     }
   }
-}
 
-.navigate {
-  display: flex;
-  color: white;
-  text-align: center;
-  user-select: none;
-  .ExternalLink,
-  .back,
-  .forward {
-    background-color: $SolDarkBlue;
-    width: 1em;
-    cursor: pointer;
-    padding: 0.5em;
-    border: $padding solid white;
-    &:hover {
-      background-color: $SolRed;
-    }
-  }
-  .ExternalLink {
-    font-weight: bold;
-    background-color: #777;
-    border-left: none;
-    border-right: none;
+  .navigate {
+    display: flex;
     color: white;
-    flex: 1;
-  }
-  .back {
+    text-align: center;
+    user-select: none;
+    .ExternalLink,
+    .back,
+    .forward {
+      background-color: $SolDarkBlue;
+      width: 1em;
+      cursor: pointer;
+      padding: 0.5em;
+      border: $padding solid white;
+      &:hover {
+        background-color: $SolRed;
+      }
+    }
+    .ExternalLink {
+      font-weight: bold;
+      background-color: #777;
+      border-left: none;
+      border-right: none;
+      color: white;
+      flex: 1;
+    }
     .Chevron {
-      transform: scale(-1, 1);
+      vertical-align: -15%;
+      fill: currentColor;
+      display: inline;
+    }
+    .back {
+      .Chevron {
+        transform: scale(-1, 1);
+      }
     }
   }
-}
-
-.Chevron {
-  vertical-align: -15%;
-  fill: currentColor;
-  display: inline;
 }

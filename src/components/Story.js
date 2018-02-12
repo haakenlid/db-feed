@@ -37,41 +37,41 @@ export const Story = ({
       onSwipedLeft={next}
       onSwipedRight={previous}
       onSwipedDown={previous}
+      className="storyBackground"
+      onClick={close}
     >
-      <div className="storyBackground" onClick={close}>
-        <article className="Story">
-          <div className="image" style={{ backgroundImage: `url(${image})` }}>
-            <Brand host={host} />
-            <h1>
-              <Link className="title" href={url}>
-                {title}
-              </Link>
-            </h1>
-          </div>
-          <main>
-            {description && <Lede>{textExtract(300, description)}</Lede>}
-            <div className="Dateline">
-              {posted
-                ? `publisert for ${formatDate(posted)}`
-                : 'ukjent publiseringsdato'}
-            </div>
-            <div className="body">
-              {textExtract(350 - description.length, content)}
-            </div>
-          </main>
-          <nav className="navigate">
-            <div className="back" onClick={previous}>
-              <Chevron />
-            </div>
-            <Link className="ExternalLink" href={url}>
-              les saken på {host}
+      <article className="Story">
+        <div className="image" style={{ backgroundImage: `url(${image})` }}>
+          <Brand host={host} />
+          <h1>
+            <Link className="title" href={url}>
+              {title}
             </Link>
-            <div className="forward" onClick={next}>
-              <Chevron />
-            </div>
-          </nav>
-        </article>
-      </div>
+          </h1>
+        </div>
+        <main>
+          {description && <Lede>{textExtract(300, description)}</Lede>}
+          <div className="Dateline">
+            {posted
+              ? `publisert for ${formatDate(posted)}`
+              : 'ukjent publiseringsdato'}
+          </div>
+          <div className="body">
+            {textExtract(350 - description.length, content)}
+          </div>
+        </main>
+        <nav className="navigate">
+          <div className="back" onClick={previous}>
+            <Chevron />
+          </div>
+          <Link className="ExternalLink" href={url}>
+            les saken på {host}
+          </Link>
+          <div className="forward" onClick={next}>
+            <Chevron />
+          </div>
+        </nav>
+      </article>
     </Swipeable>
   )
 
