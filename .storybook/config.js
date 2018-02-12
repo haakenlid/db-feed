@@ -18,7 +18,7 @@ addDecorator(checkA11y) // accessability checker
 setAddon(jsxAddon) // show jsx
 
 const loadStories = () => {
-  require('../src/stories/index.js')
+  require('../src/storybooks/index.js')
 }
 
 configure(loadStories, module)

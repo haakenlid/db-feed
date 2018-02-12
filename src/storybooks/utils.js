@@ -1,21 +1,5 @@
-import React from 'react'
-import { createStore, combineReducers } from 'redux'
-import { Provider } from 'react-redux'
-
 import loremHipsum from 'lorem-hipsum'
 import placeholderImg from './26-kult-astroillustrasjon2_HL.jpg'
-
-import feed from 'ducks/feed'
-import tags from 'ducks/tags'
-import hosts from 'ducks/hosts'
-import initialState from './store.fixture.json'
-
-const configureStore = () =>
-  createStore(combineReducers({ feed, hosts, tags }), initialState)
-
-export const TestProvider = ({ children }) => (
-  <Provider store={configureStore()}>{children}</Provider>
-)
 
 const IMAGE_API_URL = 'https://source.unsplash.com/random/600x600'
 export const fetchRandomImage = () =>

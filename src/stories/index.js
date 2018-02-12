@@ -1,6 +1,0 @@
-import 'stylesheets/index.css'
-import './stories.css'
-import './story'
-import './feed'
-import './header'
-import './icons'

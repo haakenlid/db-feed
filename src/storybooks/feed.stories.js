@@ -1,11 +1,13 @@
 import React from 'react'
 import { boolean, text } from '@storybook/addon-knobs/react'
 import { storiesOf } from '@storybook/react'
-import Feed from 'components/Feed'
+
+import { baseProps, randomProps } from './utils'
+import Provider from './Provider'
+
 import { FeedStory } from 'components/FeedStory'
 import LoadingIndicator from 'components/LoadingIndicator'
-import { baseProps, randomProps } from './utils'
-import { TestProvider } from './utils'
+import Feed from 'components/Feed'
 
 storiesOf('Feed', module)
   .addWithJSX('FeedStory', () => {
@@ -23,7 +25,7 @@ storiesOf('Feed', module)
     />
   ))
   .add('Feed', () => (
-    <TestProvider>
+    <Provider>
       <Feed />
-    </TestProvider>
+    </Provider>
   ))

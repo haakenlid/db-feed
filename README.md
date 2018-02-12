@@ -1,5 +1,4 @@
-[![badge]][travis]
-# Newsfeed SPA
+# Newsfeed SPA [![badge]][travis]
 
 ## Demo:
 The app is available here: [newsfeed]

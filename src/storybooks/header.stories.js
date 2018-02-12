@@ -5,13 +5,13 @@ import { storiesOf } from '@storybook/react'
 import GoToTop from 'components/GoToTop'
 import { Filters } from 'components/Filters'
 import { Header } from 'components/Page'
-import { TestProvider } from './utils'
+import Provider from './Provider'
 
 storiesOf('Header', module)
   .addWithJSX('Connected Header', () => (
-    <TestProvider>
+    <Provider>
       <Header />
-    </TestProvider>
+    </Provider>
   ))
   .addWithJSX('Filters', () => {
     const props = {
