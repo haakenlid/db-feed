@@ -1,10 +1,11 @@
 import React from 'react'
 import { boolean, text } from '@storybook/addon-knobs/react'
 import { storiesOf } from '@storybook/react'
-import { Feed } from 'components/Feed'
+import Feed from 'components/Feed'
 import { FeedStory } from 'components/FeedStory'
 import LoadingIndicator from 'components/LoadingIndicator'
 import { baseProps, randomProps } from './utils'
+import { TestProvider } from './utils'
 
 storiesOf('Feed', module)
   .addWithJSX('FeedStory', () => {
@@ -20,4 +21,9 @@ storiesOf('Feed', module)
       isLoading={boolean('isLoading', false)}
       children={text('message', '') || null}
     />
+  ))
+  .add('Feed', () => (
+    <TestProvider>
+      <Feed />
+    </TestProvider>
   ))

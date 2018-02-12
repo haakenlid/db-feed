@@ -5,14 +5,13 @@ import { storiesOf } from '@storybook/react'
 import GoToTop from 'components/GoToTop'
 import { Filters } from 'components/Filters'
 import { Header } from 'components/Page'
-import { simpleConfigureStore } from 'configureStore'
-import { Provider } from 'react-redux'
+import { TestProvider } from './utils'
 
 storiesOf('Header', module)
   .addWithJSX('Connected Header', () => (
-    <Provider store={simpleConfigureStore({})}>
+    <TestProvider>
       <Header />
-    </Provider>
+    </TestProvider>
   ))
   .addWithJSX('Filters', () => {
     const props = {

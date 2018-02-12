@@ -20,12 +20,12 @@ const GitHubLogo = () => (
 )
 
 export const Header = () => [
-  <header className="pageHeader">
+  <header key="header" className="pageHeader">
     <PageLogo />
     <Filters />
     <GitHubLogo />
   </header>,
-  <GoToTop />,
+  <GoToTop key="GoToTop" />,
 ]
 
 const Page = () => (
