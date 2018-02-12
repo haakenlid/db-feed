@@ -579,6 +579,109 @@ exports[`Storyshots Logos single logo 1`] = `
 </div>
 `;
 
+exports[`Storyshots Story randomize 1`] = `
+<div
+  onMouseDown={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+>
+  <div
+    className="storyBackground"
+    onClick={undefined}
+  >
+    <article
+      className="Story"
+    >
+      <div
+        className="image"
+        style={
+          Object {
+            "backgroundImage": "url(undefined)",
+          }
+        }
+      >
+        <div
+          className="Brand"
+        >
+          <span
+            className="fallback Logo"
+          >
+            example.news.com
+          </span>
+        </div>
+        <h1>
+          <a
+            className="title"
+            href="#"
+            onClick={[Function]}
+            target="_blank"
+          >
+            click the "random" button to generate random content
+          </a>
+        </h1>
+      </div>
+      <main>
+        <span
+          className="lede"
+        >
+          You can find the button in the Knobs panel to the right.
+        </span>
+        <div
+          className="Dateline"
+        >
+          ukjent publiseringsdato
+        </div>
+        <div
+          className="body"
+        >
+          
+        </div>
+      </main>
+      <nav
+        className="navigate"
+      >
+        <div
+          className="back"
+          onClick={undefined}
+        >
+          <svg
+            className="Chevron"
+            viewBox="0 0 640 640"
+          >
+            <path
+              d="M120.4 512.98l192-192-192-192 128-128 320 320-320 320z"
+            />
+          </svg>
+        </div>
+        <a
+          className="ExternalLink"
+          href="#"
+          onClick={[Function]}
+          target="_blank"
+        >
+          les saken på 
+          example.news.com
+        </a>
+        <div
+          className="forward"
+          onClick={undefined}
+        >
+          <svg
+            className="Chevron"
+            viewBox="0 0 640 640"
+          >
+            <path
+              d="M120.4 512.98l192-192-192-192 128-128 320 320-320 320z"
+            />
+          </svg>
+        </div>
+      </nav>
+    </article>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Story with props 1`] = `
 <div
   onMouseDown={[Function]}
@@ -639,7 +742,7 @@ exports[`Storyshots Story with props 1`] = `
         <div
           className="Dateline"
         >
-          publisert for 7 dager siden
+          publisert for 4 dager siden
         </div>
         <div
           className="body"
