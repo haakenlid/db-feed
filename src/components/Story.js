@@ -7,8 +7,6 @@ import Chevron from 'components/Chevron'
 import Swipeable from 'react-swipeable'
 import { isPWA, eventHandler } from 'utils/misc'
 
-const Lede = ({ ...props }) => <span className="lede" {...props} />
-
 const Link = ({ children, ...props }) => (
   <a
     {...props}
@@ -33,14 +31,14 @@ export const Story = ({
 }) =>
   !url ? null : (
     <Swipeable
+      className="Story"
       onSwipedUp={next}
       onSwipedLeft={next}
       onSwipedRight={previous}
       onSwipedDown={previous}
-      className="storyBackground"
       onClick={close}
     >
-      <article className="Story">
+      <article className="story-wrapper">
         <div className="image" style={{ backgroundImage: `url(${image})` }}>
           <Brand host={host} />
           <h1>
@@ -49,9 +47,11 @@ export const Story = ({
             </Link>
           </h1>
         </div>
-        <main>
-          {description && <Lede>{textExtract(300, description)}</Lede>}
-          <div className="Dateline">
+        <main className="story-content">
+          {description && (
+            <div className="lede">{textExtract(300, description)}</div>
+          )}
+          <div className="dateline">
             {posted
               ? `publisert for ${formatDate(posted)}`
               : 'ukjent publiseringsdato'}
@@ -60,11 +60,11 @@ export const Story = ({
             {textExtract(350 - description.length, content)}
           </div>
         </main>
-        <nav className="navigate">
+        <nav className="story-navigation">
           <div className="back" onClick={previous}>
             <Chevron />
           </div>
-          <Link className="ExternalLink" href={url}>
+          <Link className="link" href={url}>
             les saken på {host}
           </Link>
           <div className="forward" onClick={next}>

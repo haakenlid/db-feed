@@ -24,14 +24,14 @@ $loaderSpeed: 1200ms;
     transform: scale(1, 1);
     animation: cubeGridScaleDelay $loaderSpeed infinite ease-in-out;
     &.isLoading {
-      background-color: $SolLightBlue;
+      background-color: $sol-light-blue;
     }
     &.isQuiet {
       background-color: #ddd;
       animation: none;
       @media (hover: hover) {
         &:hover {
-          background-color: $SolRed;
+          background-color: $sol-red;
         }
       }
     }

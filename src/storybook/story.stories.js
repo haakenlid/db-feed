@@ -23,7 +23,7 @@ class RandomStory extends React.Component {
   }
   render() {
     button('randomize props', () => this.randomizeProps())
-    return Story(this.state)
+    return <Story {...this.state} />
   }
 }
 

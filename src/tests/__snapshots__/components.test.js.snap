@@ -240,7 +240,7 @@ exports[`ScrollSpy renders correctly 1`] = `
 
 exports[`Story renders correctly 1`] = `
 <div
-  className="storyBackground"
+  className="Story"
   onClick={undefined}
   onMouseDown={[Function]}
   onTouchEnd={[Function]}
@@ -248,7 +248,7 @@ exports[`Story renders correctly 1`] = `
   onTouchStart={[Function]}
 >
   <article
-    className="Story"
+    className="story-wrapper"
   >
     <div
       className="image"
@@ -282,14 +282,16 @@ exports[`Story renders correctly 1`] = `
         </a>
       </h1>
     </div>
-    <main>
-      <span
+    <main
+      className="story-content"
+    >
+      <div
         className="lede"
       >
         Shocking lede: Some news happened!
-      </span>
+      </div>
       <div
-        className="Dateline"
+        className="dateline"
       >
         publisert for rundt 48 år siden
       </div>
@@ -300,7 +302,7 @@ exports[`Story renders correctly 1`] = `
       </div>
     </main>
     <nav
-      className="navigate"
+      className="story-navigation"
     >
       <div
         className="back"
@@ -316,7 +318,7 @@ exports[`Story renders correctly 1`] = `
         </svg>
       </div>
       <a
-        className="ExternalLink"
+        className="link"
         href="http://example.com/news/breaking-news-shock"
         onClick={[Function]}
         target="_blank"

@@ -3,40 +3,42 @@
   flex-direction: row;
   flex-flow: wrap;
   padding-left: $padding;
-}
-
-.FeedStory {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  flex-grow: 1;
-  flex-basis: auto;
-  width: 25em;
-  height: 20em;
-  padding: $padding $padding 0 0;
-  h1 {
-    font-size: 2em;
-  }
-  @media (hover: hover) {
-    &:hover {
-      .title {
-        background-color: $SolBlue;
-      }
+  @include smaller-than(M) {
+    padding-left: 0;
+    .Story + & {
+      // hide feed when story is fullscreen to remove scrollbar
+      display: none;
     }
   }
 }
-@include smaller-than(M) {
-  .Feed {
-    padding-left: 0;
-  }
-  .FeedStory {
-    padding: $padding 0 0 0;
+
+.FeedStory {
+  width: 25rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: auto;
+  padding-top: $padding;
+  padding-right: $padding;
+  cursor: pointer;
+  @include smaller-than(M) {
+    padding-right: 0;
     width: 100vw;
     font-size: 0.8rem;
   }
-  .storyBackground + .Feed {
-    height: 10vh;
-    position: relative;
-    overflow: hidden;
+  > .image {
+    flex: 1;
+    h1 {
+      font-size: 2em;
+      @media (hover: hover) {
+        // not on touch screens
+        &:hover {
+          .title {
+            background-color: $sol-blue;
+          }
+        }
+      }
+    }
   }
 }

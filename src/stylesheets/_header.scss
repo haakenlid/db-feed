@@ -1,3 +1,11 @@
+%hover-shadow {
+  @media (hover: hover) {
+    &:hover {
+      filter: drop-shadow(0 0 0.1em darken($sol-blue, 20));
+    }
+  }
+}
+
 .Header {
   position: sticky;
   display: flex;
@@ -6,20 +14,22 @@
   z-index: 100;
   color: white;
   padding: 0.5rem 1rem;
-  background-color: $SolBlue;
+  background-color: $sol-blue;
   justify-content: space-between;
   align-items: center;
   #pageLogo {
+    @extend %hover-shadow;
     font-size: 4em;
   }
   #githubLink {
+    @extend %hover-shadow;
     font-size: 4em;
     line-height: 1;
     height: 1em;
     width: 1em;
-    color: mix($SolBlue, black, 80);
+    color: darken($sol-blue, 10);
     &:hover {
-      color: mix($SolBlue, white, 50);
+      color: $sol-light-blue;
     }
   }
   @include smaller-than(M) {
@@ -29,23 +39,26 @@
       display: none;
     }
   }
+  @media (min-width: map-get($breakpoints, M)) and (max-width: 1000px) {
+    font-size: 1.6vw;
+  }
 }
 .Filters {
-  font-size: 1.3rem;
+  font-size: 1.3em;
   .tags,
   .hosts {
     font-weight: bold;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    margin: $padding * -0.2 $padding * -0.4;
+    padding: 0 $padding * 0.5;
     .Tag,
     .Host {
-      padding: 0.2rem 0.3rem;
-      color: mix($SolBlue, white, 50);
+      @extend %hover-shadow;
+      padding: $padding * 0.2 $padding * 0.4;
+      color: mix($sol-blue, white, 50);
       cursor: pointer;
-      &:hover {
-        filter: drop-shadow(0 0 0.2rem darken($SolBlue, 40));
-      }
       &.active {
         color: #eee;
       }
@@ -53,24 +66,21 @@
     .Host {
       line-height: 0.7;
       font-size: 2em;
-      @include larger-than(M) {
-        @media (max-width: 800px) {
-          padding: 0.1rem;
-          font-size: 1.8em;
-        }
-      }
     }
   }
   @include smaller-than(M) {
+    @media (orientation: portrait) {
+      max-width: 20em;
+    }
     .hosts {
+      padding: $padding * 0.5 0;
       justify-content: space-around;
-      padding: 0.5rem;
-      padding-bottom: 0;
+      padding-bottom: $padding * 0.5;
     }
     .tags {
+      padding: $padding * 0.5 0;
       font-size: 1.1em;
       justify-content: center;
-      padding: 0.5rem;
     }
   }
   @include smaller-than(S) {
@@ -84,8 +94,8 @@
     display: flex;
   }
   font-size: 2rem;
-  position: fixed;
   z-index: 10;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -97,8 +107,8 @@
     width: 1em;
     height: 1em;
     border-radius: 50%;
-    background-color: $SolRed;
-    box-shadow: 0 0.1em 0.2em 0 rgba(black, 0.4);
+    background-color: $sol-red;
     fill: white;
+    @include shadow(2em);
   }
 }
