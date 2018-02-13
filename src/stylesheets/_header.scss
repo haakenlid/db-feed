@@ -1,7 +1,9 @@
-%hover-shadow {
+@mixin hover-glow($lighten-by: 25, $size: 4rem) {
+  $shadow-size: $size * 0.1;
+  $shadow-color: lighten($sol-blue, $lighten-by);
   @media (hover: hover) {
     &:hover {
-      filter: drop-shadow(0 0 0.1em darken($sol-blue, 20));
+      filter: drop-shadow(0 0 $shadow-size $shadow-color);
     }
   }
 }
@@ -18,11 +20,11 @@
   justify-content: space-between;
   align-items: center;
   #pageLogo {
-    @extend %hover-shadow;
+    @include hover-glow(15);
     font-size: 4em;
   }
   #githubLink {
-    @extend %hover-shadow;
+    @include hover-glow(15);
     font-size: 4em;
     line-height: 1;
     height: 1em;
@@ -55,7 +57,7 @@
     padding: 0 $padding * 0.5;
     .Tag,
     .Host {
-      @extend %hover-shadow;
+      @include hover-glow();
       padding: $padding * 0.2 $padding * 0.4;
       color: mix($sol-blue, white, 50);
       cursor: pointer;

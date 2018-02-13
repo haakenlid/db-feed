@@ -45,13 +45,6 @@ h1 {
   background-size: cover;
   background-position: center; }
 
-@media (hover: hover) {
-  .Header #pageLogo:hover, .Header #githubLink:hover, .Filters .tags .Tag:hover,
-  .Filters .tags .Host:hover,
-  .Filters .hosts .Tag:hover,
-  .Filters .hosts .Host:hover {
-    filter: drop-shadow(0 0 0.1em #202b3a); } }
-
 .Header {
   position: sticky;
   display: flex;
@@ -65,12 +58,18 @@ h1 {
   align-items: center; }
   .Header #pageLogo {
     font-size: 4em; }
+    @media (hover: hover) {
+      .Header #pageLogo:hover {
+        filter: drop-shadow(0 0 0.4rem #6481a8); } }
   .Header #githubLink {
     font-size: 4em;
     line-height: 1;
     height: 1em;
     width: 1em;
     color: #33445a; }
+    @media (hover: hover) {
+      .Header #githubLink:hover {
+        filter: drop-shadow(0 0 0.4rem #6481a8); } }
     .Header #githubLink:hover {
       color: #95a9c4; }
   @media screen and (max-width: 700px), (max-height: 700px) {
@@ -100,6 +99,12 @@ h1 {
       padding: 0.16rem 0.32rem;
       color: #a2aebd;
       cursor: pointer; }
+      @media (hover: hover) {
+        .Filters .tags .Tag:hover,
+        .Filters .tags .Host:hover,
+        .Filters .hosts .Tag:hover,
+        .Filters .hosts .Host:hover {
+          filter: drop-shadow(0 0 0.4rem #859cbb); } }
       .Filters .tags .Tag.active,
       .Filters .tags .Host.active,
       .Filters .hosts .Tag.active,
