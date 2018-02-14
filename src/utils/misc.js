@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 
-// animation frame based debounce function
+// AnimationFrame based debounce function
 export const debounce = (func, wait) => {
   let minutes = null
   return (...args) => {
@@ -11,13 +11,13 @@ export const debounce = (func, wait) => {
     })
   }
 }
-// minutes based debounce function
-export const _debounce = (func, wait) => {
-  let minutes = null
+// setTimeout based debounce function. Doesn't perform well in android chrome
+export const timeoutDebounce = (func, wait) => {
+  let timeout = null
   return (...args) => {
-    minutes && clearTimeout(minutes)
-    minutes = setTimeout(() => {
-      minutes = null
+    timeout && clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      timeout = null
       func(...args)
     }, 100)
   }
@@ -44,9 +44,9 @@ export const isVisible = element => {
 }
 
 // scroll to element vertically. center window on element
-export const scrollToElement = element => {
+export const scrollToElement = (centerFromTop = 0.5) => element => {
   if (!(element && window.scrollTo)) return
-  const offset = (window.innerHeight - element.offsetHeight) / 2
+  const offset = (window.innerHeight - element.offsetHeight) * centerFromTop
   const scrollTop = offset < 0 ? element.offsetTop : element.offsetTop - offset
   window.scrollTo(0, scrollTop)
 }

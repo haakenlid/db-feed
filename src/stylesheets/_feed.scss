@@ -1,3 +1,12 @@
+.Main {
+  display: flex;
+  justify-content: center;
+  > .Feed {
+    width: $page-max-width;
+    max-width: 100vw;
+  }
+}
+
 .Feed {
   display: flex;
   flex-direction: row;
@@ -13,8 +22,8 @@
 }
 
 .FeedStory {
-  width: 25rem;
-  height: 20rem;
+  width: 25em;
+  height: 20em;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -28,6 +37,7 @@
     font-size: 0.8rem;
   }
   > .image {
+    overflow-y: hidden;
     flex: 1;
     h1 {
       font-size: 2em;

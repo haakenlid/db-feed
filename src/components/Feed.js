@@ -7,6 +7,8 @@ import VisibilitySpy from 'components/VisibilitySpy'
 import LoadingIndicator from 'components/LoadingIndicator'
 import { isVisible, scrollToElement } from 'utils/misc'
 
+const SCROLL_POSITION = 0.25 // scroll position of current story in feed view
+
 export const Feed = ({
   active = [],
   fetching,
@@ -23,7 +25,11 @@ export const Feed = ({
         <FeedStory
           key={id}
           id={id}
-          refFunc={!storyIsOpen && id === currentStory ? scrollToElement : null}
+          refFunc={
+            !storyIsOpen && id === currentStory
+              ? scrollToElement(SCROLL_POSITION)
+              : null
+          }
         />
       ))}
       <ScrollSpy onScroll={scrollHandler} />

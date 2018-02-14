@@ -53,12 +53,13 @@
     height: $story-height;
   }
   @include smaller-than(M) {
+    font-size: 1em;
     // Use fixed position to look better on phone screens where the browser
     // chrome might mess with the vw and vh values.
     @include fullscreen;
   }
   @include smaller-than(S) {
-    font-size: 0.9em;
+    font-size: 0.85em;
   }
 }
 
@@ -83,10 +84,8 @@
   .lede,
   .dateline {
     margin-bottom: $padding;
-    @include smaller-than(M) {
-      @media (orientation: landscape) {
-        margin-bottom: $padding * 0.3;
-      }
+    @include smaller-than(S) {
+      margin-bottom: $padding * 0.5;
     }
   }
 }
@@ -99,9 +98,12 @@
   .link,
   .back,
   .forward {
-    background-color: $sol-dark-blue;
-    width: 1em;
+    box-sizing: content-box;
+    line-height: 1.2em;
+    width: 1.2em;
+    height: 1.2em;
     padding: 0.5em;
+    background-color: $sol-dark-blue;
     border: $padding solid white;
     @media (hover: hover) {
       cursor: pointer;
@@ -121,7 +123,6 @@
 }
 
 .Chevron {
-  vertical-align: -15%;
   fill: currentColor;
   .back > & {
     transform: scale(-1, 1); // mirror

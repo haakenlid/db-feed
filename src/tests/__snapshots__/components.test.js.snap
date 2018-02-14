@@ -223,7 +223,7 @@ exports[`LoadingIndicator renders correctly 1`] = `
 
 exports[`Page renders correctly 1`] = `
 <div
-  id="pageWrapper"
+  id="Page"
 >
   <Unknown />
   <Main />

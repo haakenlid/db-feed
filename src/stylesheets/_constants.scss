@@ -8,8 +8,9 @@ $sol-light-blue: lighten($sol-blue, 30);
 
 // SIZE CONSTANTS
 $base-font-size: 16px;
-$breakpoints: (S: 400px, M: 700px, L: 1500px);
+$breakpoints: (S: 350px, M: 700px, L: 1000px);
 $padding: 0.8rem;
+$page-max-width: 1600px;
 
 // PLACEHOLDER CLASSES
 %body-text {
@@ -22,18 +23,9 @@ $padding: 0.8rem;
 }
 
 // MIXINS
-@mixin fullscreen() {
-  // this is a mixin instead of a placeholder class so that it can be used
-  // inside media queries.
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: unset;
-  width: unset;
+@mixin shadow($size: 1em, $color: rgba(black, 0.5)) {
+  filter: drop-shadow(0.01 * $size 0.02 * $size 0.02 * $size $color);
 }
-
 // breakpoint mixin which trigger on either height or width
 // usage example:
 // @include smaller-than(L) { color: salmon }
@@ -54,7 +46,14 @@ $padding: 0.8rem;
   }
 }
 
-// use css filter for drop shadows instead of box-shadow or text-shadow
-@mixin shadow($size: 1em, $color: rgba(black, 0.5)) {
-  filter: drop-shadow(0.01 * $size 0.02 * $size 0.02 * $size $color);
+@mixin fullscreen() {
+  // this is a mixin instead of a placeholder class so that it can be used
+  // inside media queries.
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: unset;
+  width: unset;
 }

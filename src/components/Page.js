@@ -19,14 +19,16 @@ const GitHubLogo = () => (
   </a>
 )
 
-export const Header = () => [
-  <header key="header" className="Header">
-    <PageLogo />
-    <Filters />
-    <GitHubLogo />
-  </header>,
-  <GoToTop key="GoToTop" />,
-]
+export const Header = () => (
+  <header className="Header">
+    <section className="header-content">
+      <PageLogo />
+      <Filters />
+      <GitHubLogo />
+    </section>
+    <GoToTop />
+  </header>
+)
 
 const Main = () => (
   <main className="Main">
@@ -36,7 +38,7 @@ const Main = () => (
 )
 
 const Page = () => (
-  <div id="pageWrapper">
+  <div id="Page">
     <Header />
     <Main />
   </div>

@@ -53,7 +53,7 @@ export const Story = ({
           )}
           <div className="dateline">
             {posted
-              ? `publisert for ${formatDate(posted)}`
+              ? `publisert ${formatDate(posted)}`
               : 'ukjent publiseringsdato'}
           </div>
           <div className="body">

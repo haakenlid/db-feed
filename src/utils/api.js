@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 import { buildUrl } from './url'
-import { cleanString } from 'utils/text'
+import { cleanString, dedupeContent } from 'utils/text'
 
 export const BASE_URL = 'https://harvester.sol.no/get'
 
@@ -15,6 +15,7 @@ const normalizeItem = R.pipe(
     image,
   }),
   R.map(cleanString),
+  dedupeContent,
   R.over(R.lensProp('image'), R.replace(/^http:/, 'https:'))
 )
 

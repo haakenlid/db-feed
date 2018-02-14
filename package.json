@@ -15,7 +15,7 @@
     "@storybook/react": "^3.3.12",
     "babel-core": "^6.26.0",
     "classnames": "^2.2.5",
-    "date-fns": "^1.29.0",
+    "date-fns": "^2.0.0-alpha.7",
     "gh-pages": "^1.1.0",
     "lorem-hipsum": "^0.1.7",
     "node-sass-chokidar": "0.0.3",
