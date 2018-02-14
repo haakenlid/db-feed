@@ -249,10 +249,7 @@ h1 {
     font-size: 3.5rem; }
     @media screen and (max-width: 700px), (max-height: 700px) {
       .story-wrapper h1 {
-        font-size: 2.2em; } }
-  @media screen and (max-width: 700px) and (orientation: landscape), (max-height: 700px) and (orientation: landscape) {
-    .story-wrapper h1 {
-      font-size: 1.8em; } }
+        font-size: 2em; } }
     @media (hover: hover) {
       .story-wrapper h1 {
         cursor: pointer; }
@@ -276,7 +273,7 @@ h1 {
       width: unset; } }
   @media screen and (max-width: 350px), (max-height: 350px) {
     .story-wrapper {
-      font-size: 0.85em; } }
+      font-size: 0.8em; } }
 
 .story-content {
   display: flex;
@@ -289,7 +286,7 @@ h1 {
     line-height: 1.1; }
     @media screen and (max-width: 700px), (max-height: 700px) {
       .story-content .lede {
-        font-size: 1.3em; } }
+        font-size: 1.2em; } }
   .story-content .dateline {
     font-size: 0.9em;
     color: #455c7b; }

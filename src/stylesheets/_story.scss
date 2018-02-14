@@ -29,10 +29,7 @@
   h1 {
     font-size: 3.5rem;
     @include smaller-than(M) {
-      font-size: 2.2em;
-      @media (orientation: landscape) {
-        font-size: 1.8em;
-      }
+      font-size: 2em;
     }
     @media (hover: hover) {
       cursor: pointer;
@@ -59,7 +56,7 @@
     @include fullscreen;
   }
   @include smaller-than(S) {
-    font-size: 0.85em;
+    font-size: 0.8em;
   }
 }
 
@@ -74,7 +71,7 @@
     font-size: 1.4em;
     line-height: 1.1;
     @include smaller-than(M) {
-      font-size: 1.3em;
+      font-size: 1.2em;
     }
   }
   .dateline {
